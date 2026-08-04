@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://incognitoresolve-alt.github.io/hub-hub/sitemap.xml
