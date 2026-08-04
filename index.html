@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guide de l'entrepreneur novice en Belgique</title>
+<meta name="description" content="Guide pratique et gratuit pour lancer son activité indépendante ou sa société en Belgique : démarches, TVA, forme juridique, aides et financement.">
+<style>
+  :root{
+    --black:#111214;
+    --yellow:#ffd21f;
+    --red:#e4363c;
+    --bg:#f7f7f5;
+    --surface:#ffffff;
+    --text:#1c1d1f;
+    --muted:#5b5d63;
+    --border:#e5e5e2;
+    --radius:14px;
+    --shadow:0 4px 18px rgba(17,18,20,.06);
+    --maxw:980px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:"Segoe UI",Helvetica,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+  }
+  a{color:var(--red);}
+  img{max-width:100%;}
+
+  /* Header */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:14px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:700;
+    font-size:1.05rem;
+    text-decoration:none;
+    color:var(--black);
+  }
+  .brand .flag{
+    display:inline-flex;
+    width:22px;
+    height:16px;
+    border-radius:3px;
+    overflow:hidden;
+    box-shadow:0 0 0 1px rgba(0,0,0,.08);
+  }
+  .brand .flag span{flex:1;}
+  .brand .flag .b{background:var(--black);}
+  .brand .flag .y{background:var(--yellow);}
+  .brand .flag .r{background:var(--red);}
+
+  nav.links{display:flex;gap:18px;flex-wrap:wrap;}
+  nav.links a{
+    color:var(--muted);
+    text-decoration:none;
+    font-size:.92rem;
+    font-weight:600;
+  }
+  nav.links a:hover{color:var(--red);}
+  #navToggle{display:none;}
+  .burger{
+    display:none;
+    background:none;
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:8px 10px;
+    cursor:pointer;
+    font-size:1rem;
+  }
+
+  @media (max-width:760px){
+    nav.links{
+      display:none;
+      flex-direction:column;
+      width:100%;
+      padding:10px 20px 18px;
+      gap:10px;
+    }
+    #navToggle:checked ~ nav.links{display:flex;}
+    .burger{display:block;}
+    .nav-wrap{flex-wrap:wrap;}
+  }
+
+  /* Hero */
+  .hero{
+    background:
+      radial-gradient(circle at 15% 20%, rgba(255,210,31,.35), transparent 45%),
+      radial-gradient(circle at 85% 0%, rgba(228,54,60,.25), transparent 45%),
+      var(--black);
+    color:#fff;
+    padding:64px 20px 56px;
+  }
+  .hero-inner{max-width:var(--maxw);margin:0 auto;}
+  .eyebrow{
+    display:inline-block;
+    background:rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.25);
+    padding:5px 12px;
+    border-radius:999px;
+    font-size:.78rem;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(1.8rem,4vw,2.7rem);
+    margin:0 0 16px;
+    max-width:22ch;
+  }
+  .hero p{
+    max-width:60ch;
+    color:rgba(255,255,255,.82);
+    font-size:1.05rem;
+    margin:0 0 26px;
+  }
+  .hero-cta{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;
+    padding:12px 20px;
+    border-radius:10px;
+    font-weight:700;
+    text-decoration:none;
+    font-size:.95rem;
+    border:1px solid transparent;
+    cursor:pointer;
+  }
+  .btn-primary{background:var(--yellow);color:var(--black);}
+  .btn-primary:hover{background:#ffdb47;}
+  .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.4);}
+  .btn-ghost:hover{border-color:#fff;}
+
+  /* Main layout */
+  main{max-width:var(--maxw);margin:0 auto;padding:48px 20px 90px;}
+  section{margin-bottom:64px;scroll-margin-top:90px;}
+  h2{
+    font-size:1.55rem;
+    margin:0 0 6px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  h2 .num{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:34px;height:34px;
+    border-radius:9px;
+    background:var(--black);
+    color:var(--yellow);
+    font-size:.95rem;
+    flex:none;
+  }
+  .section-sub{color:var(--muted);margin:0 0 26px;max-width:70ch;}
+
+  .card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:22px 24px;
+  }
+
+  .steps{display:flex;flex-direction:column;gap:16px;}
+  .step{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:20px 22px;
+    display:grid;
+    grid-template-columns:44px 1fr;
+    gap:16px;
+  }
+  .step .badge{
+    width:44px;height:44px;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--yellow),#ffb020);
+    color:var(--black);
+    font-weight:800;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.1rem;
+  }
+  .step h3{margin:2px 0 8px;font-size:1.08rem;}
+  .step p{margin:0 0 8px;color:var(--text);}
+  .step ul{margin:8px 0 0;padding-left:20px;color:var(--muted);}
+  .step ul li{margin-bottom:4px;}
+  .tag{
+    display:inline-block;
+    font-size:.72rem;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.03em;
+    padding:3px 9px;
+    border-radius:999px;
+    margin-right:6px;
+    margin-top:4px;
+  }
+  .tag.oblig{background:#fde8e8;color:#a3242a;}
+  .tag.reco{background:#fff3cf;color:#8a6300;}
+  .tag.option{background:#e7f1ff;color:#1e50a0;}
+
+  .grid-3{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:16px;
+  }
+  .mini-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:18px 20px;
+    box-shadow:var(--shadow);
+  }
+  .mini-card h4{margin:0 0 8px;font-size:1rem;}
+  .mini-card p{margin:0;color:var(--muted);font-size:.92rem;}
+  .mini-card a{font-weight:600;font-size:.88rem;}
+
+  table{width:100%;border-collapse:collapse;background:var(--surface);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);}
+  th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--border);font-size:.92rem;}
+  th{background:var(--black);color:#fff;font-weight:600;}
+  tr:last-child td{border-bottom:none;}
+
+  .callout{
+    border-left:4px solid var(--red);
+    background:#fff5f5;
+    padding:16px 18px;
+    border-radius:0 10px 10px 0;
+    font-size:.94rem;
+  }
+  .callout.info{border-color:#2e6fd6;background:#f0f6ff;}
+  .callout strong{display:block;margin-bottom:4px;}
+
+  .checklist{display:flex;flex-direction:column;gap:10px;}
+  .checklist label{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:12px 16px;
+    cursor:pointer;
+    font-size:.95rem;
+  }
+  .checklist input{margin-top:3px;width:18px;height:18px;accent-color:var(--red);flex:none;}
+  .checklist label.done{opacity:.55;text-decoration:line-through;}
+  .progress-wrap{margin-bottom:18px;}
+  .progress-bar{height:10px;border-radius:999px;background:var(--border);overflow:hidden;}
+  .progress-bar > div{height:100%;background:linear-gradient(90deg,var(--yellow),var(--red));width:0%;transition:width .3s;}
+  .progress-label{font-size:.85rem;color:var(--muted);margin-top:6px;}
+
+  footer{
+    background:var(--black);
+    color:rgba(255,255,255,.75);
+    padding:40px 20px;
+    font-size:.85rem;
+  }
+  footer .foot-inner{max-width:var(--maxw);margin:0 auto;}
+  footer a{color:var(--yellow);}
+  .back-top{
+    position:fixed;
+    bottom:20px;right:20px;
+    background:var(--black);
+    color:var(--yellow);
+    border-radius:50%;
+    width:44px;height:44px;
+    display:flex;align-items:center;justify-content:center;
+    text-decoration:none;
+    box-shadow:0 4px 14px rgba(0,0,0,.25);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .2s;
+    font-size:1.2rem;
+  }
+  .back-top.show{opacity:1;pointer-events:auto;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <a href="#top" class="brand">
+      <span class="flag" aria-hidden="true"><span class="b"></span><span class="y"></span><span class="r"></span></span>
+      Guide Entrepreneur BE
+    </a>
+    <input type="checkbox" id="navToggle" hidden>
+    <label class="burger" for="navToggle">☰</label>
+    <nav class="links">
+      <a href="#etapes">Étapes</a>
+      <a href="#forme-juridique">Forme juridique</a>
+      <a href="#aides">Aides &amp; financement</a>
+      <a href="#erreurs">Erreurs à éviter</a>
+      <a href="#checklist">Checklist</a>
+      <a href="#ressources">Ressources</a>
+    </nav>
+  </div>
+</header>
+
+<div id="top"></div>
+<section class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">Gratuit · Belgique · 2026</span>
+    <h1>Le guide clair pour lancer son activité en Belgique</h1>
+    <p>Vous avez une idée mais ne savez pas par où commencer ? Ce guide résume, étape par étape, tout ce qu'un entrepreneur novice doit savoir pour démarrer légalement en Belgique : statut, TVA, assurances, aides régionales et pièges à éviter.</p>
+    <div class="hero-cta">
+      <a href="#etapes" class="btn btn-primary">Voir les 8 étapes</a>
+      <a href="#checklist" class="btn btn-ghost">Checklist interactive</a>
+    </div>
+  </div>
+</section>
+
+<main>
+
+  <section id="etapes">
+    <h2><span class="num">1</span>Les 8 étapes pour se lancer</h2>
+    <p class="section-sub">L'ordre ci-dessous correspond au parcours le plus courant. Certaines étapes peuvent se faire en parallèle, mais l'inscription à la BCE doit précéder l'activation de la TVA et de la caisse d'assurances sociales.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="badge">1</div>
+        <div>
+          <h3>Valider son projet</h3>
+          <p>Avant toute démarche administrative, formalisez votre idée : à qui vend-on, quoi, à quel prix, avec quels coûts. Un business plan simple (même 3-4 pages) évite les mauvaises surprises et est souvent exigé pour obtenir un financement.</p>
+          <ul>
+            <li>Étude de marché rapide (concurrents, clientèle cible)</li>
+            <li>Plan financier : prévisions de revenus et charges sur 12-24 mois</li>
+            <li>Vérifier si une carte professionnelle est requise (ressortissants hors UE/EEE)</li>
+          </ul>
+          <span class="tag reco">Recommandé</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="badge">2</div>
+        <div>
+          <h3>Choisir sa forme juridique</h3>
+          <p>Indépendant en personne physique ou société ? Ce choix impacte votre responsabilité, votre fiscalité et vos obligations comptables. Voir la section dédiée <a href="#forme-juridique">« Forme juridique »</a> ci-dessous.</p>
+          <span class="tag oblig">Obligatoire</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="badge">3</div>
+        <div>
+          <h3>Ouvrir un compte bancaire professionnel</h3>
+          <p>Un compte séparé de vos finances personnelles est obligatoire pour toute société, et fortement conseillé pour les indépendants en personne physique afin de garder une comptabilité claire.</p>
+          <span class="tag oblig">Obligatoire (sociétés)</span>
+          <span class="tag reco">Recommandé (indépendants)</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="badge">4</div>
+        <div>
+          <h3>S'inscrire à la Banque-Carrefour des Entreprises (BCE)</h3>
+          <p>Toute activité économique en Belgique doit être enregistrée à la BCE. Cette démarche se fait via un <strong>guichet d'entreprises agréé</strong> (Acerta, Securex, Partena, UCM, Liantis…), moyennant des frais administratifs (environ 90-105 €). Vous obtenez un numéro d'entreprise unique.</p>
+          <ul>
+            <li>Documents à fournir : carte d'identité, preuve de compétences si activité réglementée</li>
+            <li>Le guichet peut aussi vous aider pour les étapes 5 et 6</li>
+          </ul>
+          <span class="tag oblig">Obligatoire</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="badge">5</div>
+        <div>
+          <h3>S'affilier à une caisse d'assurances sociales</h3>
+          <p>Obligatoire dès le premier jour d'activité, même à temps partiel. Vous payez des cotisations sociales trimestrielles (provisionnelles la première année, régularisées ensuite) qui financent votre pension, mutuelle, allocations familiales et droit passerelle en cas de difficultés.</p>
+          <span class="tag oblig">Obligatoire</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="badge">6</div>
+        <div>
+          <h3>Activer un numéro de TVA (si applicable)</h3>
+          <p>La plupart des activités doivent s'enregistrer à la TVA auprès du SPF Finances. Un régime de la franchise de la taxe existe pour les petites entreprises dont le chiffre d'affaires annuel ne dépasse pas <strong>25 000 €</strong> : il dispense de facturer la TVA mais aussi d'en récupérer sur vos achats.</p>
+          <ul>
+            <li>Déclarations périodiques (mensuelles ou trimestrielles) si assujetti classique</li>
+            <li>Certaines professions sont exemptées de TVA (ex. professions médicales, certains services financiers)</li>
+          </ul>
+          <span class="tag oblig">Obligatoire (sauf franchise/exemption)</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="badge">7</div>
+        <div>
+          <h3>Souscrire les assurances nécessaires</h3>
+          <p>La responsabilité civile professionnelle est obligatoire pour de nombreux métiers réglementés (construction, santé, comptabilité...) et fortement conseillée pour les autres. Si vous engagez du personnel, l'assurance accidents du travail est obligatoire.</p>
+          <span class="tag oblig">Obligatoire (selon secteur)</span>
+          <span class="tag reco">Recommandé</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="badge">8</div>
+        <div>
+          <h3>Organiser sa comptabilité et sa fiscalité</h3>
+          <p>Mettez en place un suivi comptable dès le premier jour (facturation, notes de frais, tenue d'un journal des recettes/dépenses). Beaucoup de débutants font appel à un comptable ou expert-comptable pour les déclarations fiscales et pour optimiser leur situation.</p>
+          <span class="tag reco">Fortement recommandé</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="forme-juridique">
+    <h2><span class="num">2</span>Quelle forme juridique choisir ?</h2>
+    <p class="section-sub">Les deux options les plus courantes pour démarrer en Belgique. Ce tableau donne une vue d'ensemble ; un comptable ou un guichet d'entreprises peut vous conseiller selon votre situation précise.</p>
+    <table>
+      <thead>
+        <tr><th>Critère</th><th>Indépendant (personne physique)</th><th>Société (ex. SRL)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Responsabilité</td><td>Illimitée (patrimoine personnel engagé)</td><td>Limitée aux apports, en principe</td></tr>
+        <tr><td>Capital de départ</td><td>Aucun capital minimum requis</td><td>Aucun capital minimum légal, mais un plan financier solide est exigé</td></tr>
+        <tr><td>Formalités de création</td><td>Simples et rapides (guichet d'entreprises)</td><td>Statuts, plan financier, souvent passage chez un notaire</td></tr>
+        <tr><td>Fiscalité</td><td>Impôt des personnes physiques (IPP), taux progressif</td><td>Impôt des sociétés (ISOC), taux de 20-25%</td></tr>
+        <tr><td>Comptabilité</td><td>Simplifiée possible pour petites structures</td><td>Comptabilité en partie double obligatoire</td></tr>
+        <tr><td>Idéal pour</td><td>Tester une activité, freelances, petits volumes</td><td>Projets avec risques, associés, besoins d'investisseurs</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:16px;color:var(--muted);font-size:.9rem;">Il est tout à fait possible de démarrer en personne physique puis de « passer en société » plus tard, une fois l'activité stabilisée.</p>
+  </section>
+
+  <section id="aides">
+    <h2><span class="num">3</span>Aides et financement par région</h2>
+    <p class="section-sub">La Belgique étant fédérale, les aides à l'entrepreneuriat sont majoritairement gérées au niveau régional.</p>
+    <div class="grid-3">
+      <div class="mini-card">
+        <h4>🇧🇪 Wallonie</h4>
+        <p>Aides via la <strong>SOWALFIN</strong> (garanties, prêts), primes à l'investissement du SPW Économie, et accompagnement gratuit par les structures d'accompagnement à l'entrepreneuriat (SAACE).</p>
+      </div>
+      <div class="mini-card">
+        <h4>🏙️ Bruxelles</h4>
+        <p><strong>hub.brussels</strong> centralise l'information, l'accompagnement et certaines primes. La ligne <strong>1819</strong> répond gratuitement aux questions des entrepreneurs bruxellois.</p>
+      </div>
+      <div class="mini-card">
+        <h4>🦁 Flandre</h4>
+        <p><strong>VLAIO</strong> (Agence flamande pour l'Innovation et l'Entrepreneuriat) propose primes, prêts et un accompagnement structuré pour les starters.</p>
+      </div>
+    </div>
+    <div class="callout info" style="margin-top:20px;">
+      <strong>Bon à savoir</strong>
+      Le <strong>droit passerelle</strong> (fédéral) peut offrir un revenu de remplacement temporaire en cas d'interruption forcée d'activité, de faillite ou pour raisons familiales (maladie, congé de maternité pour indépendantes).
+    </div>
+  </section>
+
+  <section id="erreurs">
+    <h2><span class="num">4</span>Erreurs fréquentes des débutants</h2>
+    <div class="grid-3">
+      <div class="mini-card">
+        <h4>⏳ S'inscrire trop tard</h4>
+        <p>L'affiliation à la caisse d'assurances sociales doit se faire avant le début de l'activité, pas après avoir encaissé les premières factures.</p>
+      </div>
+      <div class="mini-card">
+        <h4>💸 Sous-estimer les charges</h4>
+        <p>Cotisations sociales, TVA, assurances : beaucoup oublient de provisionner ces montants et se retrouvent en difficulté de trésorerie.</p>
+      </div>
+      <div class="mini-card">
+        <h4>🧾 Mélanger finances pro et perso</h4>
+        <p>Même sans obligation légale pour les indépendants personne physique, séparer les comptes évite bien des erreurs comptables.</p>
+      </div>
+      <div class="mini-card">
+        <h4>📄 Ignorer les mentions obligatoires</h4>
+        <p>Factures, site web, devis : le numéro d'entreprise, le numéro de TVA et certaines mentions légales sont obligatoires.</p>
+      </div>
+      <div class="mini-card">
+        <h4>🛡️ Négliger les assurances</h4>
+        <p>Un sinistre sans RC professionnelle peut mettre fin prématurément à une activité prometteuse.</p>
+      </div>
+      <div class="mini-card">
+        <h4>🤝 Se passer d'un comptable</h4>
+        <p>Le coût d'un comptable est souvent largement compensé par les erreurs évitées et les optimisations fiscales trouvées.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="checklist">
+    <h2><span class="num">5</span>Checklist interactive</h2>
+    <p class="section-sub">Cochez les étapes au fur et à mesure. Votre progression est sauvegardée automatiquement dans votre navigateur.</p>
+    <div class="progress-wrap">
+      <div class="progress-bar"><div id="progressFill"></div></div>
+      <div class="progress-label" id="progressLabel">0 / 8 étapes complétées</div>
+    </div>
+    <div class="checklist" id="checklist">
+      <label><input type="checkbox" data-key="c1"> <span>Business plan et plan financier rédigés</span></label>
+      <label><input type="checkbox" data-key="c2"> <span>Forme juridique choisie (indépendant ou société)</span></label>
+      <label><input type="checkbox" data-key="c3"> <span>Compte bancaire professionnel ouvert</span></label>
+      <label><input type="checkbox" data-key="c4"> <span>Inscription à la BCE via un guichet d'entreprises</span></label>
+      <label><input type="checkbox" data-key="c5"> <span>Affiliation à une caisse d'assurances sociales</span></label>
+      <label><input type="checkbox" data-key="c6"> <span>Numéro de TVA activé (ou franchise vérifiée)</span></label>
+      <label><input type="checkbox" data-key="c7"> <span>Assurances professionnelles souscrites</span></label>
+      <label><input type="checkbox" data-key="c8"> <span>Outil de comptabilité / comptable en place</span></label>
+    </div>
+  </section>
+
+  <section id="ressources">
+    <h2><span class="num">6</span>Ressources utiles</h2>
+    <div class="grid-3">
+      <div class="mini-card">
+        <h4>SPF Économie</h4>
+        <p>Informations officielles sur la création d'entreprise en Belgique.</p>
+        <a href="https://economie.fgov.be" target="_blank" rel="noopener">economie.fgov.be →</a>
+      </div>
+      <div class="mini-card">
+        <h4>Banque-Carrefour des Entreprises</h4>
+        <p>Consulter les données publiques d'une entreprise enregistrée.</p>
+        <a href="https://kbopub.economie.fgov.be" target="_blank" rel="noopener">kbopub.economie.fgov.be →</a>
+      </div>
+      <div class="mini-card">
+        <h4>1819 (Bruxelles)</h4>
+        <p>Ligne d'information gratuite pour entrepreneurs bruxellois.</p>
+        <a href="https://1819.brussels" target="_blank" rel="noopener">1819.brussels →</a>
+      </div>
+      <div class="mini-card">
+        <h4>hub.brussels</h4>
+        <p>Accompagnement et aides pour entreprises en Région bruxelloise.</p>
+        <a href="https://hub.brussels" target="_blank" rel="noopener">hub.brussels →</a>
+      </div>
+      <div class="mini-card">
+        <h4>VLAIO</h4>
+        <p>Agence flamande pour l'innovation et l'entrepreneuriat.</p>
+        <a href="https://www.vlaio.be" target="_blank" rel="noopener">vlaio.be →</a>
+      </div>
+      <div class="mini-card">
+        <h4>SOWALFIN</h4>
+        <p>Financement et garanties pour entreprises wallonnes.</p>
+        <a href="https://www.sowalfin.be" target="_blank" rel="noopener">sowalfin.be →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="foot-inner">
+    <p><strong>Avertissement :</strong> ce guide est fourni à titre informatif et ne remplace pas un conseil juridique, comptable ou fiscal personnalisé. Les montants, seuils et procédures peuvent évoluer — vérifiez toujours les informations auprès d'un guichet d'entreprises agréé, d'un comptable ou des administrations compétentes (SPF Finances, SPF Économie, INASTI) avant toute décision.</p>
+    <p style="margin-top:14px;">Guide de l'entrepreneur novice en Belgique — usage libre et gratuit.</p>
+  </div>
+</footer>
+
+<a href="#top" class="back-top" id="backTop" aria-label="Retour en haut">↑</a>
+
+<script>
+  // Mobile nav auto-close on link click
+  document.querySelectorAll('nav.links a').forEach(function(a){
+    a.addEventListener('click', function(){
+      document.getElementById('navToggle').checked = false;
+    });
+  });
+
+  // Back to top button
+  var backTop = document.getElementById('backTop');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 500){ backTop.classList.add('show'); }
+    else{ backTop.classList.remove('show'); }
+  });
+
+  // Checklist persistence
+  (function(){
+    var boxes = document.querySelectorAll('#checklist input[type=checkbox]');
+    var STORAGE_KEY = 'be-entrepreneur-checklist';
+    var saved = {};
+    try{ saved = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }catch(e){ saved = {}; }
+
+    function updateProgress(){
+      var total = boxes.length;
+      var done = 0;
+      boxes.forEach(function(b){ if(b.checked) done++; });
+      document.getElementById('progressFill').style.width = (done/total*100) + '%';
+      document.getElementById('progressLabel').textContent = done + ' / ' + total + ' étapes complétées';
+    }
+
+    boxes.forEach(function(box){
+      var key = box.getAttribute('data-key');
+      if(saved[key]){
+        box.checked = true;
+        box.closest('label').classList.add('done');
+      }
+      box.addEventListener('change', function(){
+        saved[key] = box.checked;
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+        box.closest('label').classList.toggle('done', box.checked);
+        updateProgress();
+      });
+    });
+    updateProgress();
+  })();
+</script>
+
+</body>
+</html>
