@@ -276,6 +276,16 @@
     font-size:.85rem;
   }
   .formation-card[open] summary .chev{transform:rotate(180deg);}
+  .formation-card{transition:box-shadow .2s ease, transform .2s ease;}
+  .formation-card:hover{box-shadow:0 10px 28px rgba(43,16,66,.14);transform:translateY(-2px);}
+  .formation-card summary:hover h3,
+  .formation-card summary:hover h4{color:var(--purple);}
+  .f-content{
+    display:grid;
+    grid-template-rows:0fr;
+    transition:grid-template-rows .3s ease;
+  }
+  .f-content-inner{overflow:hidden;min-height:0;}
   .formation-card .f-topics,
   .formation-card .f-body{padding:0 20px 20px;}
   .formation-card .f-body{border-top:1px solid var(--border);padding-top:16px;margin-top:2px;}
@@ -346,6 +356,77 @@
   }
   .formations-closing p{margin:0;color:rgba(255,255,255,.8);}
 
+  /* Formations toolbar: progress + filters + expand-all */
+  .f-toolbar{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:18px 20px;
+    margin-bottom:20px;
+  }
+  .f-progress-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    margin-bottom:16px;
+    flex-wrap:wrap;
+  }
+  .f-progress-text{font-size:.88rem;color:var(--muted);font-weight:600;white-space:nowrap;}
+  .f-progress-track{
+    flex:1;
+    min-width:120px;
+    height:8px;
+    border-radius:999px;
+    background:var(--border);
+    overflow:hidden;
+  }
+  .f-progress-fill{
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg,var(--yellow),var(--red));
+    border-radius:999px;
+    transition:width .4s ease;
+  }
+  .f-controls{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .f-filters{display:flex;flex-wrap:wrap;gap:8px;}
+  .f-filter{
+    font-family:inherit;
+    font-size:.82rem;
+    font-weight:600;
+    color:var(--text);
+    background:var(--bg);
+    border:1px solid var(--border);
+    border-radius:999px;
+    padding:7px 14px;
+    cursor:pointer;
+    transition:background .15s, color .15s, border-color .15s;
+  }
+  .f-filter:hover{border-color:var(--purple);}
+  .f-filter.active{background:var(--black);color:#fff;border-color:var(--black);}
+  .f-expand-all{
+    font-family:inherit;
+    font-size:.82rem;
+    font-weight:600;
+    color:var(--purple);
+    background:none;
+    border:1px solid var(--purple);
+    border-radius:999px;
+    padding:7px 14px;
+    cursor:pointer;
+    white-space:nowrap;
+    transition:background .15s, color .15s;
+  }
+  .f-expand-all:hover{background:var(--purple);color:#fff;}
+  .formation-card.f-hidden{display:none;}
+
   .steps{display:flex;flex-direction:column;gap:16px;}
   .step{
     background:var(--surface);
@@ -388,6 +469,7 @@
   .grid-3{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    align-items:start;
     gap:16px;
   }
   .mini-card{
@@ -630,9 +712,27 @@
       <span class="tag option">Des résultats demain</span>
     </div>
 
-    <div class="grid-3">
-      <details class="formation-card">
+    <div class="f-toolbar">
+      <div class="f-progress-row">
+        <span class="f-progress-text" id="fProgressLabel">0 / 66 points complétés</span>
+        <div class="f-progress-track"><div class="f-progress-fill" id="fProgressFill"></div></div>
+      </div>
+      <div class="f-controls">
+        <div class="f-filters" role="tablist" aria-label="Filtrer les formations par catégorie">
+          <button type="button" class="f-filter active" data-filter="all" aria-pressed="true">Toutes (16)</button>
+          <button type="button" class="f-filter" data-filter="finance" aria-pressed="false">💰 Finances (5)</button>
+          <button type="button" class="f-filter" data-filter="business" aria-pressed="false">🚀 Entrepreneuriat &amp; carrière (6)</button>
+          <button type="button" class="f-filter" data-filter="dev" aria-pressed="false">🧠 Développement &amp; com. (4)</button>
+          <button type="button" class="f-filter" data-filter="foi" aria-pressed="false">📖 Foi (1)</button>
+        </div>
+        <button type="button" class="f-expand-all" id="fExpandAll">Tout déplier</button>
+      </div>
+    </div>
+
+    <div class="grid-3" id="formationsGrid">
+      <details class="formation-card" data-category="business">
         <summary><h3><span class="fnum">1</span> 🚀 Entrepreneuriat &amp; création de richesse</h3><span class="chev" aria-hidden="true">▾</span></summary>
+        <div class="f-content"><div class="f-content-inner">
         <div class="f-topics">
           <ul>
             <li>De salarié à entrepreneur : réussir sa transition</li>
@@ -646,11 +746,11 @@
           </ul>
         </div>
         <div class="f-body">
-          <h4>Contenu</h4>
+          <h4>📘 Contenu</h4>
           <p>Passer de salarié à entrepreneur demande une transition progressive plutôt qu'un saut dans le vide : tester l'idée à petite échelle, valider la demande avant d'investir, et sécuriser un revenu de transition. Une entreprise se construit sur un modèle économique clair : qui paie, pourquoi, combien de fois. Le passage de 0 à 100 000 € de chiffre d'affaires passe presque toujours par la maîtrise d'un seul canal d'acquisition rentable avant d'en ajouter un second. Enfin, une entreprise qui « fonctionne sans vous » repose sur des processus documentés et une équipe ou des outils qui prennent le relais de l'opérationnel.</p>
-          <h4>Résumé</h4>
+          <h4>✅ Résumé</h4>
           <p>Réussir sa transition vers l'entrepreneuriat, c'est tester avant d'investir, choisir un modèle économique clair, et construire des processus qui ne dépendent pas uniquement de vous.</p>
-          <h4>Checklist</h4>
+          <h4>☑️ Checklist</h4>
           <div class="formation-checklist">
             <label><input type="checkbox" data-key="f1-1"> <span>Idée validée par au moins 10 échanges avec des clients potentiels</span></label>
             <label><input type="checkbox" data-key="f1-2"> <span>Modèle économique formalisé sur une page</span></label>
@@ -658,17 +758,19 @@
             <label><input type="checkbox" data-key="f1-4"> <span>Statut légal ou indépendant complémentaire vérifié</span></label>
             <label><input type="checkbox" data-key="f1-5"> <span>Un processus clé documenté (ex. onboarding client)</span></label>
           </div>
-          <h4>Sources</h4>
+          <h4>🔗 Sources</h4>
           <ul class="f-sources">
             <li>SPF Économie — Créer son entreprise en Belgique : <a href="https://economie.fgov.be" target="_blank" rel="noopener">economie.fgov.be</a></li>
             <li>Eric Ries, <em>The Lean Startup</em> (2011)</li>
             <li>Peter Thiel, <em>Zero to One</em> (2014)</li>
           </ul>
         </div>
+        </div></div>
       </details>
 
-      <details class="formation-card">
+      <details class="formation-card" data-category="business">
         <summary><h3><span class="fnum">2</span> 🏢 Immobilier</h3><span class="chev" aria-hidden="true">▾</span></summary>
+        <div class="f-content"><div class="f-content-inner">
         <div class="f-topics">
           <ul>
             <li>Acheter sa première maison intelligemment</li>
@@ -680,11 +782,11 @@
           </ul>
         </div>
         <div class="f-body">
-          <h4>Contenu</h4>
+          <h4>📘 Contenu</h4>
           <p>L'achat d'un premier bien repose sur trois piliers : la capacité d'emprunt réelle (charges + apport), l'emplacement, et la marge de négociation. L'investissement locatif ajoute une variable clé : le rendement locatif brut (loyer annuel / prix d'achat), qui doit dépasser les charges (crédit, précompte immobilier, entretien) pour dégager un cash-flow positif. Investir à l'étranger, par exemple sur des terrains en Afrique, multiplie les risques juridiques et de change : vérifier le titre de propriété, la fiscalité locale et la fiabilité de l'intermédiaire est indispensable. Un bon investissement s'analyse toujours sur trois angles : le prix par rapport au marché, le potentiel locatif, et la liquidité de revente.</p>
-          <h4>Résumé</h4>
+          <h4>✅ Résumé</h4>
           <p>Un achat immobilier réussi combine capacité d'emprunt réaliste, calcul de rendement locatif, et vigilance renforcée pour tout investissement à l'étranger.</p>
-          <h4>Checklist</h4>
+          <h4>☑️ Checklist</h4>
           <div class="formation-checklist">
             <label><input type="checkbox" data-key="f2-1"> <span>Capacité d'emprunt calculée avec charges incluses</span></label>
             <label><input type="checkbox" data-key="f2-2"> <span>Rendement locatif brut estimé avant offre</span></label>
@@ -692,17 +794,19 @@
             <label><input type="checkbox" data-key="f2-4"> <span>Titre de propriété vérifié si investissement à l'étranger</span></label>
             <label><input type="checkbox" data-key="f2-5"> <span>Stratégie de sortie / revente envisagée</span></label>
           </div>
-          <h4>Sources</h4>
+          <h4>🔗 Sources</h4>
           <ul class="f-sources">
             <li>Fédération Royale du Notariat belge : <a href="https://www.notaire.be" target="_blank" rel="noopener">notaire.be</a></li>
             <li>SPF Finances — fiscalité immobilière : <a href="https://finances.belgium.be" target="_blank" rel="noopener">finances.belgium.be</a></li>
             <li>Robert Kiyosaki, <em>Rich Dad Poor Dad</em> (1997)</li>
           </ul>
         </div>
+        </div></div>
       </details>
 
-      <details class="formation-card">
+      <details class="formation-card" data-category="dev">
         <summary><h3><span class="fnum">3</span> 🧠 IA &amp; productivité</h3><span class="chev" aria-hidden="true">▾</span></summary>
+        <div class="f-content"><div class="f-content-inner">
         <div class="f-topics">
           <ul>
             <li>Booster son entreprise grâce à l'IA</li>
@@ -715,28 +819,30 @@
           </ul>
         </div>
         <div class="f-body">
-          <h4>Contenu</h4>
+          <h4>📘 Contenu</h4>
           <p>L'IA générative change surtout la vitesse d'exécution : rédaction, structuration d'idées et premiers jets de contenu peuvent être multipliés par dix, à condition de garder un contrôle humain sur la relecture et l'exactitude des faits. Le prompting professionnel consiste à donner du contexte (rôle, objectif, contraintes, format attendu) plutôt que des questions vagues. Pour une église ou une petite structure, un assistant IA peut centraliser la rédaction de messages, la préparation de supports ou la synthèse de documents longs — sans remplacer le discernement humain sur les sujets sensibles.</p>
-          <h4>Résumé</h4>
+          <h4>✅ Résumé</h4>
           <p>L'IA est un multiplicateur de vitesse pour la rédaction et l'organisation, à condition de structurer ses demandes (prompts) et de garder un contrôle humain sur le résultat.</p>
-          <h4>Checklist</h4>
+          <h4>☑️ Checklist</h4>
           <div class="formation-checklist">
             <label><input type="checkbox" data-key="f3-1"> <span>Un outil IA choisi et testé sur une tâche récurrente</span></label>
             <label><input type="checkbox" data-key="f3-2"> <span>Un modèle de prompt structuré (contexte + objectif + format) créé</span></label>
             <label><input type="checkbox" data-key="f3-3"> <span>Une vérification systématique des faits avant publication</span></label>
             <label><input type="checkbox" data-key="f3-4"> <span>Une tâche automatisée avec succès</span></label>
           </div>
-          <h4>Sources</h4>
+          <h4>🔗 Sources</h4>
           <ul class="f-sources">
             <li>Ethan Mollick, <em>Co-Intelligence: Living and Working with AI</em> (2024)</li>
             <li>Documentation officielle Anthropic (Claude) : <a href="https://docs.anthropic.com" target="_blank" rel="noopener">docs.anthropic.com</a></li>
             <li>Harvard Business Review — articles sur l'IA et la productivité</li>
           </ul>
         </div>
+        </div></div>
       </details>
 
-      <details class="formation-card">
+      <details class="formation-card" data-category="business">
         <summary><h3><span class="fnum">4</span> 🎯 Marketing &amp; vente</h3><span class="chev" aria-hidden="true">▾</span></summary>
+        <div class="f-content"><div class="f-content-inner">
         <div class="f-topics">
           <ul>
             <li>Trouver ses premiers clients</li>
@@ -749,28 +855,30 @@
           </ul>
         </div>
         <div class="f-body">
-          <h4>Contenu</h4>
+          <h4>📘 Contenu</h4>
           <p>Les premiers clients viennent presque toujours d'un cercle proche ou d'une recommandation, avant qu'un canal marketing ne prenne le relais. Une marque forte repose sur une promesse claire et répétée, pas sur un logo. Le cadre « StoryBrand » popularisé par Donald Miller recommande de positionner le client comme le héros de l'histoire, et la marque comme le guide qui l'aide à résoudre son problème. Un tunnel de vente simple suit trois étapes : attirer l'attention (contenu gratuit), démontrer la valeur (essai, démonstration), puis proposer l'achat clairement.</p>
-          <h4>Résumé</h4>
+          <h4>✅ Résumé</h4>
           <p>Trouver ses premiers clients passe par le réseau proche, une promesse de marque claire, et un tunnel de vente en trois étapes simples.</p>
-          <h4>Checklist</h4>
+          <h4>☑️ Checklist</h4>
           <div class="formation-checklist">
             <label><input type="checkbox" data-key="f4-1"> <span>Liste des 20 premiers contacts à solliciter établie</span></label>
             <label><input type="checkbox" data-key="f4-2"> <span>Promesse de marque formulée en une phrase</span></label>
             <label><input type="checkbox" data-key="f4-3"> <span>Un contenu gratuit ou une démo prête à partager</span></label>
             <label><input type="checkbox" data-key="f4-4"> <span>Un tunnel de vente simple mis en place (attirer → démontrer → vendre)</span></label>
           </div>
-          <h4>Sources</h4>
+          <h4>🔗 Sources</h4>
           <ul class="f-sources">
             <li>Donald Miller, <em>Building a StoryBrand</em> (2017)</li>
             <li>HubSpot Academy — formations marketing gratuites : <a href="https://academy.hubspot.com" target="_blank" rel="noopener">academy.hubspot.com</a></li>
             <li>Google Digital Garage — formation marketing digital gratuite</li>
           </ul>
         </div>
+        </div></div>
       </details>
 
-      <details class="formation-card">
+      <details class="formation-card" data-category="business">
         <summary><h3><span class="fnum">5</span> 💼 Emploi &amp; carrière</h3><span class="chev" aria-hidden="true">▾</span></summary>
+        <div class="f-content"><div class="f-content-inner">
         <div class="f-topics">
           <ul>
             <li>Devenir incontournable sur le marché de l'emploi</li>
@@ -783,28 +891,30 @@
           </ul>
         </div>
         <div class="f-body">
-          <h4>Contenu</h4>
+          <h4>📘 Contenu</h4>
           <p>Se démarquer sur le marché de l'emploi commence par un CV orienté résultats (chiffres, réalisations) plutôt qu'une liste de tâches. La préparation d'entretien gagne à s'appuyer sur la méthode STAR (Situation, Tâche, Action, Résultat) pour répondre aux questions comportementales. Négocier son salaire suppose de connaître sa valeur de marché et de formuler sa demande avec des arguments factuels plutôt qu'émotionnels. Se réinventer après 40 ans est facilité par la mise en avant de compétences transférables et un réseau professionnel actif.</p>
-          <h4>Résumé</h4>
+          <h4>✅ Résumé</h4>
           <p>Un CV orienté résultats, une préparation d'entretien structurée (méthode STAR) et une connaissance de sa valeur de marché font la différence sur le marché de l'emploi.</p>
-          <h4>Checklist</h4>
+          <h4>☑️ Checklist</h4>
           <div class="formation-checklist">
             <label><input type="checkbox" data-key="f5-1"> <span>CV réécrit avec des résultats chiffrés</span></label>
             <label><input type="checkbox" data-key="f5-2"> <span>3 réponses STAR préparées pour les questions fréquentes</span></label>
             <label><input type="checkbox" data-key="f5-3"> <span>Fourchette salariale de son poste vérifiée</span></label>
             <label><input type="checkbox" data-key="f5-4"> <span>Réseau professionnel activé (LinkedIn, contacts sectoriels)</span></label>
           </div>
-          <h4>Sources</h4>
+          <h4>🔗 Sources</h4>
           <ul class="f-sources">
             <li>Actiris / Forem / VDAB — services régionaux de l'emploi en Belgique</li>
             <li>Richard N. Bolles, <em>What Color Is Your Parachute?</em> (édition annuelle)</li>
             <li>LinkedIn Learning — formations carrière</li>
           </ul>
         </div>
+        </div></div>
       </details>
 
-      <details class="formation-card">
+      <details class="formation-card" data-category="finance">
         <summary><h3><span class="fnum">6</span> 💰 Argent &amp; gestion</h3><span class="chev" aria-hidden="true">▾</span></summary>
+        <div class="f-content"><div class="f-content-inner">
         <div class="f-topics">
           <ul>
             <li>Comprendre les bases de la finance personnelle</li>
@@ -816,27 +926,29 @@
           </ul>
         </div>
         <div class="f-body">
-          <h4>Contenu</h4>
+          <h4>📘 Contenu</h4>
           <p>La finance personnelle repose sur un principe simple : dépenser moins que ce que l'on gagne, et automatiser l'épargne avant de dépenser le reste (« payez-vous en premier »). La méthode « boule de neige », popularisée par Dave Ramsey, consiste à rembourser les dettes de la plus petite à la plus grande pour créer une dynamique de victoires rapides. Un budget efficace prévoit des enveloppes pour les charges fixes, l'épargne et les projets, et se révise chaque mois. La liberté financière dépend surtout du taux d'épargne et de la diversification des sources de revenus.</p>
-          <h4>Résumé</h4>
+          <h4>✅ Résumé</h4>
           <p>Automatiser son épargne, rembourser ses dettes avec une méthode structurée, et budgétiser par enveloppes sont les bases d'une gestion financière saine.</p>
-          <h4>Checklist</h4>
+          <h4>☑️ Checklist</h4>
           <div class="formation-checklist">
             <label><input type="checkbox" data-key="f6-1"> <span>Virement automatique d'épargne mis en place</span></label>
             <label><input type="checkbox" data-key="f6-2"> <span>Liste des dettes classées de la plus petite à la plus grande</span></label>
             <label><input type="checkbox" data-key="f6-3"> <span>Budget mensuel par enveloppes créé</span></label>
             <label><input type="checkbox" data-key="f6-4"> <span>Une seconde source de revenu envisagée</span></label>
           </div>
-          <h4>Sources</h4>
+          <h4>🔗 Sources</h4>
           <ul class="f-sources">
             <li>Wikifin.be — portail officiel d'éducation financière (FSMA) : <a href="https://www.wikifin.be" target="_blank" rel="noopener">wikifin.be</a></li>
             <li>Dave Ramsey, <em>The Total Money Makeover</em> (2003)</li>
           </ul>
         </div>
+        </div></div>
       </details>
 
-      <details class="formation-card">
+      <details class="formation-card" data-category="finance">
         <summary><h3><span class="fnum">7</span> 📈 Investissements</h3><span class="chev" aria-hidden="true">▾</span></summary>
+        <div class="f-content"><div class="f-content-inner">
         <div class="f-topics">
           <ul>
             <li>Comprendre la bourse sans être expert</li>
@@ -848,27 +960,29 @@
           </ul>
         </div>
         <div class="f-body">
-          <h4>Contenu</h4>
+          <h4>📘 Contenu</h4>
           <p>Investir en bourse ne nécessite pas d'être expert : les ETF (fonds indiciels cotés) permettent de répliquer un marché entier (ex. MSCI World) avec des frais très bas et une diversification immédiate. Comparé au choix d'actions individuelles, l'ETF réduit le risque spécifique à une seule entreprise. Un portefeuille solide pour débutant combine généralement quelques ETF larges plutôt que de nombreuses lignes individuelles. L'erreur la plus fréquente reste de vouloir « battre le marché » à court terme au lieu d'investir régulièrement sur le long terme.</p>
-          <h4>Résumé</h4>
+          <h4>✅ Résumé</h4>
           <p>Les ETF offrent une diversification simple et peu coûteuse pour débuter en bourse ; la régularité des versements compte plus que le « timing » du marché.</p>
-          <h4>Checklist</h4>
+          <h4>☑️ Checklist</h4>
           <div class="formation-checklist">
             <label><input type="checkbox" data-key="f7-1"> <span>Compte-titres ou compte d'investissement ouvert</span></label>
             <label><input type="checkbox" data-key="f7-2"> <span>Un premier ETF diversifié identifié</span></label>
             <label><input type="checkbox" data-key="f7-3"> <span>Versement programmé mensuel mis en place</span></label>
             <label><input type="checkbox" data-key="f7-4"> <span>Horizon d'investissement (durée) clarifié</span></label>
           </div>
-          <h4>Sources</h4>
+          <h4>🔗 Sources</h4>
           <ul class="f-sources">
             <li>Wikifin.be — section investissements (FSMA) : <a href="https://www.wikifin.be" target="_blank" rel="noopener">wikifin.be</a></li>
             <li>Lindauer, Larimore &amp; Lindauer, <em>The Bogleheads' Guide to Investing</em> (2006)</li>
           </ul>
         </div>
+        </div></div>
       </details>
 
-      <details class="formation-card">
+      <details class="formation-card" data-category="finance">
         <summary><h3><span class="fnum">8</span> 🧮 Fiscalité</h3><span class="chev" aria-hidden="true">▾</span></summary>
+        <div class="f-content"><div class="f-content-inner">
         <div class="f-topics">
           <ul>
             <li>Comprendre la fiscalité belge</li>
@@ -879,28 +993,30 @@
           </ul>
         </div>
         <div class="f-body">
-          <h4>Contenu</h4>
+          <h4>📘 Contenu</h4>
           <p>En Belgique, le choix du statut (indépendant personne physique, société) détermine le régime fiscal applicable : impôt des personnes physiques (IPP, taux progressif jusqu'à 50 %) ou impôt des sociétés (ISOC, taux de 20 à 25 %). Optimiser légalement sa fiscalité passe par la déduction des frais professionnels réels, le choix du bon statut selon le niveau de revenu, et l'anticipation des acomptes trimestriels pour éviter des majorations. La TVA, les cotisations sociales et l'impôt sont trois prélèvements distincts, souvent confondus en début d'activité, ce qui cause des erreurs de trésorerie.</p>
-          <h4>Résumé</h4>
+          <h4>✅ Résumé</h4>
           <p>Le choix du statut détermine la fiscalité applicable ; anticiper acomptes et frais déductibles évite les mauvaises surprises.</p>
-          <h4>Checklist</h4>
+          <h4>☑️ Checklist</h4>
           <div class="formation-checklist">
             <label><input type="checkbox" data-key="f8-1"> <span>Statut fiscal vérifié par rapport au niveau de revenu prévu</span></label>
             <label><input type="checkbox" data-key="f8-2"> <span>Frais professionnels déductibles listés</span></label>
             <label><input type="checkbox" data-key="f8-3"> <span>Acomptes trimestriels anticipés dans la trésorerie</span></label>
             <label><input type="checkbox" data-key="f8-4"> <span>Un point annuel avec un comptable planifié</span></label>
           </div>
-          <h4>Sources</h4>
+          <h4>🔗 Sources</h4>
           <ul class="f-sources">
             <li>SPF Finances : <a href="https://finances.belgium.be" target="_blank" rel="noopener">finances.belgium.be</a></li>
             <li>MyMinfin — plateforme fiscale officielle belge</li>
             <li>Wikifin.be — section fiscalité</li>
           </ul>
         </div>
+        </div></div>
       </details>
 
-      <details class="formation-card">
+      <details class="formation-card" data-category="finance">
         <summary><h3><span class="fnum">9</span> 🤝 Financement</h3><span class="chev" aria-hidden="true">▾</span></summary>
+        <div class="f-content"><div class="f-content-inner">
         <div class="f-topics">
           <ul>
             <li>Trouver des financements pour son projet</li>
@@ -911,28 +1027,30 @@
           </ul>
         </div>
         <div class="f-body">
-          <h4>Contenu</h4>
+          <h4>📘 Contenu</h4>
           <p>Convaincre une banque ou un investisseur repose sur un dossier qui répond à trois questions : combien faut-il, pour quoi précisément, et comment sera-ce remboursé ou rentabilisé. En Belgique, plusieurs dispositifs régionaux complètent le financement bancaire classique : SOWALFIN (Wallonie), VLAIO (Flandre) et hub.brussels (Bruxelles) proposent garanties, prêts ou co-investissement pour réduire le risque perçu par les prêteurs. Un dossier qui inspire confiance présente toujours un plan financier réaliste et montre que le porteur de projet a lui-même investi dans son projet.</p>
-          <h4>Résumé</h4>
+          <h4>✅ Résumé</h4>
           <p>Un financement se prépare avec un plan financier réaliste et la connaissance des dispositifs régionaux belges qui réduisent le risque pour les prêteurs.</p>
-          <h4>Checklist</h4>
+          <h4>☑️ Checklist</h4>
           <div class="formation-checklist">
             <label><input type="checkbox" data-key="f9-1"> <span>Montant précis du besoin de financement calculé</span></label>
             <label><input type="checkbox" data-key="f9-2"> <span>Plan financier réaliste (scénario prudent) préparé</span></label>
             <label><input type="checkbox" data-key="f9-3"> <span>Dispositifs régionaux pertinents identifiés (SOWALFIN/VLAIO/hub.brussels)</span></label>
             <label><input type="checkbox" data-key="f9-4"> <span>Apport personnel (temps ou argent) démontré dans le dossier</span></label>
           </div>
-          <h4>Sources</h4>
+          <h4>🔗 Sources</h4>
           <ul class="f-sources">
             <li>SOWALFIN : <a href="https://www.sowalfin.be" target="_blank" rel="noopener">sowalfin.be</a></li>
             <li>VLAIO : <a href="https://www.vlaio.be" target="_blank" rel="noopener">vlaio.be</a></li>
             <li>hub.brussels : <a href="https://hub.brussels" target="_blank" rel="noopener">hub.brussels</a></li>
           </ul>
         </div>
+        </div></div>
       </details>
 
-      <details class="formation-card">
+      <details class="formation-card" data-category="finance">
         <summary><h3><span class="fnum">10</span> 👫 Couple &amp; finances</h3><span class="chev" aria-hidden="true">▾</span></summary>
+        <div class="f-content"><div class="f-content-inner">
         <div class="f-topics">
           <ul>
             <li>Faire de son couple une équipe financière</li>
@@ -943,27 +1061,29 @@
           </ul>
         </div>
         <div class="f-body">
-          <h4>Contenu</h4>
+          <h4>📘 Contenu</h4>
           <p>Les couples qui gèrent bien leur argent définissent ensemble des règles claires : compte commun pour les charges partagées, transparence sur les revenus et dettes de chacun, et objectifs financiers communs. Les conflits liés à l'argent viennent rarement des montants mais des non-dits : discuter régulièrement du budget évite les malentendus. Construire un patrimoine en famille suppose d'aligner les décisions importantes (achat immobilier, épargne retraite) sur un horizon commun plutôt que des décisions prises séparément.</p>
-          <h4>Résumé</h4>
+          <h4>✅ Résumé</h4>
           <p>La transparence financière et un rendez-vous budget régulier en couple préviennent la plupart des conflits liés à l'argent.</p>
-          <h4>Checklist</h4>
+          <h4>☑️ Checklist</h4>
           <div class="formation-checklist">
             <label><input type="checkbox" data-key="f10-1"> <span>Un compte commun ou une règle de répartition des charges définie</span></label>
             <label><input type="checkbox" data-key="f10-2"> <span>Revenus et dettes partagés en toute transparence</span></label>
             <label><input type="checkbox" data-key="f10-3"> <span>Un rendez-vous « budget du couple » mensuel planifié</span></label>
             <label><input type="checkbox" data-key="f10-4"> <span>Un objectif financier commun formulé</span></label>
           </div>
-          <h4>Sources</h4>
+          <h4>🔗 Sources</h4>
           <ul class="f-sources">
             <li>Wikifin.be — budget en couple et en famille</li>
             <li>Ramit Sethi, <em>I Will Teach You to Be Rich</em> (chapitres couple/argent)</li>
           </ul>
         </div>
+        </div></div>
       </details>
 
-      <details class="formation-card">
+      <details class="formation-card" data-category="dev">
         <summary><h3><span class="fnum">11</span> 🧠 Développement personnel</h3><span class="chev" aria-hidden="true">▾</span></summary>
+        <div class="f-content"><div class="f-content-inner">
         <div class="f-topics">
           <ul>
             <li>Le mindset des riches vs le mindset des pauvres</li>
@@ -974,28 +1094,30 @@
           </ul>
         </div>
         <div class="f-body">
-          <h4>Contenu</h4>
+          <h4>📘 Contenu</h4>
           <p>Le « mindset des riches » repose sur une croyance centrale : l'argent est un outil que l'on peut apprendre à faire fructifier, plutôt qu'une ressource qui « arrive » ou non par chance. Morgan Housel rappelle dans <em>The Psychology of Money</em> que le succès financier dépend davantage du comportement (patience, discipline) que de l'intelligence financière pure. Développer une discipline financière se construit par petites habitudes répétées plutôt que par de grandes résolutions ponctuelles. Sur le plan biblique, l'histoire de Joseph (Genèse 39-41) illustre comment la fidélité dans les petites responsabilités précède l'élévation à de plus grandes.</p>
-          <h4>Résumé</h4>
+          <h4>✅ Résumé</h4>
           <p>Le comportement (discipline, patience) compte davantage que le savoir pur pour réussir financièrement ; les petites habitudes répétées construisent la discipline.</p>
-          <h4>Checklist</h4>
+          <h4>☑️ Checklist</h4>
           <div class="formation-checklist">
             <label><input type="checkbox" data-key="f11-1"> <span>Une croyance limitante sur l'argent identifiée et reformulée</span></label>
             <label><input type="checkbox" data-key="f11-2"> <span>Une habitude financière automatisée (épargne, suivi budget)</span></label>
             <label><input type="checkbox" data-key="f11-3"> <span>Un livre de développement personnel en cours de lecture</span></label>
             <label><input type="checkbox" data-key="f11-4"> <span>Une réflexion personnelle sur Genèse 39-41 (Joseph) engagée</span></label>
           </div>
-          <h4>Sources</h4>
+          <h4>🔗 Sources</h4>
           <ul class="f-sources">
             <li>Morgan Housel, <em>The Psychology of Money</em> (2020)</li>
             <li>Carol Dweck, <em>Mindset: The New Psychology of Success</em> (2006)</li>
             <li>Bible : Genèse 39-41</li>
           </ul>
         </div>
+        </div></div>
       </details>
 
-      <details class="formation-card">
+      <details class="formation-card" data-category="dev">
         <summary><h3><span class="fnum">12</span> 📢 Communication</h3><span class="chev" aria-hidden="true">▾</span></summary>
+        <div class="f-content"><div class="f-content-inner">
         <div class="f-topics">
           <ul>
             <li>Prendre la parole avec impact</li>
@@ -1006,28 +1128,30 @@
           </ul>
         </div>
         <div class="f-body">
-          <h4>Contenu</h4>
+          <h4>📘 Contenu</h4>
           <p>Une prise de parole percutante suit une structure simple : un message central unique, une histoire ou un exemple concret pour l'illustrer, et un appel à l'action clair. Les présentations mémorables, analysées par Carmine Gallo à travers les conférences TED, misent sur l'émotion et la simplicité visuelle plutôt que sur la surcharge d'informations. Organiser une masterclass efficace suppose de préparer un objectif pédagogique unique par session, et de prévoir des moments d'interaction plutôt qu'un monologue continu.</p>
-          <h4>Résumé</h4>
+          <h4>✅ Résumé</h4>
           <p>Un message central clair, une histoire pour l'incarner, et de l'interaction plutôt qu'un monologue font une communication qui marque les esprits.</p>
-          <h4>Checklist</h4>
+          <h4>☑️ Checklist</h4>
           <div class="formation-checklist">
             <label><input type="checkbox" data-key="f12-1"> <span>Message central de la prochaine intervention formulé en une phrase</span></label>
             <label><input type="checkbox" data-key="f12-2"> <span>Une histoire ou un exemple concret préparé pour l'illustrer</span></label>
             <label><input type="checkbox" data-key="f12-3"> <span>Support visuel simplifié (moins de texte, plus d'images)</span></label>
             <label><input type="checkbox" data-key="f12-4"> <span>Un moment d'interaction prévu avec l'auditoire</span></label>
           </div>
-          <h4>Sources</h4>
+          <h4>🔗 Sources</h4>
           <ul class="f-sources">
             <li>Carmine Gallo, <em>Talk Like TED</em> (2014)</li>
             <li>Toastmasters International : <a href="https://www.toastmasters.org" target="_blank" rel="noopener">toastmasters.org</a></li>
             <li>TED.com — conférences sur la prise de parole</li>
           </ul>
         </div>
+        </div></div>
       </details>
 
-      <details class="formation-card">
+      <details class="formation-card" data-category="dev">
         <summary><h3><span class="fnum">13</span> 🖋️ Écriture &amp; marque personnelle</h3><span class="chev" aria-hidden="true">▾</span></summary>
+        <div class="f-content"><div class="f-content-inner">
         <div class="f-topics">
           <ul>
             <li>Écrire son premier livre en 9 mois</li>
@@ -1038,28 +1162,30 @@
           </ul>
         </div>
         <div class="f-body">
-          <h4>Contenu</h4>
+          <h4>📘 Contenu</h4>
           <p>Écrire un livre en quelques mois est réaliste avec une méthode : définir un plan de chapitres avant de rédiger, s'astreindre à un volume de mots régulier plutôt qu'attendre l'inspiration, et réserver la relecture/correction à une phase distincte de l'écriture. Publier peut passer par l'auto-édition (Amazon KDP, ou des plateformes francophones comme Bookelis), une option de plus en plus crédible pour construire sa marque personnelle. Devenir une référence dans son domaine se construit par la régularité de la publication sur un sujet précis plutôt que par la dispersion.</p>
-          <h4>Résumé</h4>
+          <h4>✅ Résumé</h4>
           <p>Un plan de chapitres, un rythme d'écriture régulier, et une régularité de publication permettent de transformer son expertise en livre puis en marque personnelle.</p>
-          <h4>Checklist</h4>
+          <h4>☑️ Checklist</h4>
           <div class="formation-checklist">
             <label><input type="checkbox" data-key="f13-1"> <span>Plan de chapitres du livre esquissé</span></label>
             <label><input type="checkbox" data-key="f13-2"> <span>Un rythme d'écriture hebdomadaire fixé</span></label>
             <label><input type="checkbox" data-key="f13-3"> <span>Plateforme d'auto-édition choisie (ex. KDP, Bookelis)</span></label>
             <label><input type="checkbox" data-key="f13-4"> <span>Un sujet de spécialisation clair pour sa marque personnelle défini</span></label>
           </div>
-          <h4>Sources</h4>
+          <h4>🔗 Sources</h4>
           <ul class="f-sources">
             <li>Stephen King, <em>On Writing</em> (2000)</li>
             <li>Amazon KDP : <a href="https://kdp.amazon.com" target="_blank" rel="noopener">kdp.amazon.com</a></li>
             <li>Bookelis — plateforme d'auto-édition francophone</li>
           </ul>
         </div>
+        </div></div>
       </details>
 
-      <details class="formation-card">
+      <details class="formation-card" data-category="business">
         <summary><h3><span class="fnum">14</span> 🕴️ Consulting</h3><span class="chev" aria-hidden="true">▾</span></summary>
+        <div class="f-content"><div class="f-content-inner">
         <div class="f-topics">
           <ul>
             <li>Devenir consultant</li>
@@ -1070,27 +1196,29 @@
           </ul>
         </div>
         <div class="f-body">
-          <h4>Contenu</h4>
+          <h4>📘 Contenu</h4>
           <p>Devenir consultant suppose de transformer une expertise en offre vendable : un problème précis résolu, pour une cible précise, à un tarif clair. Fixer ses tarifs au forfait plutôt qu'à l'heure valorise mieux le résultat obtenu par le client que le temps passé. Les premiers clients viennent le plus souvent du réseau existant ou de plateformes spécialisées (comme Malt) avant qu'un bouche-à-oreille ne prenne le relais. Une activité de consulting haut de gamme se construit en se spécialisant sur un secteur ou un problème précis plutôt qu'en restant généraliste.</p>
-          <h4>Résumé</h4>
+          <h4>✅ Résumé</h4>
           <p>Un consulting rentable repose sur une offre précise, un tarif au forfait plutôt qu'à l'heure, et une spécialisation progressive.</p>
-          <h4>Checklist</h4>
+          <h4>☑️ Checklist</h4>
           <div class="formation-checklist">
             <label><input type="checkbox" data-key="f14-1"> <span>Offre de consulting formulée en une phrase (problème + cible + résultat)</span></label>
             <label><input type="checkbox" data-key="f14-2"> <span>Grille tarifaire au forfait établie</span></label>
             <label><input type="checkbox" data-key="f14-3"> <span>Profil créé sur une plateforme de mise en relation (ex. Malt)</span></label>
             <label><input type="checkbox" data-key="f14-4"> <span>Un premier client ou une étude de cas identifié</span></label>
           </div>
-          <h4>Sources</h4>
+          <h4>🔗 Sources</h4>
           <ul class="f-sources">
             <li>Alan Weiss, <em>Getting Started in Consulting</em> (2009)</li>
             <li>Malt — plateforme de freelances/consultants : <a href="https://www.malt.fr" target="_blank" rel="noopener">malt.fr</a></li>
           </ul>
         </div>
+        </div></div>
       </details>
 
-      <details class="formation-card">
+      <details class="formation-card" data-category="business">
         <summary><h3><span class="fnum">15</span> 📍 Belgique &amp; opportunités</h3><span class="chev" aria-hidden="true">▾</span></summary>
+        <div class="f-content"><div class="f-content-inner">
         <div class="f-topics">
           <ul>
             <li>Les secteurs d'avenir en Belgique</li>
@@ -1101,28 +1229,30 @@
           </ul>
         </div>
         <div class="f-body">
-          <h4>Contenu</h4>
+          <h4>📘 Contenu</h4>
           <p>Certains secteurs affichent une croissance ou une pénurie de talents plus marquée en Belgique : numérique, construction durable, santé, logistique. À Liège, la logistique (aéroport de Liège), la biotech et les technologies environnementales sont régulièrement identifiées comme porteuses par les acteurs économiques régionaux. Se positionner pour intégrer les meilleures entreprises suppose de suivre les rapports sectoriels publiés par les fédérations professionnelles et les organismes régionaux de l'emploi, plutôt que de se fier uniquement aux offres publiées.</p>
-          <h4>Résumé</h4>
+          <h4>✅ Résumé</h4>
           <p>Suivre les rapports sectoriels régionaux et cibler les secteurs en tension (numérique, logistique, santé) augmente ses chances de saisir les meilleures opportunités à Liège et en Belgique.</p>
-          <h4>Checklist</h4>
+          <h4>☑️ Checklist</h4>
           <div class="formation-checklist">
             <label><input type="checkbox" data-key="f15-1"> <span>Trois secteurs porteurs identifiés pour son profil</span></label>
             <label><input type="checkbox" data-key="f15-2"> <span>Rapport sectoriel régional consulté (Forem, Agoria, Statbel)</span></label>
             <label><input type="checkbox" data-key="f15-3"> <span>Réseau professionnel dans le secteur ciblé activé</span></label>
             <label><input type="checkbox" data-key="f15-4"> <span>Veille mise en place sur les entreprises qui recrutent à Liège</span></label>
           </div>
-          <h4>Sources</h4>
+          <h4>🔗 Sources</h4>
           <ul class="f-sources">
             <li>Statbel — statistiques officielles belges : <a href="https://statbel.fgov.be" target="_blank" rel="noopener">statbel.fgov.be</a></li>
             <li>Le Forem (Wallonie) — rapports sectoriels : <a href="https://www.leforem.be" target="_blank" rel="noopener">leforem.be</a></li>
             <li>Agoria — fédération de l'industrie technologique belge</li>
           </ul>
         </div>
+        </div></div>
       </details>
 
-      <details class="formation-card formation-wide">
+      <details class="formation-card formation-wide" data-category="foi">
         <summary><h3><span class="fnum">16</span> 📖 Foi &amp; finances</h3><span class="chev" aria-hidden="true">▾</span></summary>
+        <div class="f-content"><div class="f-content-inner">
         <div class="f-topics">
           <div class="cols">
             <ul>
@@ -1140,18 +1270,18 @@
           </div>
         </div>
         <div class="f-body">
-          <h4>Contenu</h4>
+          <h4>📘 Contenu</h4>
           <p>La Bible aborde l'argent comme un sujet spirituel à part entière : plus de 2000 versets traitent des richesses et de la gestion des biens. Le principe de la dîme (Malachie 3:10) et la parabole des talents (Matthieu 25:14-30) enseignent que la gestion fidèle de peu précède la responsabilité sur davantage. L'intendance selon le Royaume consiste à considérer ses ressources comme confiées par Dieu plutôt que comme une propriété absolue (Deutéronome 8:18). La Bible met aussi en garde contre l'amour de l'argent plutôt que l'argent lui-même (1 Timothée 6:10).</p>
-          <h4>Résumé</h4>
+          <h4>✅ Résumé</h4>
           <p>La gestion biblique des finances repose sur l'intendance (les biens sont confiés, pas possédés), la fidélité dans le peu, et une vigilance sur la place donnée à l'argent.</p>
-          <h4>Checklist</h4>
+          <h4>☑️ Checklist</h4>
           <div class="formation-checklist">
             <label><input type="checkbox" data-key="f16-1"> <span>Un temps de réflexion sur Malachie 3:10 et la dîme engagé</span></label>
             <label><input type="checkbox" data-key="f16-2"> <span>La parabole des talents (Matthieu 25) relue et appliquée à sa situation</span></label>
             <label><input type="checkbox" data-key="f16-3"> <span>Une pratique de générosité régulière mise en place</span></label>
             <label><input type="checkbox" data-key="f16-4"> <span>Une conversation avec un responsable spirituel sur sa relation à l'argent envisagée</span></label>
           </div>
-          <h4>Sources</h4>
+          <h4>🔗 Sources</h4>
           <ul class="f-sources">
             <li>Bible : Malachie 3:10 ; Matthieu 25:14-30 ; Deutéronome 8:18 ; 1 Timothée 6:10</li>
             <li>Robert Morris, <em>The Blessed Life</em> (2002)</li>
@@ -1159,6 +1289,7 @@
           </ul>
           <p class="tagline">Équiper · Inspirer · Transformer · Impacter</p>
         </div>
+        </div></div>
       </details>
     </div>
 
@@ -1268,9 +1399,10 @@
       <div class="grid-3">
         <details class="formation-card">
           <summary><h4><span class="fnum">🛍️</span> Commerce &amp; vente (magasin, e-commerce)</h4><span class="chev" aria-hidden="true">▾</span></summary>
+          <div class="f-content"><div class="f-content-inner">
           <div class="f-body" style="border-top:none;padding-top:0;">
             <p>Un commerce physique doit vérifier le permis d'environnement ou d'urbanisme lié au local, ainsi que les règles d'affichage des prix. Un site de vente en ligne doit en plus respecter le droit de la consommation : mentions légales, conditions générales de vente, droit de rétractation de 14 jours, et conformité RGPD pour les données clients.</p>
-            <h5>Checklist</h5>
+            <h5>☑️ Checklist</h5>
             <div class="formation-checklist">
               <label><input type="checkbox" data-key="s1-1"> <span>Local commercial conforme (bail, urbanisme, permis d'environnement si nécessaire)</span></label>
               <label><input type="checkbox" data-key="s1-2"> <span>Affichage des prix conforme à la réglementation</span></label>
@@ -1278,19 +1410,21 @@
               <label><input type="checkbox" data-key="s1-4"> <span>Politique de confidentialité RGPD en place</span></label>
               <label><input type="checkbox" data-key="s1-5"> <span>Solution de paiement sécurisée choisie</span></label>
             </div>
-            <h5>Sources</h5>
+            <h5>🔗 Sources</h5>
             <ul class="f-sources">
               <li>SPF Économie — droit de la consommation : <a href="https://economie.fgov.be" target="_blank" rel="noopener">economie.fgov.be</a></li>
               <li>Wikifin.be</li>
             </ul>
           </div>
+          </div></div>
         </details>
 
         <details class="formation-card">
           <summary><h4><span class="fnum">🍽️</span> HORECA (restauration, café, traiteur)</h4><span class="chev" aria-hidden="true">▾</span></summary>
+          <div class="f-content"><div class="f-content-inner">
           <div class="f-body" style="border-top:none;padding-top:0;">
             <p>Un enregistrement ou agrément auprès de l'<strong>AFSCA</strong> (Agence fédérale pour la Sécurité de la Chaîne Alimentaire) est obligatoire dès qu'on manipule des denrées alimentaires, avec un plan d'autocontrôle basé sur les principes HACCP. Une caisse enregistreuse certifiée (« caisse blanche ») est obligatoire au-delà d'un certain seuil de chiffre d'affaires en restauration. Certaines communes exigent aussi un permis d'exploitation ou d'environnement.</p>
-            <h5>Checklist</h5>
+            <h5>☑️ Checklist</h5>
             <div class="formation-checklist">
               <label><input type="checkbox" data-key="s2-1"> <span>Enregistrement AFSCA effectué avant l'ouverture</span></label>
               <label><input type="checkbox" data-key="s2-2"> <span>Plan d'autocontrôle HACCP en place</span></label>
@@ -1298,85 +1432,94 @@
               <label><input type="checkbox" data-key="s2-4"> <span>Permis d'exploitation / environnement communal vérifié</span></label>
               <label><input type="checkbox" data-key="s2-5"> <span>Normes d'hygiène et de sécurité incendie du local vérifiées</span></label>
             </div>
-            <h5>Sources</h5>
+            <h5>🔗 Sources</h5>
             <ul class="f-sources">
               <li>AFSCA : <a href="https://www.favv-afsca.be" target="_blank" rel="noopener">favv-afsca.be</a></li>
               <li>SPF Finances — caisse enregistreuse (SCE)</li>
               <li>Wikifin.be</li>
             </ul>
           </div>
+          </div></div>
         </details>
 
         <details class="formation-card">
           <summary><h4><span class="fnum">🧱</span> Construction &amp; métiers du bâtiment</h4><span class="chev" aria-hidden="true">▾</span></summary>
+          <div class="f-content"><div class="f-content-inner">
           <div class="f-body" style="border-top:none;padding-top:0;">
             <p>Les métiers du gros œuvre, de la toiture, de la menuiserie ou de l'installation électrique/sanitaire/chauffage sont des professions réglementées : il faut prouver son <strong>accès à la profession</strong> (diplôme, expérience ou jury) avant l'inscription à la BCE. Depuis la loi Peeters-Borsus, une <strong>assurance décennale</strong> est obligatoire pour les entrepreneurs qui réalisent des travaux de gros œuvre fermé sur des habitations.</p>
-            <h5>Checklist</h5>
+            <h5>☑️ Checklist</h5>
             <div class="formation-checklist">
               <label><input type="checkbox" data-key="s3-1"> <span>Accès à la profession prouvé (diplôme, expérience reconnue ou jury central)</span></label>
               <label><input type="checkbox" data-key="s3-2"> <span>Assurance décennale souscrite si gros œuvre fermé</span></label>
               <label><input type="checkbox" data-key="s3-3"> <span>Assurance RC professionnelle et accidents du travail en ordre</span></label>
               <label><input type="checkbox" data-key="s3-4"> <span>Attestation de conformité électrique connue si applicable</span></label>
             </div>
-            <h5>Sources</h5>
+            <h5>🔗 Sources</h5>
             <ul class="f-sources">
               <li>SPF Économie — accès à la profession : <a href="https://economie.fgov.be" target="_blank" rel="noopener">economie.fgov.be</a></li>
               <li>SPF Économie — loi Peeters-Borsus (assurance décennale)</li>
             </ul>
           </div>
+          </div></div>
         </details>
 
         <details class="formation-card">
           <summary><h4><span class="fnum">💇</span> Soins, bien-être &amp; esthétique</h4><span class="chev" aria-hidden="true">▾</span></summary>
+          <div class="f-content"><div class="f-content-inner">
           <div class="f-body" style="border-top:none;padding-top:0;">
             <p>La coiffure et les soins de beauté restent des professions réglementées en Belgique : un <strong>accès à la profession</strong> (diplôme ou expérience professionnelle validée) est requis pour s'inscrire à la BCE sous ce code d'activité, que ce soit en salon ou à domicile.</p>
-            <h5>Checklist</h5>
+            <h5>☑️ Checklist</h5>
             <div class="formation-checklist">
               <label><input type="checkbox" data-key="s4-1"> <span>Accès à la profession vérifié pour l'activité exacte exercée</span></label>
               <label><input type="checkbox" data-key="s4-2"> <span>Normes d'hygiène du salon ou du matériel respectées</span></label>
               <label><input type="checkbox" data-key="s4-3"> <span>Assurance RC professionnelle souscrite</span></label>
             </div>
-            <h5>Sources</h5>
+            <h5>🔗 Sources</h5>
             <ul class="f-sources">
               <li>SPF Économie — accès à la profession (coiffure, soins de beauté)</li>
             </ul>
           </div>
+          </div></div>
         </details>
 
         <details class="formation-card">
           <summary><h4><span class="fnum">💻</span> Professions intellectuelles, digitales &amp; consulting</h4><span class="chev" aria-hidden="true">▾</span></summary>
+          <div class="f-content"><div class="f-content-inner">
           <div class="f-body" style="border-top:none;padding-top:0;">
             <p>Le conseil, le développement informatique, le coaching ou la création de contenu ne sont généralement pas soumis à une condition d'accès à la profession. Vérifiez néanmoins si votre activité relève d'un ordre professionnel réglementé (comptabilité — ITAA, activités juridiques) qui impose ses propres conditions d'inscription.</p>
-            <h5>Checklist</h5>
+            <h5>☑️ Checklist</h5>
             <div class="formation-checklist">
               <label><input type="checkbox" data-key="s5-1"> <span>Vérification qu'aucun ordre professionnel réglementé ne s'applique à l'activité</span></label>
               <label><input type="checkbox" data-key="s5-2"> <span>Contrats-types (conditions générales, contrat de prestation) préparés</span></label>
               <label><input type="checkbox" data-key="s5-3"> <span>Protection de la propriété intellectuelle du travail créé envisagée</span></label>
             </div>
-            <h5>Sources</h5>
+            <h5>🔗 Sources</h5>
             <ul class="f-sources">
               <li>SPF Économie — professions réglementées</li>
               <li>ITAA — comptables et conseillers fiscaux : <a href="https://www.itaa.be" target="_blank" rel="noopener">itaa.be</a></li>
             </ul>
           </div>
+          </div></div>
         </details>
 
         <details class="formation-card">
           <summary><h4><span class="fnum">🏘️</span> Immobilier &amp; professions financières</h4><span class="chev" aria-hidden="true">▾</span></summary>
+          <div class="f-content"><div class="f-content-inner">
           <div class="f-body" style="border-top:none;padding-top:0;">
             <p>Devenir agent immobilier impose une inscription à l'<strong>Institut professionnel des agents immobiliers (IPI)</strong> et le respect de son code de déontologie. Les activités de courtage financier ou d'assurance sont soumises à un agrément de la <strong>FSMA</strong> (Autorité des services et marchés financiers).</p>
-            <h5>Checklist</h5>
+            <h5>☑️ Checklist</h5>
             <div class="formation-checklist">
               <label><input type="checkbox" data-key="s6-1"> <span>Inscription à l'IPI effectuée si agent immobilier</span></label>
               <label><input type="checkbox" data-key="s6-2"> <span>Agrément FSMA obtenu si courtage financier/assurance</span></label>
               <label><input type="checkbox" data-key="s6-3"> <span>Assurance RC professionnelle spécifique au secteur souscrite</span></label>
             </div>
-            <h5>Sources</h5>
+            <h5>🔗 Sources</h5>
             <ul class="f-sources">
               <li>IPI : <a href="https://www.ipi.be" target="_blank" rel="noopener">ipi.be</a></li>
               <li>FSMA : <a href="https://www.fsma.be" target="_blank" rel="noopener">fsma.be</a></li>
             </ul>
           </div>
+          </div></div>
         </details>
       </div>
     </div>
@@ -1466,7 +1609,17 @@
     else{ backTop.classList.remove('show'); }
   });
 
-  // Formation checklists persistence (per-formation, saved locally)
+  // Formation checklists persistence (per-formation, saved locally) + progress bar
+  function updateFormationsProgress(){
+    var progressBoxes = document.querySelectorAll('#formationsGrid .formation-checklist input[type=checkbox]');
+    var total = progressBoxes.length;
+    var done = 0;
+    progressBoxes.forEach(function(b){ if(b.checked) done++; });
+    var fill = document.getElementById('fProgressFill');
+    var label = document.getElementById('fProgressLabel');
+    if(fill) fill.style.width = (total ? done/total*100 : 0) + '%';
+    if(label) label.textContent = done + ' / ' + total + ' points complétés';
+  }
   (function(){
     var boxes = document.querySelectorAll('.formation-checklist input[type=checkbox]');
     var STORAGE_KEY = 'impact-competence-formations-checklist';
@@ -1483,9 +1636,70 @@
         saved[key] = box.checked;
         localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
         box.closest('label').classList.toggle('done', box.checked);
+        updateFormationsProgress();
       });
     });
+    updateFormationsProgress();
   })();
+
+  // Smooth expand/collapse animation for accordion cards (replaces native instant snap)
+  document.querySelectorAll('.formation-card').forEach(function(details){
+    var summary = details.querySelector('summary');
+    var content = details.querySelector('.f-content');
+    summary.addEventListener('click', function(e){
+      e.preventDefault();
+      if(details.open){
+        content.style.gridTemplateRows = '1fr';
+        requestAnimationFrame(function(){
+          content.style.gridTemplateRows = '0fr';
+        });
+        content.addEventListener('transitionend', function handler(ev){
+          if(ev.propertyName !== 'grid-template-rows') return;
+          details.open = false;
+          content.removeEventListener('transitionend', handler);
+        });
+      } else {
+        details.open = true;
+        content.style.gridTemplateRows = '0fr';
+        requestAnimationFrame(function(){
+          content.style.gridTemplateRows = '1fr';
+        });
+      }
+    });
+  });
+
+  // Formations: category filters
+  var filterButtons = document.querySelectorAll('.f-filter');
+  filterButtons.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      filterButtons.forEach(function(b){
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
+      var filter = btn.getAttribute('data-filter');
+      document.querySelectorAll('#formationsGrid .formation-card').forEach(function(card){
+        var show = (filter === 'all' || card.getAttribute('data-category') === filter);
+        card.classList.toggle('f-hidden', !show);
+      });
+    });
+  });
+
+  // Formations: expand all / collapse all
+  var expandAllBtn = document.getElementById('fExpandAll');
+  if(expandAllBtn){
+    var allExpanded = false;
+    expandAllBtn.addEventListener('click', function(){
+      allExpanded = !allExpanded;
+      document.querySelectorAll('#formationsGrid .formation-card:not(.f-hidden)').forEach(function(details){
+        if(details.open !== allExpanded){
+          details.querySelector('summary').click();
+        }
+      });
+      expandAllBtn.textContent = allExpanded ? 'Tout replier' : 'Tout déplier';
+    });
+  }
 </script>
 
 </body>
