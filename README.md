@@ -1,4 +1,4 @@
-# Guide de l'entrepreneur novice en Belgique
+# IMPACT COMPETENCE — Guide de l'entrepreneur novice en Belgique
 
 Page web unique (`index.html`), autonome et responsive, présentant les étapes pour lancer une activité indépendante ou une société en Belgique : forme juridique, inscription BCE, TVA, caisse d'assurances sociales, assurances, aides régionales, erreurs fréquentes, et une checklist interactive sauvegardée dans le navigateur.
 
