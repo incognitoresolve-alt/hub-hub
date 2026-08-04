@@ -180,6 +180,75 @@
   .subsection{margin-top:44px;padding-top:36px;border-top:1px solid var(--border);}
   .subsection h3.subsection-title{font-size:1.25rem;margin:0 0 6px;display:flex;align-items:center;gap:8px;}
 
+  .formation-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-top:4px solid var(--purple);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:18px 20px;
+  }
+  .formation-card:nth-child(5n+1){border-top-color:var(--red);}
+  .formation-card:nth-child(5n+2){border-top-color:var(--yellow);}
+  .formation-card:nth-child(5n+3){border-top-color:var(--blue);}
+  .formation-card:nth-child(5n+4){border-top-color:var(--green);}
+  .formation-card:nth-child(5n+5){border-top-color:var(--purple);}
+  .formation-card h4{
+    display:flex;align-items:center;gap:8px;
+    margin:0 0 12px;font-size:1rem;
+  }
+  .formation-card .fnum{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:26px;height:26px;border-radius:50%;flex:none;
+    background:var(--black);color:#fff;font-weight:700;font-size:.8rem;
+  }
+  .formation-card ul{margin:0;padding-left:18px;color:var(--muted);font-size:.88rem;}
+  .formation-card ul li{margin-bottom:5px;}
+  .formation-wide{
+    grid-column:1 / -1;
+    background:linear-gradient(135deg,var(--black),#3d1760);
+    color:#fff;
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:24px 26px;
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:20px;
+    align-items:center;
+  }
+  .formation-wide h4{display:flex;align-items:center;gap:8px;margin:0 0 12px;font-size:1.1rem;}
+  .formation-wide .fnum{background:var(--yellow);color:var(--black);}
+  .formation-wide .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:4px 24px;}
+  .formation-wide ul{margin:0;padding-left:18px;color:rgba(255,255,255,.85);font-size:.88rem;}
+  .formation-wide ul li{margin-bottom:5px;}
+  .formation-wide .tagline{
+    font-weight:700;
+    text-align:right;
+    color:var(--yellow);
+    line-height:1.4;
+    white-space:nowrap;
+  }
+  @media (max-width:700px){
+    .formation-wide{grid-template-columns:1fr;}
+    .formation-wide .tagline{text-align:left;white-space:normal;}
+  }
+  .formations-closing{
+    text-align:center;
+    margin-top:32px;
+    padding:24px;
+    border-radius:var(--radius);
+    background:var(--black);
+    color:#fff;
+  }
+  .formations-closing .big{
+    font-weight:800;
+    letter-spacing:.03em;
+    color:var(--yellow);
+    margin:0 0 6px;
+    font-size:1.05rem;
+  }
+  .formations-closing p{margin:0;color:rgba(255,255,255,.8);}
+
   .card{
     background:var(--surface);
     border:1px solid var(--border);
@@ -315,6 +384,7 @@
     <label class="burger" for="navToggle">☰</label>
     <nav class="links">
       <a href="#centre">Notre vision</a>
+      <a href="#formations">Formations</a>
       <a href="#etapes">Étapes</a>
       <a href="#forme-juridique">Forme juridique</a>
       <a href="#aides">Aides &amp; financement</a>
@@ -342,7 +412,7 @@
 
   <section id="centre">
     <h2><span class="num">🤝</span>Notre vision</h2>
-    <p class="section-sub">Ce guide n'est qu'une première brique. L'ambition du projet est de créer un véritable <strong>centre d'accompagnement et de réseautage</strong> pour entrepreneurs novices en Belgique — un lieu, physique et digital, où trouver conseil, mentorat et mise en réseau tout au long du parcours de création. Voici le concept résumé selon la méthode des <strong>5W</strong>.</p>
+    <p class="section-sub">Impact Compétence est le hub et incubateur d'ICC Liège : un espace de réseautage au sein de l'église, un accompagnement individuel et des formations pour porter haut les compétences et les projets de chaque personne, prise individuellement. Voici le concept résumé selon la méthode des <strong>5W</strong>.</p>
 
     <div class="steps">
       <div class="step">
@@ -486,6 +556,236 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section id="formations">
+    <h2><span class="num">🎓</span>Centre de compétences Impact Finances</h2>
+    <p class="section-sub">Ateliers pratico-pratiques pour transformer votre vie, votre entreprise et vos finances.</p>
+    <div style="margin-bottom:24px;">
+      <span class="tag reco">Des compétences concrètes</span>
+      <span class="tag oblig">Des outils d'aujourd'hui</span>
+      <span class="tag option">Des résultats demain</span>
+    </div>
+
+    <div class="grid-3">
+      <div class="formation-card">
+        <h4><span class="fnum">1</span> 🚀 Entrepreneuriat &amp; création de richesse</h4>
+        <ul>
+          <li>De salarié à entrepreneur : réussir sa transition</li>
+          <li>Créer son entreprise de A à Z</li>
+          <li>Se lancer comme indépendant (Belgique)</li>
+          <li>Trouver une idée de business rentable</li>
+          <li>Passer de 0 à 100 000 € de CA</li>
+          <li>Comment scaler son entreprise</li>
+          <li>Les modèles économiques qui fonctionnent</li>
+          <li>Structurer une entreprise qui fonctionne sans toi</li>
+        </ul>
+      </div>
+
+      <div class="formation-card">
+        <h4><span class="fnum">2</span> 🏢 Immobilier</h4>
+        <ul>
+          <li>Acheter sa première maison intelligemment</li>
+          <li>Construire un empire immobilier en partant de zéro</li>
+          <li>Appartement, maison ou immeuble de rapport ?</li>
+          <li>Les secrets de l'investissement locatif</li>
+          <li>Investir dans les terrains en Afrique</li>
+          <li>Comment analyser un bon investissement</li>
+        </ul>
+      </div>
+
+      <div class="formation-card">
+        <h4><span class="fnum">3</span> 🧠 IA &amp; productivité</h4>
+        <ul>
+          <li>Booster son entreprise grâce à l'IA</li>
+          <li>Les meilleurs outils IA pour entrepreneurs</li>
+          <li>L'IA au service des églises</li>
+          <li>Automatiser son entreprise</li>
+          <li>Créer du contenu 10x plus vite grâce à l'IA</li>
+          <li>L'art du prompting professionnel</li>
+          <li>Construire son assistant IA personnel</li>
+        </ul>
+      </div>
+
+      <div class="formation-card">
+        <h4><span class="fnum">4</span> 🎯 Marketing &amp; vente</h4>
+        <ul>
+          <li>Trouver ses premiers clients</li>
+          <li>Doubler ses ventes grâce au marketing moderne</li>
+          <li>Construire une marque forte (branding)</li>
+          <li>Le marketing digital expliqué simplement</li>
+          <li>Les réseaux sociaux qui rapportent</li>
+          <li>Les tunnels de vente simplifiés</li>
+          <li>Attirer naturellement des clients</li>
+        </ul>
+      </div>
+
+      <div class="formation-card">
+        <h4><span class="fnum">5</span> 💼 Emploi &amp; carrière</h4>
+        <ul>
+          <li>Devenir incontournable sur le marché de l'emploi</li>
+          <li>Créer un CV irrésistible</li>
+          <li>Réussir tous ses entretiens</li>
+          <li>Augmenter sa valeur professionnelle</li>
+          <li>Comment négocier son salaire</li>
+          <li>Se réinventer après 40 ans</li>
+          <li>Les entreprises qui recrutent à Liège</li>
+        </ul>
+      </div>
+
+      <div class="formation-card">
+        <h4><span class="fnum">6</span> 💰 Argent &amp; gestion</h4>
+        <ul>
+          <li>Comprendre les bases de la finance personnelle</li>
+          <li>Budget Gold : maîtriser enfin son argent</li>
+          <li>Sortir définitivement des dettes</li>
+          <li>Construire un budget qui finance vos projets</li>
+          <li>Devenir financièrement libre</li>
+          <li>Les habitudes des personnes prospères</li>
+        </ul>
+      </div>
+
+      <div class="formation-card">
+        <h4><span class="fnum">7</span> 📈 Investissements</h4>
+        <ul>
+          <li>Comprendre la bourse sans être expert</li>
+          <li>Comment acheter ses premières actions</li>
+          <li>ETF ou actions individuelles ?</li>
+          <li>Les investissements accessibles aux débutants</li>
+          <li>Construire un portefeuille solide</li>
+          <li>Les erreurs classiques des investisseurs</li>
+        </ul>
+      </div>
+
+      <div class="formation-card">
+        <h4><span class="fnum">8</span> 🧮 Fiscalité</h4>
+        <ul>
+          <li>Comprendre la fiscalité belge</li>
+          <li>Quel statut choisir ?</li>
+          <li>Optimiser légalement sa fiscalité</li>
+          <li>Les erreurs fiscales qui coûtent cher</li>
+          <li>TVA, impôts, cotisations : comprendre enfin</li>
+        </ul>
+      </div>
+
+      <div class="formation-card">
+        <h4><span class="fnum">9</span> 🤝 Financement</h4>
+        <ul>
+          <li>Trouver des financements pour son projet</li>
+          <li>Convaincre une banque</li>
+          <li>Les aides disponibles en Belgique</li>
+          <li>Trouver des investisseurs</li>
+          <li>Préparer un dossier qui inspire confiance</li>
+        </ul>
+      </div>
+
+      <div class="formation-card">
+        <h4><span class="fnum">10</span> 👫 Couple &amp; finances</h4>
+        <ul>
+          <li>Faire de son couple une équipe financière</li>
+          <li>Construire des projets à deux</li>
+          <li>Gérer les conflits liés à l'argent</li>
+          <li>Construire un patrimoine en famille</li>
+          <li>Les habitudes des couples solides</li>
+        </ul>
+      </div>
+
+      <div class="formation-card">
+        <h4><span class="fnum">11</span> 🧠 Développement personnel</h4>
+        <ul>
+          <li>Le mindset des riches vs le mindset des pauvres</li>
+          <li>Changer sa relation avec l'argent</li>
+          <li>L'intelligence émotionnelle au service de la réussite</li>
+          <li>Développer une discipline financière</li>
+          <li>Comment Dieu développe les personnes qu'il élève</li>
+        </ul>
+      </div>
+
+      <div class="formation-card">
+        <h4><span class="fnum">12</span> 📢 Communication</h4>
+        <ul>
+          <li>Prendre la parole avec impact</li>
+          <li>Construire une présentation mémorable</li>
+          <li>Créer des visuels professionnels</li>
+          <li>Organiser une masterclass efficace</li>
+          <li>Captiver son auditoire</li>
+        </ul>
+      </div>
+
+      <div class="formation-card">
+        <h4><span class="fnum">13</span> 🖋️ Écriture &amp; marque personnelle</h4>
+        <ul>
+          <li>Écrire son premier livre en 9 mois</li>
+          <li>Publier son livre</li>
+          <li>Construire sa marque personnelle</li>
+          <li>Devenir une référence dans son domaine</li>
+          <li>Transformer son expertise en revenus</li>
+        </ul>
+      </div>
+
+      <div class="formation-card">
+        <h4><span class="fnum">14</span> 🕴️ Consulting</h4>
+        <ul>
+          <li>Devenir consultant</li>
+          <li>Vendre son expertise</li>
+          <li>Fixer ses tarifs</li>
+          <li>Trouver ses premiers clients</li>
+          <li>Construire une activité haut de gamme</li>
+        </ul>
+      </div>
+
+      <div class="formation-card">
+        <h4><span class="fnum">15</span> 📍 Belgique &amp; opportunités</h4>
+        <ul>
+          <li>Les secteurs d'avenir en Belgique</li>
+          <li>Les secteurs porteurs à Liège</li>
+          <li>Les entreprises liégeoises qui recrutent</li>
+          <li>Où investir en Belgique aujourd'hui ?</li>
+          <li>Comment se positionner pour intégrer les meilleures entreprises</li>
+        </ul>
+      </div>
+
+      <div class="formation-wide">
+        <div>
+          <h4><span class="fnum">16</span> 📖 Foi &amp; finances</h4>
+          <div class="cols">
+            <ul>
+              <li>Les principes bibliques de la prospérité</li>
+              <li>Le mystère caché de la dîme</li>
+              <li>La gestion biblique des richesses</li>
+              <li>L'intendance selon le Royaume</li>
+            </ul>
+            <ul>
+              <li>Les erreurs spirituelles qui bloquent nos finances</li>
+              <li>Argent, foi et intégrité</li>
+              <li>Le travail dans la perspective biblique</li>
+              <li>Entrepreneuriat et appel de Dieu</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tagline">Équiper · Inspirer<br>Transformer · Impacter</div>
+      </div>
+    </div>
+
+    <div class="grid-3" style="margin-top:24px;">
+      <div class="mini-card">
+        <h4>🎯 Notre mission</h4>
+        <p>Vous doter de compétences concrètes pour impacter votre génération et bâtir un héritage durable.</p>
+      </div>
+      <div class="mini-card">
+        <h4>👥 Pour qui ?</h4>
+        <p>Entrepreneurs, indépendants, salariés, étudiants, couples.</p>
+      </div>
+      <div class="mini-card">
+        <h4>🗂️ Format des ateliers</h4>
+        <p>Pratique, interactif, à jour, orienté résultats.</p>
+      </div>
+    </div>
+
+    <div class="formations-closing">
+      <p class="big">APPRENDRE · APPLIQUER · PROGRESSER · IMPACTER</p>
+      <p>9 mois pour changer votre vie financière et entrepreneuriale !</p>
     </div>
   </section>
 
