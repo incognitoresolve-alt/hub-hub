@@ -3,30 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IMPACT FINANCES — Guide de l'entrepreneur novice en Belgique</title>
-<meta name="description" content="Impact Finances — le hub et incubateur d'ICC Liège : réseautage, accompagnement individuel et formations pour révéler les compétences et projets de chacun.">
+<title>IMPACT FINANCES — 17 au 20 septembre 2026 · Inscription aux ateliers</title>
+<meta name="description" content="Impact Finances, du 17 au 20 septembre 2026 à ICC Liège. Inscrivez-vous aux ateliers du samedi 19 : choisissez un parcours recommandé ou composez votre journée session par session.">
 <link rel="canonical" href="https://incognitoresolve-alt.github.io/hub-hub/">
 <link rel="icon" href="assets/logo.jpg">
 <meta name="theme-color" content="#2b1042">
 <meta property="og:type" content="website">
-<meta property="og:title" content="IMPACT FINANCES — Hub &amp; incubateur d'ICC Liège">
-<meta property="og:description" content="Réseautage, accompagnement individuel et formations pour révéler les compétences et projets de chacun.">
+<meta property="og:title" content="IMPACT FINANCES — 17 au 20 septembre 2026">
+<meta property="og:description" content="Inscrivez-vous aux ateliers du samedi 19 septembre : un parcours recommandé en un clic, ou votre sélection libre session par session.">
 <meta property="og:image" content="https://incognitoresolve-alt.github.io/hub-hub/assets/logo.jpg">
 <meta property="og:url" content="https://incognitoresolve-alt.github.io/hub-hub/">
 <meta property="og:locale" content="fr_BE">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="IMPACT FINANCES — Hub &amp; incubateur d'ICC Liège">
-<meta name="twitter:description" content="Réseautage, accompagnement individuel et formations pour révéler les compétences et projets de chacun.">
+<meta name="twitter:title" content="IMPACT FINANCES — 17 au 20 septembre 2026">
+<meta name="twitter:description" content="Inscrivez-vous aux ateliers du samedi 19 septembre : un parcours recommandé en un clic, ou votre sélection libre session par session.">
 <meta name="twitter:image" content="https://incognitoresolve-alt.github.io/hub-hub/assets/logo.jpg">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": "Event",
   "name": "Impact Finances",
+  "startDate": "2026-09-17",
+  "endDate": "2026-09-20",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
   "url": "https://incognitoresolve-alt.github.io/hub-hub/",
-  "logo": "https://incognitoresolve-alt.github.io/hub-hub/assets/logo.jpg",
-  "description": "Hub et incubateur d'ICC Liège : réseautage, accompagnement individuel et formations pour révéler les compétences et projets de chacun.",
-  "parentOrganization": {
+  "image": "https://incognitoresolve-alt.github.io/hub-hub/assets/logo.jpg",
+  "description": "Quatre jours pour s'inspirer, s'équiper et passer à l'action : talk-show, plénières et une journée d'ateliers le samedi.",
+  "location": {
+    "@type": "Place",
+    "name": "ICC Liège",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Liège",
+      "addressCountry": "BE"
+    }
+  },
+  "organizer": {
     "@type": "Organization",
     "name": "ICC Liège"
   }
@@ -47,10 +60,9 @@
     --border:#e6e1eb;
     --radius:14px;
     --shadow:0 4px 18px rgba(43,16,66,.08);
-    --maxw:980px;
+    --maxw:900px;
   }
   *{box-sizing:border-box;}
-  html{scroll-behavior:auto;}
   body{
     margin:0;
     font-family:"Segoe UI",Helvetica,Arial,sans-serif;
@@ -60,475 +72,156 @@
   }
   a{color:var(--red);}
   img{max-width:100%;}
-  a:focus-visible,
-  summary:focus-visible,
-  button:focus-visible,
-  input:focus-visible,
-  .btn:focus-visible{
+  a:focus-visible, button:focus-visible, input:focus-visible{
     outline:2px solid var(--blue);
     outline-offset:2px;
   }
-  .skip-link{
-    position:absolute;
-    left:-9999px;
-    top:auto;
-    background:var(--black);
-    color:#fff;
-    padding:10px 16px;
-    border-radius:8px;
-    z-index:100;
-    text-decoration:none;
-  }
-  .skip-link:focus{
-    left:12px;
-    top:12px;
-  }
 
-  /* Header */
   header{
-    position:sticky;
-    top:0;
-    z-index:50;
     background:rgba(255,255,255,.92);
-    backdrop-filter:blur(6px);
     border-bottom:1px solid var(--border);
+    position:sticky;top:0;z-index:20;
   }
   .nav-wrap{
-    max-width:var(--maxw);
-    margin:0 auto;
-    padding:14px 20px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:16px;
+    max-width:var(--maxw);margin:0 auto;padding:14px 20px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
   }
-  .brand{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    font-weight:700;
-    font-size:1rem;
-    letter-spacing:.02em;
-    text-decoration:none;
-    color:var(--black);
-  }
-  .brand .logo{
-    display:inline-flex;
-    width:34px;
-    height:34px;
-    border-radius:9px;
-    overflow:hidden;
-    box-shadow:0 0 0 1px rgba(43,16,66,.12);
-    flex:none;
-  }
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.02em;text-decoration:none;color:var(--black);}
+  .brand .logo{width:34px;height:34px;border-radius:9px;overflow:hidden;box-shadow:0 0 0 1px rgba(43,16,66,.12);flex:none;}
   .brand .logo img{width:100%;height:100%;object-fit:cover;display:block;}
+  .header-cta{
+    background:var(--yellow);color:var(--black);text-decoration:none;
+    padding:8px 16px;border-radius:999px;font-weight:700;font-size:.88rem;white-space:nowrap;
+  }
+  .header-cta:hover{background:#ffdb47;}
 
-  nav.links{display:flex;gap:18px;flex-wrap:wrap;}
-  nav.links a{
-    color:var(--muted);
-    text-decoration:none;
-    font-size:.92rem;
-    font-weight:600;
-  }
-  nav.links a:hover{color:var(--red);}
-  nav.links a.nav-cta{
-    background:var(--yellow);
-    color:var(--black) !important;
-    padding:7px 14px;
-    border-radius:999px;
-    font-weight:700;
-  }
-  nav.links a.nav-cta:hover{background:#ffdb47;color:var(--black) !important;}
-  #navToggle{display:none;}
-  .burger{
-    display:none;
-    background:none;
-    border:1px solid var(--border);
-    border-radius:8px;
-    padding:8px 10px;
-    cursor:pointer;
-    font-size:1rem;
-  }
-
-  @media (max-width:760px){
-    nav.links{
-      display:none;
-      flex-direction:column;
-      width:100%;
-      padding:10px 20px 18px;
-      gap:10px;
-    }
-    #navToggle:checked ~ nav.links{display:flex;}
-    .burger{display:block;}
-    .nav-wrap{flex-wrap:wrap;}
-  }
-
-  /* Hero */
   .hero{
     background:
       radial-gradient(circle at 15% 20%, rgba(251,210,74,.35), transparent 45%),
-      radial-gradient(circle at 85% 0%, rgba(224,58,57,.25), transparent 45%),
-      radial-gradient(circle at 60% 90%, rgba(31,164,220,.18), transparent 40%),
+      radial-gradient(circle at 85% 0%, rgba(31,164,220,.25), transparent 45%),
       var(--black);
     color:#fff;
-    padding:64px 20px 56px;
+    padding:48px 20px 40px;
   }
   .hero-inner{max-width:var(--maxw);margin:0 auto;}
   .eyebrow{
-    display:inline-block;
-    background:rgba(255,255,255,.1);
-    border:1px solid rgba(255,255,255,.25);
-    padding:5px 12px;
-    border-radius:999px;
-    font-size:.78rem;
-    letter-spacing:.04em;
-    text-transform:uppercase;
-    margin-bottom:18px;
+    display:inline-block;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);
+    padding:5px 12px;border-radius:999px;font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;margin-bottom:16px;
   }
-  .hero h1{
-    font-size:clamp(1.8rem,4vw,2.7rem);
-    margin:0 0 16px;
-    max-width:22ch;
+  .hero h1{font-size:clamp(1.6rem,4vw,2.3rem);margin:0 0 12px;}
+  .hero p{max-width:65ch;color:rgba(255,255,255,.85);margin:0;}
+  .hero p strong{color:#fff;}
+  .hero-btn{margin-top:24px;}
+
+  main{max-width:var(--maxw);margin:0 auto;padding:36px 20px 90px;}
+  section{margin-bottom:44px;}
+  h2{font-size:1.3rem;margin:0 0 6px;display:flex;align-items:center;gap:10px;}
+  h2 .num{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:30px;height:30px;border-radius:8px;background:var(--black);color:var(--yellow);
+    font-size:.9rem;flex:none;
   }
-  .hero p{
-    max-width:60ch;
-    color:rgba(255,255,255,.82);
-    font-size:1.05rem;
-    margin:0 0 26px;
+  .section-sub{color:var(--muted);margin:0 0 22px;max-width:70ch;}
+
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);}
+
+  /* Plan récap strip */
+  .plan-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;}
+  .plan-day{padding:14px 16px;border-radius:10px;font-size:.85rem;}
+  .plan-day strong{display:block;font-size:.95rem;margin-bottom:2px;}
+  .plan-day.jeudi{background:#e9f5ec;color:#1e6b34;}
+  .plan-day.vendredi{background:#eaf1fb;color:#1d3f8f;}
+  .plan-day.samedi{background:#fef1e2;color:#9a5200;border:2px solid var(--yellow);}
+  .plan-day.dimanche{background:#e6f4f3;color:#0f6b64;}
+
+  /* Parcours quick-pick */
+  .parcours-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;}
+  .parcours-card{
+    padding:18px 20px;border-radius:var(--radius);cursor:pointer;
+    border:2px solid var(--border);background:var(--surface);box-shadow:var(--shadow);
+    transition:border-color .15s, transform .15s;
+    text-align:left;font-family:inherit;
   }
-  .hero-cta{display:flex;gap:12px;flex-wrap:wrap;}
+  .parcours-card:hover{transform:translateY(-2px);}
+  .parcours-card.selected{border-color:var(--purple);background:#f6f0fb;}
+  .parcours-card h3{margin:0 0 6px;font-size:1rem;}
+  .parcours-card p{margin:0;color:var(--muted);font-size:.85rem;}
+  .parcours-card .tick{float:right;color:var(--purple);font-weight:700;visibility:hidden;}
+  .parcours-card.selected .tick{visibility:visible;}
+
+  /* Sessions */
+  .session-block{margin-bottom:18px;padding:20px;}
+  .session-block h3{margin:0 0 4px;font-size:1.05rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .session-time{font-weight:400;color:var(--muted);font-size:.85rem;}
+  .atelier-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin-top:14px;}
+  .atelier-option{
+    display:flex;gap:10px;align-items:flex-start;
+    border:1px solid var(--border);border-radius:10px;padding:12px 14px;cursor:pointer;
+    transition:border-color .15s, background .15s;
+  }
+  .atelier-option:hover{border-color:var(--purple);}
+  .atelier-option.checked{border-color:var(--purple);background:#f6f0fb;}
+  .atelier-option input{margin-top:3px;accent-color:var(--purple);flex:none;}
+  .atelier-option .letter{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:22px;height:22px;border-radius:50%;background:var(--black);color:#fff;
+    font-size:.72rem;font-weight:700;flex:none;
+  }
+  .atelier-option strong{display:block;font-size:.9rem;}
+  .atelier-option span.topic{display:block;color:var(--muted);font-size:.82rem;margin-top:2px;}
+  .atelier-option.none-option{color:var(--muted);font-size:.85rem;}
+
+  /* Contact fields */
+  .field-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;padding:22px;}
+  .field{display:flex;flex-direction:column;gap:6px;}
+  .field label{font-size:.85rem;font-weight:600;color:var(--text);}
+  .field input{
+    font-family:inherit;font-size:.95rem;padding:11px 12px;
+    border:1px solid var(--border);border-radius:8px;background:var(--bg);
+  }
+  .field input:focus{outline:2px solid var(--blue);outline-offset:1px;}
+
+  .submit-row{padding:0 22px 22px;}
   .btn{
-    display:inline-block;
-    padding:12px 20px;
-    border-radius:10px;
-    font-weight:700;
-    text-decoration:none;
-    font-size:.95rem;
-    border:1px solid transparent;
-    cursor:pointer;
+    display:inline-block;padding:13px 24px;border-radius:10px;font-weight:700;
+    text-decoration:none;font-size:.98rem;border:none;cursor:pointer;font-family:inherit;
   }
   .btn-primary{background:var(--yellow);color:var(--black);}
   .btn-primary:hover{background:#ffdb47;}
-  .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.4);}
-  .btn-ghost:hover{border-color:#fff;}
+  .btn-primary:disabled{opacity:.5;cursor:not-allowed;}
+  .form-note{font-size:.82rem;color:var(--muted);margin-top:10px;}
 
-  /* Main layout */
-  main{max-width:var(--maxw);margin:0 auto;padding:48px 20px 90px;}
-  section{margin-bottom:64px;scroll-margin-top:90px;}
-  h2{
-    font-size:1.55rem;
-    margin:0 0 6px;
-    display:flex;
-    align-items:center;
-    gap:10px;
+  .success-panel{
+    display:none;
+    text-align:center;padding:40px 24px;
   }
-  h2 .num{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    width:34px;height:34px;
-    border-radius:9px;
-    background:var(--black);
-    color:var(--yellow);
-    font-size:.95rem;
-    flex:none;
+  .success-panel.show{display:block;}
+  .success-panel .check{font-size:2.6rem;margin-bottom:10px;}
+  .success-panel .recap{
+    list-style:none;padding:0;margin:22px auto 0;max-width:520px;text-align:left;
   }
-  .section-sub{color:var(--muted);margin:0 0 26px;max-width:70ch;}
-  .subsection{margin-top:44px;padding-top:36px;border-top:1px solid var(--border);}
-  .subsection h3.subsection-title{font-size:1.25rem;margin:0 0 6px;display:flex;align-items:center;gap:8px;}
+  .success-panel .recap li{
+    background:var(--bg);border:1px solid var(--border);border-radius:10px;
+    padding:10px 14px;margin-bottom:8px;font-size:.88rem;
+  }
+  .success-panel .recap li strong{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.03em;color:var(--muted);}
+  .form-error{
+    background:#fff5f5;border:1px solid #f3b8b8;color:#8a2222;
+    padding:12px 16px;border-radius:10px;font-size:.88rem;margin:0 0 14px;
+  }
+  .success-panel h2{justify-content:center;margin-bottom:8px;}
+  .success-panel p{color:var(--muted);max-width:50ch;margin:0 auto;}
 
-  .formation-card{
-    background:var(--surface);
-    border:1px solid var(--border);
-    border-top:4px solid var(--purple);
-    border-radius:var(--radius);
-    box-shadow:var(--shadow);
-    padding:0;
-    overflow:hidden;
+  .config-warning{
+    display:none;
+    background:#fff5f5;border:1px solid #f3b8b8;color:#8a2222;
+    padding:14px 18px;border-radius:10px;font-size:.88rem;margin-bottom:20px;
   }
-  .formation-card:nth-child(5n+1){border-top-color:var(--red);}
-  .formation-card:nth-child(5n+2){border-top-color:var(--yellow);}
-  .formation-card:nth-child(5n+3){border-top-color:var(--blue);}
-  .formation-card:nth-child(5n+4){border-top-color:var(--green);}
-  .formation-card:nth-child(5n+5){border-top-color:var(--purple);}
-  .formation-card h3,
-  .formation-card h4{
-    display:flex;align-items:center;gap:8px;
-    margin:0 0 12px;font-size:1rem;
-  }
-  .formation-card .fnum{
-    display:inline-flex;align-items:center;justify-content:center;
-    width:26px;height:26px;border-radius:50%;flex:none;
-    background:var(--black);color:#fff;font-weight:700;font-size:.8rem;
-  }
-  .formation-card ul{margin:0;padding-left:18px;color:var(--muted);font-size:.88rem;}
-  .formation-card ul li{margin-bottom:5px;}
-  .src-note{font-size:.78rem;color:var(--muted);font-style:italic;margin:8px 0 0;}
 
-  .formation-card summary{
-    list-style:none;
-    cursor:pointer;
-    padding:18px 20px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:10px;
-  }
-  .formation-card summary::-webkit-details-marker{display:none;}
-  .formation-card summary h3,
-  .formation-card summary h4{margin:0;}
-  .formation-card summary .chev{
-    flex:none;
-    color:var(--muted);
-    transition:transform .2s;
-    font-size:.85rem;
-  }
-  .formation-card[open] summary .chev{transform:rotate(180deg);}
-  .formation-card{transition:box-shadow .2s ease, transform .2s ease;}
-  .formation-card:hover{box-shadow:0 10px 28px rgba(43,16,66,.14);transform:translateY(-2px);}
-  .formation-card summary:hover h3,
-  .formation-card summary:hover h4{color:var(--purple);}
-  .f-content{
-    display:grid;
-    grid-template-rows:0fr;
-    transition:grid-template-rows .3s ease;
-  }
-  .f-content-inner{overflow:hidden;min-height:0;}
-  .formation-card .f-topics,
-  .formation-card .f-body{padding:0 20px 20px;}
-  .formation-card .f-body{border-top:1px solid var(--border);padding-top:16px;margin-top:2px;}
-  .formation-card .f-body h4,
-  .formation-card .f-body h5{
-    margin:16px 0 6px;
-    font-size:.82rem;
-    font-weight:700;
-    text-transform:uppercase;
-    letter-spacing:.04em;
-    color:var(--muted);
-  }
-  .formation-card .f-body h4:first-child,
-  .formation-card .f-body h5:first-child{margin-top:0;}
-  .formation-card .f-body p{margin:0 0 8px;font-size:.92rem;color:var(--text);}
-  .formation-card .f-sources{font-size:.82rem;color:var(--muted);}
-  .formation-card .f-sources li{margin-bottom:6px;}
-  .formation-checklist{display:flex;flex-direction:column;gap:6px;margin:0;}
-  .formation-checklist label{
-    display:flex;align-items:flex-start;gap:8px;
-    font-size:.88rem;color:var(--text);
-    cursor:pointer;
-  }
-  .formation-checklist input{margin-top:3px;width:16px;height:16px;accent-color:var(--red);flex:none;}
-  .formation-checklist label.done{opacity:.5;text-decoration:line-through;}
-  .formation-wide{
-    grid-column:1 / -1;
-    background:linear-gradient(135deg,var(--black),#3d1760);
-    color:#fff;
-    border-top-color:var(--yellow) !important;
-  }
-  .formation-wide summary h3,
-  .formation-wide summary h4{color:#fff;}
-  .formation-wide summary .chev{color:rgba(255,255,255,.7);}
-  .formation-wide .fnum{background:var(--yellow);color:var(--black);}
-  .formation-wide .f-topics .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:4px 24px;}
-  .formation-wide .f-topics ul{margin:0;padding-left:18px;color:rgba(255,255,255,.85);font-size:.88rem;}
-  .formation-wide .f-topics ul li{margin-bottom:5px;}
-  .formation-wide .f-body{border-top-color:rgba(255,255,255,.2);}
-  .formation-wide .f-body h4,
-  .formation-wide .f-body h5{color:rgba(255,255,255,.6);}
-  .formation-wide .f-body p{color:rgba(255,255,255,.9);}
-  .formation-wide .f-sources{color:rgba(255,255,255,.7);}
-  .formation-wide .formation-checklist label{color:#fff;}
-  .formation-wide .tagline{
-    font-weight:700;
-    text-align:center;
-    color:var(--yellow);
-    letter-spacing:.03em;
-    margin:16px 0 0;
-    padding-top:16px;
-    border-top:1px solid rgba(255,255,255,.2);
-  }
-  .formations-closing{
-    text-align:center;
-    margin-top:32px;
-    padding:24px;
-    border-radius:var(--radius);
-    background:var(--black);
-    color:#fff;
-  }
-  .formations-closing .big{
-    font-weight:800;
-    letter-spacing:.03em;
-    color:var(--yellow);
-    margin:0 0 6px;
-    font-size:1.05rem;
-  }
-  .formations-closing p{margin:0;color:rgba(255,255,255,.8);}
-
-  /* Formations toolbar: progress + filters + expand-all */
-  .f-toolbar{
-    background:var(--surface);
-    border:1px solid var(--border);
-    border-radius:var(--radius);
-    box-shadow:var(--shadow);
-    padding:18px 20px;
-    margin-bottom:20px;
-  }
-  .f-progress-row{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:16px;
-    margin-bottom:16px;
-    flex-wrap:wrap;
-  }
-  .f-progress-text{font-size:.88rem;color:var(--muted);font-weight:600;white-space:nowrap;}
-  .f-progress-track{
-    flex:1;
-    min-width:120px;
-    height:8px;
-    border-radius:999px;
-    background:var(--border);
-    overflow:hidden;
-  }
-  .f-progress-fill{
-    height:100%;
-    width:0%;
-    background:linear-gradient(90deg,var(--yellow),var(--red));
-    border-radius:999px;
-    transition:width .4s ease;
-  }
-  .f-controls{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:12px;
-    flex-wrap:wrap;
-  }
-  .f-filters{display:flex;flex-wrap:wrap;gap:8px;}
-  .f-filter{
-    font-family:inherit;
-    font-size:.82rem;
-    font-weight:600;
-    color:var(--text);
-    background:var(--bg);
-    border:1px solid var(--border);
-    border-radius:999px;
-    padding:7px 14px;
-    cursor:pointer;
-    transition:background .15s, color .15s, border-color .15s;
-  }
-  .f-filter:hover{border-color:var(--purple);}
-  .f-filter.active{background:var(--black);color:#fff;border-color:var(--black);}
-  .f-expand-all{
-    font-family:inherit;
-    font-size:.82rem;
-    font-weight:600;
-    color:var(--purple);
-    background:none;
-    border:1px solid var(--purple);
-    border-radius:999px;
-    padding:7px 14px;
-    cursor:pointer;
-    white-space:nowrap;
-    transition:background .15s, color .15s;
-  }
-  .f-expand-all:hover{background:var(--purple);color:#fff;}
-  .formation-card.f-hidden{display:none;}
-
-  .steps{display:flex;flex-direction:column;gap:16px;}
-  .step{
-    background:var(--surface);
-    border:1px solid var(--border);
-    border-radius:var(--radius);
-    box-shadow:var(--shadow);
-    padding:20px 22px;
-    display:grid;
-    grid-template-columns:44px 1fr;
-    gap:16px;
-  }
-  .step .badge{
-    width:44px;height:44px;
-    border-radius:50%;
-    background:linear-gradient(135deg,var(--yellow),#ffb020);
-    color:var(--black);
-    font-weight:800;
-    display:flex;align-items:center;justify-content:center;
-    font-size:1.1rem;
-  }
-  .step h3{margin:2px 0 8px;font-size:1.08rem;}
-  .step p{margin:0 0 8px;color:var(--text);}
-  .step ul{margin:8px 0 0;padding-left:20px;color:var(--muted);}
-  .step ul li{margin-bottom:4px;}
-  .tag{
-    display:inline-block;
-    font-size:.72rem;
-    font-weight:700;
-    text-transform:uppercase;
-    letter-spacing:.03em;
-    padding:3px 9px;
-    border-radius:999px;
-    margin-right:6px;
-    margin-top:4px;
-  }
-  .tag.oblig{background:#fde8e8;color:#a3242a;}
-  .tag.reco{background:#fff3cf;color:#8a6300;}
-  .tag.option{background:#e7f1ff;color:#1e50a0;}
-
-  .grid-3{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-    align-items:start;
-    gap:16px;
-  }
-  .mini-card{
-    background:var(--surface);
-    border:1px solid var(--border);
-    border-radius:var(--radius);
-    padding:18px 20px;
-    box-shadow:var(--shadow);
-  }
-  .mini-card h3{margin:0 0 8px;font-size:1rem;}
-  .mini-card p{margin:0;color:var(--muted);font-size:.92rem;}
-  .mini-card a{font-weight:600;font-size:.88rem;}
-
-  .callout{
-    border-left:4px solid var(--red);
-    background:#fff5f5;
-    padding:16px 18px;
-    border-radius:0 10px 10px 0;
-    font-size:.94rem;
-  }
-  .callout strong{display:block;margin-bottom:4px;}
-
-  footer{
-    background:var(--black);
-    color:rgba(255,255,255,.75);
-    padding:40px 20px;
-    font-size:.85rem;
-  }
-  footer .foot-inner{max-width:var(--maxw);margin:0 auto;}
-  footer a{color:var(--yellow);}
-  .back-top{
-    position:fixed;
-    bottom:20px;right:20px;
-    background:var(--black);
-    color:var(--yellow);
-    border-radius:50%;
-    width:44px;height:44px;
-    display:flex;align-items:center;justify-content:center;
-    text-decoration:none;
-    box-shadow:0 4px 14px rgba(0,0,0,.25);
-    opacity:0;
-    pointer-events:none;
-    transition:opacity .2s;
-    font-size:1.2rem;
-  }
-  .back-top.show{opacity:1;pointer-events:auto;}
+  footer{background:var(--black);color:rgba(255,255,255,.75);padding:30px 20px;font-size:.85rem;text-align:center;}
 </style>
 </head>
 <body>
-
-<a href="#main-content" class="skip-link">Aller au contenu principal</a>
 
 <header>
   <div class="nav-wrap">
@@ -536,1179 +229,301 @@
       <span class="logo"><img src="assets/logo.jpg" alt="Logo ICC Liège"></span>
       IMPACT FINANCES
     </a>
-    <input type="checkbox" id="navToggle" hidden>
-    <label class="burger" for="navToggle" aria-label="Ouvrir le menu" role="button" tabindex="0" aria-expanded="false" aria-controls="mainNav"><span aria-hidden="true">☰</span></label>
-    <nav class="links" id="mainNav">
-      <a href="#centre">Notre vision</a>
-      <a href="#formations">Formations</a>
-      <a href="#demarrer">Démarrer</a>
-      <a href="#ressources">Ressources</a>
-      <a href="ateliers.html" class="nav-cta">🎟️ S'inscrire</a>
-    </nav>
+    <a href="#formSection" class="header-cta">🎟️ S'inscrire</a>
   </div>
 </header>
 
 <div id="top"></div>
 <section class="hero">
   <div class="hero-inner">
-    <span class="eyebrow">ICC Liège · Hub &amp; incubateur</span>
-    <h1>Révéler les compétences et les projets de chacun</h1>
-    <p>Impact Finances est le hub et incubateur d'ICC Liège : un espace de réseautage au sein de l'église, un accompagnement individuel et des formations pour porter haut les compétences et les projets de chaque personne, prise individuellement.</p>
-    <div class="hero-cta">
-      <a href="#centre" class="btn btn-primary">Découvrir le hub</a>
-      <a href="#formations" class="btn btn-ghost">Voir les formations</a>
-    </div>
+    <span class="eyebrow">ICC Liège · 17 → 20 septembre 2026</span>
+    <h1>Impact Finances : choisissez vos ateliers</h1>
+    <p>Quatre jours pour s'inspirer, s'équiper et passer à l'action. Le <strong>samedi 19 septembre</strong>, 16 ateliers répartis en 4 sessions : composez votre journée en choisissant un parcours recommandé, ou librement session par session.</p>
+    <a href="#sessions" class="btn btn-primary hero-btn">Voir les ateliers</a>
   </div>
 </section>
 
-<main id="main-content">
+<main>
 
-  <section id="centre">
-    <h2><span class="num">🤝</span>Notre vision</h2>
-    <p class="section-sub">Impact Finances est le hub et incubateur d'ICC Liège : un espace de réseautage au sein de l'église, un accompagnement individuel et des formations pour porter haut les compétences et les projets de chaque personne, prise individuellement. Voici le concept résumé selon la méthode des <strong>5W</strong>.</p>
-
-    <div class="steps">
-      <div class="step">
-        <div class="badge">❓</div>
-        <div>
-          <h3>Quoi ? — Le concept</h3>
-          <p>Un espace unique combinant accompagnement individuel et mise en réseau, pensé pour suivre l'entrepreneur du premier jour à la croisière :</p>
-          <ul>
-            <li>Mentorat individuel par des entrepreneurs expérimentés</li>
-            <li>Ateliers pratiques thématiques (juridique, comptabilité, marketing, financement)</li>
-            <li>Espace de coworking et de rencontre informelle</li>
-            <li>Plateforme numérique de mise en réseau (annuaire des membres, agenda d'événements)</li>
-            <li>Orientation facilitée vers les partenaires (guichets d'entreprises, comptables, banques, avocats)</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="badge">👥</div>
-        <div>
-          <h3>Qui ? — Public et acteurs</h3>
-          <p><strong>Public cible :</strong> primo-entrepreneurs, indépendants débutants, porteurs de projet en phase de test.</p>
-          <p><strong>Acteurs impliqués :</strong></p>
-          <ul>
-            <li>Mentors bénévoles ou experts (entrepreneurs confirmés, comptables, juristes)</li>
-            <li>Partenaires institutionnels : guichets d'entreprises, 1819, hub.brussels, VLAIO, SOWALFIN</li>
-            <li>Partenaires privés : banques, cabinets comptables, assureurs</li>
-            <li>Une petite équipe d'animation : coordinateur·rice, community manager, mentors référents</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="badge">📍</div>
-        <div>
-          <h3>Où ? — Implantation</h3>
-          <p>Un modèle hybride pour toucher tout le pays :</p>
-          <ul>
-            <li>Un lieu physique d'ancrage par grande région (Bruxelles, Wallonie, Flandre)</li>
-            <li>Partenariats avec des espaces de coworking, incubateurs et chambres de commerce existants</li>
-            <li>Une plateforme en ligne accessible depuis n'importe où en Belgique</li>
-            <li>Des permanences délocalisées dans les communes partenaires</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="badge">🗓️</div>
-        <div>
-          <h3>Quand ? — Rythme d'activité</h3>
-          <ul>
-            <li>Permanences hebdomadaires d'accompagnement individuel, sur rendez-vous</li>
-            <li>Ateliers thématiques mensuels</li>
-            <li>Événements de réseautage trimestriels (afterworks, speed-networking)</li>
-            <li>Plateforme en ligne et annuaire des membres disponibles 24h/24</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="badge">💡</div>
-        <div>
-          <h3>Pourquoi ? — La mission</h3>
-          <ul>
-            <li>Réduire l'isolement du créateur d'entreprise, souvent seul face aux démarches</li>
-            <li>Centraliser une information aujourd'hui éparpillée entre de nombreux organismes</li>
-            <li>Augmenter le taux de survie des jeunes entreprises grâce au mentorat</li>
-            <li>Créer un écosystème local d'entraide, de clients et d'opportunités entre membres</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <h3 class="subsection-title">🛠️ Comment le mettre en œuvre</h3>
-      <p class="section-sub">Des pistes concrètes pour passer du concept à la pratique, toujours selon les 5W.</p>
-
-      <div class="steps">
-        <div class="step">
-          <div class="badge">❓</div>
-          <div>
-            <h3>Quoi ? — Les dispositifs à mettre en place</h3>
-            <ul>
-              <li>Programme de mentorat en binôme (mentor / porteur de projet), suivi sur 6 à 12 mois avec des objectifs définis</li>
-              <li>Cycle de formations modulaires : business plan, gestion financière, prise de parole, leadership, marketing digital</li>
-              <li>Annuaire des compétences et métiers de l'église (base simple type tableur ou Notion/Airtable)</li>
-              <li>Caisse d'entraide financière : tontine, prêt d'honneur ou fonds de solidarité entre membres</li>
-              <li>Marché interne : privilégier les entrepreneurs de la communauté pour ses propres besoins</li>
-              <li>Espace de coworking ponctuel dans une salle de l'église, à horaires fixes</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="badge">👥</div>
-          <div>
-            <h3>Qui ? — Les rôles à pourvoir</h3>
-            <ul>
-              <li>Un·e coordinateur·rice du hub, référent unique même à temps partiel</li>
-              <li>Un comité de mentors (5 à 10 professionnels : comptables, juristes, entrepreneurs confirmés, coachs)</li>
-              <li>Un pool de formateurs, membres qualifiés ou intervenants externes ponctuels</li>
-              <li>Des ambassadeurs par secteur d'activité (commerce, digital, artisanat, services…)</li>
-              <li>Des partenaires externes à associer : guichets d'entreprises, banques, autres réseaux chrétiens d'entrepreneurs</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="badge">📍</div>
-          <div>
-            <h3>Où ? — L'ancrage</h3>
-            <ul>
-              <li>Un lieu fixe dans les locaux de l'église comme point de repère, à horaire connu de tous</li>
-              <li>Un canal digital de suivi à distance (groupe WhatsApp/Telegram ou espace membre du site)</li>
-              <li>Un partenariat possible avec un espace de coworking liégeois pour les ateliers plus larges</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="badge">🗓️</div>
-          <div>
-            <h3>Quand ? — Le phasage</h3>
-            <ul>
-              <li>Une phase pilote de 3 à 6 mois avec un petit groupe test avant d'ouvrir à toute l'église</li>
-              <li>Rythme de croisière : permanence hebdomadaire, atelier mensuel, rencontre de réseautage trimestrielle</li>
-              <li>Un lancement officiel (annonce en culte) et un bilan annuel qui met en avant les réussites</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="badge">💡</div>
-          <div>
-            <h3>Pourquoi ? — Pour piloter et mesurer</h3>
-            <ul>
-              <li>Se fixer des indicateurs simples : nombre de porteurs accompagnés, projets lancés, taux de satisfaction</li>
-              <li>Faire des anciens bénéficiaires les mentors de la promotion suivante : cercle vertueux, coût faible</li>
-              <li>Relier explicitement compétence professionnelle et vocation — ce qui distingue ce hub d'un incubateur classique</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+  <section>
+    <h2><span class="num">🗓️</span>Le programme complet</h2>
+    <p class="section-sub">L'inscription ci-dessous concerne uniquement les <strong>ateliers du samedi 19</strong>. Les autres soirées sont en accès libre.</p>
+    <div class="plan-strip">
+      <div class="plan-day jeudi"><strong>Jeudi 17</strong>18h30–21h00 · Talk-show des entrepreneurs</div>
+      <div class="plan-day vendredi"><strong>Vendredi 18</strong>18h30–21h30 · Grande plénière</div>
+      <div class="plan-day samedi"><strong>Samedi 19</strong>10h30–20h00 · Journée des ateliers</div>
+      <div class="plan-day dimanche"><strong>Dimanche 20</strong>10h00–17h00 · Culte, plénière IA &amp; clôture</div>
     </div>
   </section>
 
-  <section id="formations">
-    <h2><span class="num">🎓</span>Centre de compétences Impact Finances</h2>
-    <p class="section-sub">Ateliers pratico-pratiques pour transformer votre vie, votre entreprise et vos finances.</p>
-    <div style="margin-bottom:24px;">
-      <span class="tag reco">Des compétences concrètes</span>
-      <span class="tag oblig">Des outils d'aujourd'hui</span>
-      <span class="tag option">Des résultats demain</span>
-    </div>
+  <form id="rsvpForm">
 
-    <div class="f-toolbar">
-      <div class="f-progress-row">
-        <span class="f-progress-text" id="fProgressLabel">0 / 66 points complétés</span>
-        <div class="f-progress-track"><div class="f-progress-fill" id="fProgressFill"></div></div>
+    <section>
+      <h2><span class="num">🧭</span>Un parcours recommandé ?</h2>
+      <p class="section-sub">Cliquez sur un parcours pour pré-remplir automatiquement les 4 sessions ci-dessous. Vous pourrez toujours ajuster chaque choix ensuite.</p>
+      <div class="parcours-grid" id="parcoursGrid">
+        <button type="button" class="parcours-card" data-parcours="patrimoine">
+          <span class="tick">✓</span>
+          <h3>🏠 Bâtir et transmettre son patrimoine</h3>
+          <p>Acheter → Développer → Transmettre → Laisser un héritage</p>
+        </button>
+        <button type="button" class="parcours-card" data-parcours="entrepreneur">
+          <span class="tick">✓</span>
+          <h3>🚀 De zéro à entrepreneur</h3>
+          <p>Partir de zéro → Se vendre → Concrétiser → Financer</p>
+        </button>
+        <button type="button" class="parcours-card" data-parcours="revenus">
+          <span class="tick">✓</span>
+          <h3>📈 Augmenter ses revenus et sa valeur</h3>
+          <p>Diversifier → Monétiser → Devenir pertinent → Devenir productif</p>
+        </button>
+        <button type="button" class="parcours-card" data-parcours="ia">
+          <span class="tick">✓</span>
+          <h3>🧠 Prendre le virage de l'IA</h3>
+          <p>Performance → Monétisation → Application → Démultiplication</p>
+        </button>
       </div>
-      <div class="f-controls">
-        <div class="f-filters" role="tablist" aria-label="Filtrer les formations par catégorie">
-          <button type="button" class="f-filter active" data-filter="all" aria-pressed="true">Toutes (16)</button>
-          <button type="button" class="f-filter" data-filter="finance" aria-pressed="false">💰 Finances (5)</button>
-          <button type="button" class="f-filter" data-filter="business" aria-pressed="false">🚀 Entrepreneuriat &amp; carrière (6)</button>
-          <button type="button" class="f-filter" data-filter="dev" aria-pressed="false">🧠 Développement &amp; com. (4)</button>
-          <button type="button" class="f-filter" data-filter="foi" aria-pressed="false">📖 Foi (1)</button>
-        </div>
-        <button type="button" class="f-expand-all" id="fExpandAll">Tout déplier</button>
-      </div>
-    </div>
+    </section>
 
-    <div class="grid-3" id="formationsGrid">
-      <details class="formation-card" data-category="business">
-        <summary><h3><span class="fnum">1</span> 🚀 Entrepreneuriat &amp; création de richesse</h3><span class="chev" aria-hidden="true">▾</span></summary>
-        <div class="f-content"><div class="f-content-inner">
-        <div class="f-topics">
-          <ul>
-            <li>De salarié à entrepreneur : réussir sa transition</li>
-            <li>Créer son entreprise de A à Z</li>
-            <li>Se lancer comme indépendant (Belgique)</li>
-            <li>Trouver une idée de business rentable</li>
-            <li>Passer de 0 à 100 000 € de CA</li>
-            <li>Comment scaler son entreprise</li>
-            <li>Les modèles économiques qui fonctionnent</li>
-            <li>Structurer une entreprise qui fonctionne sans toi</li>
-          </ul>
-        </div>
-        <div class="f-body">
-          <h4>📘 Contenu</h4>
-          <p>Passer de salarié à entrepreneur demande une transition progressive plutôt qu'un saut dans le vide : tester l'idée à petite échelle, valider la demande avant d'investir, et sécuriser un revenu de transition. Une entreprise se construit sur un modèle économique clair : qui paie, pourquoi, combien de fois. Le passage de 0 à 100 000 € de chiffre d'affaires passe presque toujours par la maîtrise d'un seul canal d'acquisition rentable avant d'en ajouter un second. Enfin, une entreprise qui « fonctionne sans vous » repose sur des processus documentés et une équipe ou des outils qui prennent le relais de l'opérationnel.</p>
-          <h4>✅ Résumé</h4>
-          <p>Réussir sa transition vers l'entrepreneuriat, c'est tester avant d'investir, choisir un modèle économique clair, et construire des processus qui ne dépendent pas uniquement de vous.</p>
-          <h4>☑️ Checklist</h4>
-          <div class="formation-checklist">
-            <label><input type="checkbox" data-key="f1-1"> <span>Idée validée par au moins 10 échanges avec des clients potentiels</span></label>
-            <label><input type="checkbox" data-key="f1-2"> <span>Modèle économique formalisé sur une page</span></label>
-            <label><input type="checkbox" data-key="f1-3"> <span>Premier canal d'acquisition identifié et testé</span></label>
-            <label><input type="checkbox" data-key="f1-4"> <span>Statut légal ou indépendant complémentaire vérifié</span></label>
-            <label><input type="checkbox" data-key="f1-5"> <span>Un processus clé documenté (ex. onboarding client)</span></label>
-          </div>
-          <h4>🔗 Sources</h4>
-          <ul class="f-sources">
-            <li>SPF Économie — Créer son entreprise en Belgique : <a href="https://economie.fgov.be" target="_blank" rel="noopener">economie.fgov.be</a></li>
-            <li>Eric Ries, <em>The Lean Startup</em> (2011)</li>
-            <li>Peter Thiel, <em>Zero to One</em> (2014)</li>
-          </ul>
-        </div>
-        </div></div>
-      </details>
+    <section id="sessions">
+      <h2><span class="num">🎓</span>Vos ateliers, session par session</h2>
+      <p class="section-sub">Un seul atelier possible par session (ils se déroulent en parallèle).</p>
 
-      <details class="formation-card" data-category="business">
-        <summary><h3><span class="fnum">2</span> 🏢 Immobilier</h3><span class="chev" aria-hidden="true">▾</span></summary>
-        <div class="f-content"><div class="f-content-inner">
-        <div class="f-topics">
-          <ul>
-            <li>Acheter sa première maison intelligemment</li>
-            <li>Construire un empire immobilier en partant de zéro</li>
-            <li>Appartement, maison ou immeuble de rapport ?</li>
-            <li>Les secrets de l'investissement locatif</li>
-            <li>Investir dans les terrains en Afrique</li>
-            <li>Comment analyser un bon investissement</li>
-          </ul>
-        </div>
-        <div class="f-body">
-          <h4>📘 Contenu</h4>
-          <p>L'achat d'un premier bien repose sur trois piliers : la capacité d'emprunt réelle (charges + apport), l'emplacement, et la marge de négociation. L'investissement locatif ajoute une variable clé : le rendement locatif brut (loyer annuel / prix d'achat), qui doit dépasser les charges (crédit, précompte immobilier, entretien) pour dégager un cash-flow positif. Investir à l'étranger, par exemple sur des terrains en Afrique, multiplie les risques juridiques et de change : vérifier le titre de propriété, la fiscalité locale et la fiabilité de l'intermédiaire est indispensable. Un bon investissement s'analyse toujours sur trois angles : le prix par rapport au marché, le potentiel locatif, et la liquidité de revente.</p>
-          <h4>✅ Résumé</h4>
-          <p>Un achat immobilier réussi combine capacité d'emprunt réaliste, calcul de rendement locatif, et vigilance renforcée pour tout investissement à l'étranger.</p>
-          <h4>☑️ Checklist</h4>
-          <div class="formation-checklist">
-            <label><input type="checkbox" data-key="f2-1"> <span>Capacité d'emprunt calculée avec charges incluses</span></label>
-            <label><input type="checkbox" data-key="f2-2"> <span>Rendement locatif brut estimé avant offre</span></label>
-            <label><input type="checkbox" data-key="f2-3"> <span>Frais annexes chiffrés (notaire, précompte, entretien)</span></label>
-            <label><input type="checkbox" data-key="f2-4"> <span>Titre de propriété vérifié si investissement à l'étranger</span></label>
-            <label><input type="checkbox" data-key="f2-5"> <span>Stratégie de sortie / revente envisagée</span></label>
-          </div>
-          <h4>🔗 Sources</h4>
-          <ul class="f-sources">
-            <li>Fédération Royale du Notariat belge : <a href="https://www.notaire.be" target="_blank" rel="noopener">notaire.be</a></li>
-            <li>SPF Finances — fiscalité immobilière : <a href="https://finances.belgium.be" target="_blank" rel="noopener">finances.belgium.be</a></li>
-            <li>Robert Kiyosaki, <em>Rich Dad Poor Dad</em> (1997)</li>
-          </ul>
-        </div>
-        </div></div>
-      </details>
-
-      <details class="formation-card" data-category="dev">
-        <summary><h3><span class="fnum">3</span> 🧠 IA &amp; productivité</h3><span class="chev" aria-hidden="true">▾</span></summary>
-        <div class="f-content"><div class="f-content-inner">
-        <div class="f-topics">
-          <ul>
-            <li>Booster son entreprise grâce à l'IA</li>
-            <li>Les meilleurs outils IA pour entrepreneurs</li>
-            <li>L'IA au service des églises</li>
-            <li>Automatiser son entreprise</li>
-            <li>Créer du contenu 10x plus vite grâce à l'IA</li>
-            <li>L'art du prompting professionnel</li>
-            <li>Construire son assistant IA personnel</li>
-          </ul>
-        </div>
-        <div class="f-body">
-          <h4>📘 Contenu</h4>
-          <p>L'IA générative change surtout la vitesse d'exécution : rédaction, structuration d'idées et premiers jets de contenu peuvent être multipliés par dix, à condition de garder un contrôle humain sur la relecture et l'exactitude des faits. Le prompting professionnel consiste à donner du contexte (rôle, objectif, contraintes, format attendu) plutôt que des questions vagues. Pour une église ou une petite structure, un assistant IA peut centraliser la rédaction de messages, la préparation de supports ou la synthèse de documents longs — sans remplacer le discernement humain sur les sujets sensibles.</p>
-          <h4>✅ Résumé</h4>
-          <p>L'IA est un multiplicateur de vitesse pour la rédaction et l'organisation, à condition de structurer ses demandes (prompts) et de garder un contrôle humain sur le résultat.</p>
-          <h4>☑️ Checklist</h4>
-          <div class="formation-checklist">
-            <label><input type="checkbox" data-key="f3-1"> <span>Un outil IA choisi et testé sur une tâche récurrente</span></label>
-            <label><input type="checkbox" data-key="f3-2"> <span>Un modèle de prompt structuré (contexte + objectif + format) créé</span></label>
-            <label><input type="checkbox" data-key="f3-3"> <span>Une vérification systématique des faits avant publication</span></label>
-            <label><input type="checkbox" data-key="f3-4"> <span>Une tâche automatisée avec succès</span></label>
-          </div>
-          <h4>🔗 Sources</h4>
-          <ul class="f-sources">
-            <li>Ethan Mollick, <em>Co-Intelligence: Living and Working with AI</em> (2024)</li>
-            <li>Documentation officielle Anthropic (Claude) : <a href="https://docs.anthropic.com" target="_blank" rel="noopener">docs.anthropic.com</a></li>
-            <li>Harvard Business Review — articles sur l'IA et la productivité</li>
-          </ul>
-        </div>
-        </div></div>
-      </details>
-
-      <details class="formation-card" data-category="business">
-        <summary><h3><span class="fnum">4</span> 🎯 Marketing &amp; vente</h3><span class="chev" aria-hidden="true">▾</span></summary>
-        <div class="f-content"><div class="f-content-inner">
-        <div class="f-topics">
-          <ul>
-            <li>Trouver ses premiers clients</li>
-            <li>Doubler ses ventes grâce au marketing moderne</li>
-            <li>Construire une marque forte (branding)</li>
-            <li>Le marketing digital expliqué simplement</li>
-            <li>Les réseaux sociaux qui rapportent</li>
-            <li>Les tunnels de vente simplifiés</li>
-            <li>Attirer naturellement des clients</li>
-          </ul>
-        </div>
-        <div class="f-body">
-          <h4>📘 Contenu</h4>
-          <p>Les premiers clients viennent presque toujours d'un cercle proche ou d'une recommandation, avant qu'un canal marketing ne prenne le relais. Une marque forte repose sur une promesse claire et répétée, pas sur un logo. Le cadre « StoryBrand » popularisé par Donald Miller recommande de positionner le client comme le héros de l'histoire, et la marque comme le guide qui l'aide à résoudre son problème. Un tunnel de vente simple suit trois étapes : attirer l'attention (contenu gratuit), démontrer la valeur (essai, démonstration), puis proposer l'achat clairement.</p>
-          <h4>✅ Résumé</h4>
-          <p>Trouver ses premiers clients passe par le réseau proche, une promesse de marque claire, et un tunnel de vente en trois étapes simples.</p>
-          <h4>☑️ Checklist</h4>
-          <div class="formation-checklist">
-            <label><input type="checkbox" data-key="f4-1"> <span>Liste des 20 premiers contacts à solliciter établie</span></label>
-            <label><input type="checkbox" data-key="f4-2"> <span>Promesse de marque formulée en une phrase</span></label>
-            <label><input type="checkbox" data-key="f4-3"> <span>Un contenu gratuit ou une démo prête à partager</span></label>
-            <label><input type="checkbox" data-key="f4-4"> <span>Un tunnel de vente simple mis en place (attirer → démontrer → vendre)</span></label>
-          </div>
-          <h4>🔗 Sources</h4>
-          <ul class="f-sources">
-            <li>Donald Miller, <em>Building a StoryBrand</em> (2017)</li>
-            <li>HubSpot Academy — formations marketing gratuites : <a href="https://academy.hubspot.com" target="_blank" rel="noopener">academy.hubspot.com</a></li>
-            <li>Google Digital Garage — formation marketing digital gratuite</li>
-          </ul>
-        </div>
-        </div></div>
-      </details>
-
-      <details class="formation-card" data-category="business">
-        <summary><h3><span class="fnum">5</span> 💼 Emploi &amp; carrière</h3><span class="chev" aria-hidden="true">▾</span></summary>
-        <div class="f-content"><div class="f-content-inner">
-        <div class="f-topics">
-          <ul>
-            <li>Devenir incontournable sur le marché de l'emploi</li>
-            <li>Créer un CV irrésistible</li>
-            <li>Réussir tous ses entretiens</li>
-            <li>Augmenter sa valeur professionnelle</li>
-            <li>Comment négocier son salaire</li>
-            <li>Se réinventer après 40 ans</li>
-            <li>Les entreprises qui recrutent à Liège</li>
-          </ul>
-        </div>
-        <div class="f-body">
-          <h4>📘 Contenu</h4>
-          <p>Se démarquer sur le marché de l'emploi commence par un CV orienté résultats (chiffres, réalisations) plutôt qu'une liste de tâches. La préparation d'entretien gagne à s'appuyer sur la méthode STAR (Situation, Tâche, Action, Résultat) pour répondre aux questions comportementales. Négocier son salaire suppose de connaître sa valeur de marché et de formuler sa demande avec des arguments factuels plutôt qu'émotionnels. Se réinventer après 40 ans est facilité par la mise en avant de compétences transférables et un réseau professionnel actif.</p>
-          <h4>✅ Résumé</h4>
-          <p>Un CV orienté résultats, une préparation d'entretien structurée (méthode STAR) et une connaissance de sa valeur de marché font la différence sur le marché de l'emploi.</p>
-          <h4>☑️ Checklist</h4>
-          <div class="formation-checklist">
-            <label><input type="checkbox" data-key="f5-1"> <span>CV réécrit avec des résultats chiffrés</span></label>
-            <label><input type="checkbox" data-key="f5-2"> <span>3 réponses STAR préparées pour les questions fréquentes</span></label>
-            <label><input type="checkbox" data-key="f5-3"> <span>Fourchette salariale de son poste vérifiée</span></label>
-            <label><input type="checkbox" data-key="f5-4"> <span>Réseau professionnel activé (LinkedIn, contacts sectoriels)</span></label>
-          </div>
-          <h4>🔗 Sources</h4>
-          <ul class="f-sources">
-            <li>Actiris / Forem / VDAB — services régionaux de l'emploi en Belgique</li>
-            <li>Richard N. Bolles, <em>What Color Is Your Parachute?</em> (édition annuelle)</li>
-            <li>LinkedIn Learning — formations carrière</li>
-          </ul>
-        </div>
-        </div></div>
-      </details>
-
-      <details class="formation-card" data-category="finance">
-        <summary><h3><span class="fnum">6</span> 💰 Argent &amp; gestion</h3><span class="chev" aria-hidden="true">▾</span></summary>
-        <div class="f-content"><div class="f-content-inner">
-        <div class="f-topics">
-          <ul>
-            <li>Comprendre les bases de la finance personnelle</li>
-            <li>Budget Gold : maîtriser enfin son argent</li>
-            <li>Sortir définitivement des dettes</li>
-            <li>Construire un budget qui finance vos projets</li>
-            <li>Devenir financièrement libre</li>
-            <li>Les habitudes des personnes prospères</li>
-          </ul>
-        </div>
-        <div class="f-body">
-          <h4>📘 Contenu</h4>
-          <p>La finance personnelle repose sur un principe simple : dépenser moins que ce que l'on gagne, et automatiser l'épargne avant de dépenser le reste (« payez-vous en premier »). La méthode « boule de neige », popularisée par Dave Ramsey, consiste à rembourser les dettes de la plus petite à la plus grande pour créer une dynamique de victoires rapides. Un budget efficace prévoit des enveloppes pour les charges fixes, l'épargne et les projets, et se révise chaque mois. La liberté financière dépend surtout du taux d'épargne et de la diversification des sources de revenus.</p>
-          <h4>✅ Résumé</h4>
-          <p>Automatiser son épargne, rembourser ses dettes avec une méthode structurée, et budgétiser par enveloppes sont les bases d'une gestion financière saine.</p>
-          <h4>☑️ Checklist</h4>
-          <div class="formation-checklist">
-            <label><input type="checkbox" data-key="f6-1"> <span>Virement automatique d'épargne mis en place</span></label>
-            <label><input type="checkbox" data-key="f6-2"> <span>Liste des dettes classées de la plus petite à la plus grande</span></label>
-            <label><input type="checkbox" data-key="f6-3"> <span>Budget mensuel par enveloppes créé</span></label>
-            <label><input type="checkbox" data-key="f6-4"> <span>Une seconde source de revenu envisagée</span></label>
-          </div>
-          <h4>🔗 Sources</h4>
-          <ul class="f-sources">
-            <li>Wikifin.be — portail officiel d'éducation financière (FSMA) : <a href="https://www.wikifin.be" target="_blank" rel="noopener">wikifin.be</a></li>
-            <li>Dave Ramsey, <em>The Total Money Makeover</em> (2003)</li>
-          </ul>
-        </div>
-        </div></div>
-      </details>
-
-      <details class="formation-card" data-category="finance">
-        <summary><h3><span class="fnum">7</span> 📈 Investissements</h3><span class="chev" aria-hidden="true">▾</span></summary>
-        <div class="f-content"><div class="f-content-inner">
-        <div class="f-topics">
-          <ul>
-            <li>Comprendre la bourse sans être expert</li>
-            <li>Comment acheter ses premières actions</li>
-            <li>ETF ou actions individuelles ?</li>
-            <li>Les investissements accessibles aux débutants</li>
-            <li>Construire un portefeuille solide</li>
-            <li>Les erreurs classiques des investisseurs</li>
-          </ul>
-        </div>
-        <div class="f-body">
-          <h4>📘 Contenu</h4>
-          <p>Investir en bourse ne nécessite pas d'être expert : les ETF (fonds indiciels cotés) permettent de répliquer un marché entier (ex. MSCI World) avec des frais très bas et une diversification immédiate. Comparé au choix d'actions individuelles, l'ETF réduit le risque spécifique à une seule entreprise. Un portefeuille solide pour débutant combine généralement quelques ETF larges plutôt que de nombreuses lignes individuelles. L'erreur la plus fréquente reste de vouloir « battre le marché » à court terme au lieu d'investir régulièrement sur le long terme.</p>
-          <h4>✅ Résumé</h4>
-          <p>Les ETF offrent une diversification simple et peu coûteuse pour débuter en bourse ; la régularité des versements compte plus que le « timing » du marché.</p>
-          <h4>☑️ Checklist</h4>
-          <div class="formation-checklist">
-            <label><input type="checkbox" data-key="f7-1"> <span>Compte-titres ou compte d'investissement ouvert</span></label>
-            <label><input type="checkbox" data-key="f7-2"> <span>Un premier ETF diversifié identifié</span></label>
-            <label><input type="checkbox" data-key="f7-3"> <span>Versement programmé mensuel mis en place</span></label>
-            <label><input type="checkbox" data-key="f7-4"> <span>Horizon d'investissement (durée) clarifié</span></label>
-          </div>
-          <h4>🔗 Sources</h4>
-          <ul class="f-sources">
-            <li>Wikifin.be — section investissements (FSMA) : <a href="https://www.wikifin.be" target="_blank" rel="noopener">wikifin.be</a></li>
-            <li>Lindauer, Larimore &amp; Lindauer, <em>The Bogleheads' Guide to Investing</em> (2006)</li>
-          </ul>
-        </div>
-        </div></div>
-      </details>
-
-      <details class="formation-card" data-category="finance">
-        <summary><h3><span class="fnum">8</span> 🧮 Fiscalité</h3><span class="chev" aria-hidden="true">▾</span></summary>
-        <div class="f-content"><div class="f-content-inner">
-        <div class="f-topics">
-          <ul>
-            <li>Comprendre la fiscalité belge</li>
-            <li>Quel statut choisir ?</li>
-            <li>Optimiser légalement sa fiscalité</li>
-            <li>Les erreurs fiscales qui coûtent cher</li>
-            <li>TVA, impôts, cotisations : comprendre enfin</li>
-          </ul>
-        </div>
-        <div class="f-body">
-          <h4>📘 Contenu</h4>
-          <p>En Belgique, le choix du statut (indépendant personne physique, société) détermine le régime fiscal applicable : impôt des personnes physiques (IPP, taux progressif jusqu'à 50 %) ou impôt des sociétés (ISOC, taux de 20 à 25 %). Optimiser légalement sa fiscalité passe par la déduction des frais professionnels réels, le choix du bon statut selon le niveau de revenu, et l'anticipation des acomptes trimestriels pour éviter des majorations. La TVA, les cotisations sociales et l'impôt sont trois prélèvements distincts, souvent confondus en début d'activité, ce qui cause des erreurs de trésorerie.</p>
-          <h4>✅ Résumé</h4>
-          <p>Le choix du statut détermine la fiscalité applicable ; anticiper acomptes et frais déductibles évite les mauvaises surprises.</p>
-          <h4>☑️ Checklist</h4>
-          <div class="formation-checklist">
-            <label><input type="checkbox" data-key="f8-1"> <span>Statut fiscal vérifié par rapport au niveau de revenu prévu</span></label>
-            <label><input type="checkbox" data-key="f8-2"> <span>Frais professionnels déductibles listés</span></label>
-            <label><input type="checkbox" data-key="f8-3"> <span>Acomptes trimestriels anticipés dans la trésorerie</span></label>
-            <label><input type="checkbox" data-key="f8-4"> <span>Un point annuel avec un comptable planifié</span></label>
-          </div>
-          <h4>🔗 Sources</h4>
-          <ul class="f-sources">
-            <li>SPF Finances : <a href="https://finances.belgium.be" target="_blank" rel="noopener">finances.belgium.be</a></li>
-            <li>MyMinfin — plateforme fiscale officielle belge</li>
-            <li>Wikifin.be — section fiscalité</li>
-          </ul>
-        </div>
-        </div></div>
-      </details>
-
-      <details class="formation-card" data-category="finance">
-        <summary><h3><span class="fnum">9</span> 🤝 Financement</h3><span class="chev" aria-hidden="true">▾</span></summary>
-        <div class="f-content"><div class="f-content-inner">
-        <div class="f-topics">
-          <ul>
-            <li>Trouver des financements pour son projet</li>
-            <li>Convaincre une banque</li>
-            <li>Les aides disponibles en Belgique</li>
-            <li>Trouver des investisseurs</li>
-            <li>Préparer un dossier qui inspire confiance</li>
-          </ul>
-        </div>
-        <div class="f-body">
-          <h4>📘 Contenu</h4>
-          <p>Convaincre une banque ou un investisseur repose sur un dossier qui répond à trois questions : combien faut-il, pour quoi précisément, et comment sera-ce remboursé ou rentabilisé. En Belgique, plusieurs dispositifs régionaux complètent le financement bancaire classique : SOWALFIN (Wallonie), VLAIO (Flandre) et hub.brussels (Bruxelles) proposent garanties, prêts ou co-investissement pour réduire le risque perçu par les prêteurs. Un dossier qui inspire confiance présente toujours un plan financier réaliste et montre que le porteur de projet a lui-même investi dans son projet.</p>
-          <h4>✅ Résumé</h4>
-          <p>Un financement se prépare avec un plan financier réaliste et la connaissance des dispositifs régionaux belges qui réduisent le risque pour les prêteurs.</p>
-          <h4>☑️ Checklist</h4>
-          <div class="formation-checklist">
-            <label><input type="checkbox" data-key="f9-1"> <span>Montant précis du besoin de financement calculé</span></label>
-            <label><input type="checkbox" data-key="f9-2"> <span>Plan financier réaliste (scénario prudent) préparé</span></label>
-            <label><input type="checkbox" data-key="f9-3"> <span>Dispositifs régionaux pertinents identifiés (SOWALFIN/VLAIO/hub.brussels)</span></label>
-            <label><input type="checkbox" data-key="f9-4"> <span>Apport personnel (temps ou argent) démontré dans le dossier</span></label>
-          </div>
-          <h4>🔗 Sources</h4>
-          <ul class="f-sources">
-            <li>SOWALFIN : <a href="https://www.sowalfin.be" target="_blank" rel="noopener">sowalfin.be</a></li>
-            <li>VLAIO : <a href="https://www.vlaio.be" target="_blank" rel="noopener">vlaio.be</a></li>
-            <li>hub.brussels : <a href="https://hub.brussels" target="_blank" rel="noopener">hub.brussels</a></li>
-          </ul>
-        </div>
-        </div></div>
-      </details>
-
-      <details class="formation-card" data-category="finance">
-        <summary><h3><span class="fnum">10</span> 👫 Couple &amp; finances</h3><span class="chev" aria-hidden="true">▾</span></summary>
-        <div class="f-content"><div class="f-content-inner">
-        <div class="f-topics">
-          <ul>
-            <li>Faire de son couple une équipe financière</li>
-            <li>Construire des projets à deux</li>
-            <li>Gérer les conflits liés à l'argent</li>
-            <li>Construire un patrimoine en famille</li>
-            <li>Les habitudes des couples solides</li>
-          </ul>
-        </div>
-        <div class="f-body">
-          <h4>📘 Contenu</h4>
-          <p>Les couples qui gèrent bien leur argent définissent ensemble des règles claires : compte commun pour les charges partagées, transparence sur les revenus et dettes de chacun, et objectifs financiers communs. Les conflits liés à l'argent viennent rarement des montants mais des non-dits : discuter régulièrement du budget évite les malentendus. Construire un patrimoine en famille suppose d'aligner les décisions importantes (achat immobilier, épargne retraite) sur un horizon commun plutôt que des décisions prises séparément.</p>
-          <h4>✅ Résumé</h4>
-          <p>La transparence financière et un rendez-vous budget régulier en couple préviennent la plupart des conflits liés à l'argent.</p>
-          <h4>☑️ Checklist</h4>
-          <div class="formation-checklist">
-            <label><input type="checkbox" data-key="f10-1"> <span>Un compte commun ou une règle de répartition des charges définie</span></label>
-            <label><input type="checkbox" data-key="f10-2"> <span>Revenus et dettes partagés en toute transparence</span></label>
-            <label><input type="checkbox" data-key="f10-3"> <span>Un rendez-vous « budget du couple » mensuel planifié</span></label>
-            <label><input type="checkbox" data-key="f10-4"> <span>Un objectif financier commun formulé</span></label>
-          </div>
-          <h4>🔗 Sources</h4>
-          <ul class="f-sources">
-            <li>Wikifin.be — budget en couple et en famille</li>
-            <li>Ramit Sethi, <em>I Will Teach You to Be Rich</em> (chapitres couple/argent)</li>
-          </ul>
-        </div>
-        </div></div>
-      </details>
-
-      <details class="formation-card" data-category="dev">
-        <summary><h3><span class="fnum">11</span> 🧠 Développement personnel</h3><span class="chev" aria-hidden="true">▾</span></summary>
-        <div class="f-content"><div class="f-content-inner">
-        <div class="f-topics">
-          <ul>
-            <li>Le mindset des riches vs le mindset des pauvres</li>
-            <li>Changer sa relation avec l'argent</li>
-            <li>L'intelligence émotionnelle au service de la réussite</li>
-            <li>Développer une discipline financière</li>
-            <li>Comment Dieu développe les personnes qu'il élève</li>
-          </ul>
-        </div>
-        <div class="f-body">
-          <h4>📘 Contenu</h4>
-          <p>Le « mindset des riches » repose sur une croyance centrale : l'argent est un outil que l'on peut apprendre à faire fructifier, plutôt qu'une ressource qui « arrive » ou non par chance. Morgan Housel rappelle dans <em>The Psychology of Money</em> que le succès financier dépend davantage du comportement (patience, discipline) que de l'intelligence financière pure. Développer une discipline financière se construit par petites habitudes répétées plutôt que par de grandes résolutions ponctuelles. Sur le plan biblique, l'histoire de Joseph (Genèse 39-41) illustre comment la fidélité dans les petites responsabilités précède l'élévation à de plus grandes.</p>
-          <h4>✅ Résumé</h4>
-          <p>Le comportement (discipline, patience) compte davantage que le savoir pur pour réussir financièrement ; les petites habitudes répétées construisent la discipline.</p>
-          <h4>☑️ Checklist</h4>
-          <div class="formation-checklist">
-            <label><input type="checkbox" data-key="f11-1"> <span>Une croyance limitante sur l'argent identifiée et reformulée</span></label>
-            <label><input type="checkbox" data-key="f11-2"> <span>Une habitude financière automatisée (épargne, suivi budget)</span></label>
-            <label><input type="checkbox" data-key="f11-3"> <span>Un livre de développement personnel en cours de lecture</span></label>
-            <label><input type="checkbox" data-key="f11-4"> <span>Une réflexion personnelle sur Genèse 39-41 (Joseph) engagée</span></label>
-          </div>
-          <h4>🔗 Sources</h4>
-          <ul class="f-sources">
-            <li>Morgan Housel, <em>The Psychology of Money</em> (2020)</li>
-            <li>Carol Dweck, <em>Mindset: The New Psychology of Success</em> (2006)</li>
-            <li>Bible : Genèse 39-41</li>
-          </ul>
-        </div>
-        </div></div>
-      </details>
-
-      <details class="formation-card" data-category="dev">
-        <summary><h3><span class="fnum">12</span> 📢 Communication</h3><span class="chev" aria-hidden="true">▾</span></summary>
-        <div class="f-content"><div class="f-content-inner">
-        <div class="f-topics">
-          <ul>
-            <li>Prendre la parole avec impact</li>
-            <li>Construire une présentation mémorable</li>
-            <li>Créer des visuels professionnels</li>
-            <li>Organiser une masterclass efficace</li>
-            <li>Captiver son auditoire</li>
-          </ul>
-        </div>
-        <div class="f-body">
-          <h4>📘 Contenu</h4>
-          <p>Une prise de parole percutante suit une structure simple : un message central unique, une histoire ou un exemple concret pour l'illustrer, et un appel à l'action clair. Les présentations mémorables, analysées par Carmine Gallo à travers les conférences TED, misent sur l'émotion et la simplicité visuelle plutôt que sur la surcharge d'informations. Organiser une masterclass efficace suppose de préparer un objectif pédagogique unique par session, et de prévoir des moments d'interaction plutôt qu'un monologue continu.</p>
-          <h4>✅ Résumé</h4>
-          <p>Un message central clair, une histoire pour l'incarner, et de l'interaction plutôt qu'un monologue font une communication qui marque les esprits.</p>
-          <h4>☑️ Checklist</h4>
-          <div class="formation-checklist">
-            <label><input type="checkbox" data-key="f12-1"> <span>Message central de la prochaine intervention formulé en une phrase</span></label>
-            <label><input type="checkbox" data-key="f12-2"> <span>Une histoire ou un exemple concret préparé pour l'illustrer</span></label>
-            <label><input type="checkbox" data-key="f12-3"> <span>Support visuel simplifié (moins de texte, plus d'images)</span></label>
-            <label><input type="checkbox" data-key="f12-4"> <span>Un moment d'interaction prévu avec l'auditoire</span></label>
-          </div>
-          <h4>🔗 Sources</h4>
-          <ul class="f-sources">
-            <li>Carmine Gallo, <em>Talk Like TED</em> (2014)</li>
-            <li>Toastmasters International : <a href="https://www.toastmasters.org" target="_blank" rel="noopener">toastmasters.org</a></li>
-            <li>TED.com — conférences sur la prise de parole</li>
-          </ul>
-        </div>
-        </div></div>
-      </details>
-
-      <details class="formation-card" data-category="dev">
-        <summary><h3><span class="fnum">13</span> 🖋️ Écriture &amp; marque personnelle</h3><span class="chev" aria-hidden="true">▾</span></summary>
-        <div class="f-content"><div class="f-content-inner">
-        <div class="f-topics">
-          <ul>
-            <li>Écrire son premier livre en 9 mois</li>
-            <li>Publier son livre</li>
-            <li>Construire sa marque personnelle</li>
-            <li>Devenir une référence dans son domaine</li>
-            <li>Transformer son expertise en revenus</li>
-          </ul>
-        </div>
-        <div class="f-body">
-          <h4>📘 Contenu</h4>
-          <p>Écrire un livre en quelques mois est réaliste avec une méthode : définir un plan de chapitres avant de rédiger, s'astreindre à un volume de mots régulier plutôt qu'attendre l'inspiration, et réserver la relecture/correction à une phase distincte de l'écriture. Publier peut passer par l'auto-édition (Amazon KDP, ou des plateformes francophones comme Bookelis), une option de plus en plus crédible pour construire sa marque personnelle. Devenir une référence dans son domaine se construit par la régularité de la publication sur un sujet précis plutôt que par la dispersion.</p>
-          <h4>✅ Résumé</h4>
-          <p>Un plan de chapitres, un rythme d'écriture régulier, et une régularité de publication permettent de transformer son expertise en livre puis en marque personnelle.</p>
-          <h4>☑️ Checklist</h4>
-          <div class="formation-checklist">
-            <label><input type="checkbox" data-key="f13-1"> <span>Plan de chapitres du livre esquissé</span></label>
-            <label><input type="checkbox" data-key="f13-2"> <span>Un rythme d'écriture hebdomadaire fixé</span></label>
-            <label><input type="checkbox" data-key="f13-3"> <span>Plateforme d'auto-édition choisie (ex. KDP, Bookelis)</span></label>
-            <label><input type="checkbox" data-key="f13-4"> <span>Un sujet de spécialisation clair pour sa marque personnelle défini</span></label>
-          </div>
-          <h4>🔗 Sources</h4>
-          <ul class="f-sources">
-            <li>Stephen King, <em>On Writing</em> (2000)</li>
-            <li>Amazon KDP : <a href="https://kdp.amazon.com" target="_blank" rel="noopener">kdp.amazon.com</a></li>
-            <li>Bookelis — plateforme d'auto-édition francophone</li>
-          </ul>
-        </div>
-        </div></div>
-      </details>
-
-      <details class="formation-card" data-category="business">
-        <summary><h3><span class="fnum">14</span> 🕴️ Consulting</h3><span class="chev" aria-hidden="true">▾</span></summary>
-        <div class="f-content"><div class="f-content-inner">
-        <div class="f-topics">
-          <ul>
-            <li>Devenir consultant</li>
-            <li>Vendre son expertise</li>
-            <li>Fixer ses tarifs</li>
-            <li>Trouver ses premiers clients</li>
-            <li>Construire une activité haut de gamme</li>
-          </ul>
-        </div>
-        <div class="f-body">
-          <h4>📘 Contenu</h4>
-          <p>Devenir consultant suppose de transformer une expertise en offre vendable : un problème précis résolu, pour une cible précise, à un tarif clair. Fixer ses tarifs au forfait plutôt qu'à l'heure valorise mieux le résultat obtenu par le client que le temps passé. Les premiers clients viennent le plus souvent du réseau existant ou de plateformes spécialisées (comme Malt) avant qu'un bouche-à-oreille ne prenne le relais. Une activité de consulting haut de gamme se construit en se spécialisant sur un secteur ou un problème précis plutôt qu'en restant généraliste.</p>
-          <h4>✅ Résumé</h4>
-          <p>Un consulting rentable repose sur une offre précise, un tarif au forfait plutôt qu'à l'heure, et une spécialisation progressive.</p>
-          <h4>☑️ Checklist</h4>
-          <div class="formation-checklist">
-            <label><input type="checkbox" data-key="f14-1"> <span>Offre de consulting formulée en une phrase (problème + cible + résultat)</span></label>
-            <label><input type="checkbox" data-key="f14-2"> <span>Grille tarifaire au forfait établie</span></label>
-            <label><input type="checkbox" data-key="f14-3"> <span>Profil créé sur une plateforme de mise en relation (ex. Malt)</span></label>
-            <label><input type="checkbox" data-key="f14-4"> <span>Un premier client ou une étude de cas identifié</span></label>
-          </div>
-          <h4>🔗 Sources</h4>
-          <ul class="f-sources">
-            <li>Alan Weiss, <em>Getting Started in Consulting</em> (2009)</li>
-            <li>Malt — plateforme de freelances/consultants : <a href="https://www.malt.fr" target="_blank" rel="noopener">malt.fr</a></li>
-          </ul>
-        </div>
-        </div></div>
-      </details>
-
-      <details class="formation-card" data-category="business">
-        <summary><h3><span class="fnum">15</span> 📍 Belgique &amp; opportunités</h3><span class="chev" aria-hidden="true">▾</span></summary>
-        <div class="f-content"><div class="f-content-inner">
-        <div class="f-topics">
-          <ul>
-            <li>Les secteurs d'avenir en Belgique</li>
-            <li>Les secteurs porteurs à Liège</li>
-            <li>Les entreprises liégeoises qui recrutent</li>
-            <li>Où investir en Belgique aujourd'hui ?</li>
-            <li>Comment se positionner pour intégrer les meilleures entreprises</li>
-          </ul>
-        </div>
-        <div class="f-body">
-          <h4>📘 Contenu</h4>
-          <p>Certains secteurs affichent une croissance ou une pénurie de talents plus marquée en Belgique : numérique, construction durable, santé, logistique. À Liège, la logistique (aéroport de Liège), la biotech et les technologies environnementales sont régulièrement identifiées comme porteuses par les acteurs économiques régionaux. Se positionner pour intégrer les meilleures entreprises suppose de suivre les rapports sectoriels publiés par les fédérations professionnelles et les organismes régionaux de l'emploi, plutôt que de se fier uniquement aux offres publiées.</p>
-          <h4>✅ Résumé</h4>
-          <p>Suivre les rapports sectoriels régionaux et cibler les secteurs en tension (numérique, logistique, santé) augmente ses chances de saisir les meilleures opportunités à Liège et en Belgique.</p>
-          <h4>☑️ Checklist</h4>
-          <div class="formation-checklist">
-            <label><input type="checkbox" data-key="f15-1"> <span>Trois secteurs porteurs identifiés pour son profil</span></label>
-            <label><input type="checkbox" data-key="f15-2"> <span>Rapport sectoriel régional consulté (Forem, Agoria, Statbel)</span></label>
-            <label><input type="checkbox" data-key="f15-3"> <span>Réseau professionnel dans le secteur ciblé activé</span></label>
-            <label><input type="checkbox" data-key="f15-4"> <span>Veille mise en place sur les entreprises qui recrutent à Liège</span></label>
-          </div>
-          <h4>🔗 Sources</h4>
-          <ul class="f-sources">
-            <li>Statbel — statistiques officielles belges : <a href="https://statbel.fgov.be" target="_blank" rel="noopener">statbel.fgov.be</a></li>
-            <li>Le Forem (Wallonie) — rapports sectoriels : <a href="https://www.leforem.be" target="_blank" rel="noopener">leforem.be</a></li>
-            <li>Agoria — fédération de l'industrie technologique belge</li>
-          </ul>
-        </div>
-        </div></div>
-      </details>
-
-      <details class="formation-card formation-wide" data-category="foi">
-        <summary><h3><span class="fnum">16</span> 📖 Foi &amp; finances</h3><span class="chev" aria-hidden="true">▾</span></summary>
-        <div class="f-content"><div class="f-content-inner">
-        <div class="f-topics">
-          <div class="cols">
-            <ul>
-              <li>Les principes bibliques de la prospérité</li>
-              <li>Le mystère caché de la dîme</li>
-              <li>La gestion biblique des richesses</li>
-              <li>L'intendance selon le Royaume</li>
-            </ul>
-            <ul>
-              <li>Les erreurs spirituelles qui bloquent nos finances</li>
-              <li>Argent, foi et intégrité</li>
-              <li>Le travail dans la perspective biblique</li>
-              <li>Entrepreneuriat et appel de Dieu</li>
-            </ul>
-          </div>
-        </div>
-        <div class="f-body">
-          <h4>📘 Contenu</h4>
-          <p>La Bible aborde l'argent comme un sujet spirituel à part entière : plus de 2000 versets traitent des richesses et de la gestion des biens. Le principe de la dîme (Malachie 3:10) et la parabole des talents (Matthieu 25:14-30) enseignent que la gestion fidèle de peu précède la responsabilité sur davantage. L'intendance selon le Royaume consiste à considérer ses ressources comme confiées par Dieu plutôt que comme une propriété absolue (Deutéronome 8:18). La Bible met aussi en garde contre l'amour de l'argent plutôt que l'argent lui-même (1 Timothée 6:10).</p>
-          <h4>✅ Résumé</h4>
-          <p>La gestion biblique des finances repose sur l'intendance (les biens sont confiés, pas possédés), la fidélité dans le peu, et une vigilance sur la place donnée à l'argent.</p>
-          <h4>☑️ Checklist</h4>
-          <div class="formation-checklist">
-            <label><input type="checkbox" data-key="f16-1"> <span>Un temps de réflexion sur Malachie 3:10 et la dîme engagé</span></label>
-            <label><input type="checkbox" data-key="f16-2"> <span>La parabole des talents (Matthieu 25) relue et appliquée à sa situation</span></label>
-            <label><input type="checkbox" data-key="f16-3"> <span>Une pratique de générosité régulière mise en place</span></label>
-            <label><input type="checkbox" data-key="f16-4"> <span>Une conversation avec un responsable spirituel sur sa relation à l'argent envisagée</span></label>
-          </div>
-          <h4>🔗 Sources</h4>
-          <ul class="f-sources">
-            <li>Bible : Malachie 3:10 ; Matthieu 25:14-30 ; Deutéronome 8:18 ; 1 Timothée 6:10</li>
-            <li>Robert Morris, <em>The Blessed Life</em> (2002)</li>
-            <li>Crown Financial Ministries : <a href="https://www.crown.org" target="_blank" rel="noopener">crown.org</a></li>
-          </ul>
-          <p class="tagline">Équiper · Inspirer · Transformer · Impacter</p>
-        </div>
-        </div></div>
-      </details>
-    </div>
-
-    <div class="grid-3" style="margin-top:24px;">
-      <div class="mini-card">
-        <h3>🎯 Notre mission</h3>
-        <p>Vous doter de compétences concrètes pour impacter votre génération et bâtir un héritage durable.</p>
-      </div>
-      <div class="mini-card">
-        <h3>👥 Pour qui ?</h3>
-        <p>Entrepreneurs, indépendants, salariés, étudiants, couples.</p>
-      </div>
-      <div class="mini-card">
-        <h3>🗂️ Format des ateliers</h3>
-        <p>Pratique, interactif, à jour, orienté résultats.</p>
-      </div>
-    </div>
-
-    <div class="formations-closing">
-      <p class="big">APPRENDRE · APPLIQUER · PROGRESSER · IMPACTER</p>
-      <p>9 mois pour changer votre vie financière et entrepreneuriale !</p>
-    </div>
-  </section>
-
-  <section id="demarrer">
-    <h2><span class="num">🧭</span>Créer son activité : les étapes indispensables</h2>
-    <p class="section-sub">Les démarches administratives pour se lancer comme indépendant ou en société en Belgique, d'après <strong>Wikifin.be</strong> (portail officiel d'éducation financière de la FSMA) et le <strong>SPF Économie</strong>. Certaines obligations varient ensuite selon votre secteur d'activité — voir le détail plus bas.</p>
-
-    <div class="steps">
-      <div class="step">
-        <div class="badge">1</div>
-        <div>
-          <h3>Valider son projet et son plan financier</h3>
-          <p>Formalisez qui sont vos clients, ce que vous vendez et à quel prix, puis estimez vos revenus et charges sur 12 à 24 mois. Un plan financier réaliste est souvent exigé par les banques et les guichets d'entreprises.</p>
-          <p class="src-note">Source : Wikifin.be — « Devenir indépendant » ; SPF Économie</p>
+      <div class="card session-block">
+        <h3 id="session1-title">Session 1 <span class="session-time">10h30 – 11h45</span></h3>
+        <div class="atelier-options" data-session="1" role="radiogroup" aria-labelledby="session1-title">
+          <label class="atelier-option"><input type="radio" name="session1" value="A — Gary Shembo : Ton salaire n'est qu'un départ"><span><span class="letter">A</span></span><span><strong>Gary Shembo</strong><span class="topic">Ton salaire n'est qu'un départ. Créer une nouvelle entrée d'argent.</span></span></label>
+          <label class="atelier-option"><input type="radio" name="session1" value="B — Alain Muluwayi : Premier achat immobilier"><span><span class="letter">B</span></span><span><strong>Alain Muluwayi</strong><span class="topic">Premier achat immobilier : évitez les erreurs grâce à ces 6 étapes essentielles.</span></span></label>
+          <label class="atelier-option"><input type="radio" name="session1" value="C — Ps Fithermann Atchehoun : Augmente ta valeur professionnelle avec l'IA"><span><span class="letter">C</span></span><span><strong>Ps Fithermann Atchehoun</strong><span class="topic">Augmente ta valeur professionnelle avec l'IA.</span></span></label>
+          <label class="atelier-option"><input type="radio" name="session1" value="D — Ps Dominique : Comment créer de la richesse en partant de zéro"><span><span class="letter">D</span></span><span><strong>Ps Dominique</strong><span class="topic">Comment créer de la richesse en partant de zéro.</span></span></label>
+          <label class="atelier-option none-option"><input type="radio" name="session1" value="Je ne participe pas à cette session"><span>—</span><span>Je ne participe pas à cette session</span></label>
         </div>
       </div>
 
-      <div class="step">
-        <div class="badge">2</div>
-        <div>
-          <h3>Choisir sa forme juridique</h3>
-          <p>Indépendant en personne physique (démarche simple, responsabilité illimitée) ou société comme la SRL (responsabilité limitée, plan financier exigé, souvent passage chez un notaire). Ce choix détermine votre fiscalité et vos obligations comptables.</p>
-          <p class="src-note">Source : SPF Économie ; Wikifin.be</p>
+      <div class="card session-block">
+        <h3 id="session2-title">Session 2 <span class="session-time">12h00 – 13h15</span></h3>
+        <div class="atelier-options" data-session="2" role="radiogroup" aria-labelledby="session2-title">
+          <label class="atelier-option"><input type="radio" name="session2" value="A — Alexandra Kizizié Uhlrich : Savoir se vendre"><span><span class="letter">A</span></span><span><strong>Alexandra Kizizié Uhlrich</strong><span class="topic">Savoir se vendre pour créer des opportunités.</span></span></label>
+          <label class="atelier-option"><input type="radio" name="session2" value="B — Alain Muluwayi : Financer un 2e bien immobilier"><span><span class="letter">B</span></span><span><strong>Alain Muluwayi</strong><span class="topic">Comment financer et acquérir un deuxième bien immobilier : 4 clés essentielles.</span></span></label>
+          <label class="atelier-option"><input type="radio" name="session2" value="C — Ps Fithermann Atchehoun : Transforme tes compétences en revenus grâce à l'IA"><span><span class="letter">C</span></span><span><strong>Ps Fithermann Atchehoun</strong><span class="topic">Transforme tes compétences en revenus grâce à l'IA.</span></span></label>
+          <label class="atelier-option"><input type="radio" name="session2" value="D — Polo Mpoku : Du capital relationnel au capital financier"><span><span class="letter">D</span></span><span><strong>Polo Mpoku</strong><span class="topic">Du capital relationnel au capital financier.</span></span></label>
+          <label class="atelier-option none-option"><input type="radio" name="session2" value="Je ne participe pas à cette session"><span>—</span><span>Je ne participe pas à cette session</span></label>
         </div>
       </div>
 
-      <div class="step">
-        <div class="badge">3</div>
-        <div>
-          <h3>Vérifier l'accès à la profession, si votre activité est réglementée</h3>
-          <p>Certains métiers (construction, HORECA, soins esthétiques, immobilier…) exigent de prouver des compétences professionnelles avant de pouvoir s'inscrire à la BCE. Ce point est contrôlé par le guichet d'entreprises lors de l'inscription — voir le détail par secteur ci-dessous.</p>
-          <p class="src-note">Source : SPF Économie — « Accès à la profession »</p>
+      <div class="card" style="padding:14px 20px;margin-bottom:18px;background:#fef1e2;border:none;">
+        <strong style="color:#9a5200;">13h15 – 14h30 · Grande pause</strong> <span style="color:#9a5200;">— Stands, marketplace, restauration, networking</span>
+      </div>
+
+      <div class="card session-block">
+        <h3 id="session3-title">Session 3 <span class="session-time">14h30 – 15h45</span></h3>
+        <div class="atelier-options" data-session="3" role="radiogroup" aria-labelledby="session3-title">
+          <label class="atelier-option"><input type="radio" name="session3" value="A — Alexandra Kizizié Uhlrich : Transformer une idée en projet concret"><span><span class="letter">A</span></span><span><strong>Alexandra Kizizié Uhlrich</strong><span class="topic">Transformer une idée en projet concret.</span></span></label>
+          <label class="atelier-option"><input type="radio" name="session3" value="B — Alain Muluwayi : Transmettre son patrimoine"><span><span class="letter">B</span></span><span><strong>Alain Muluwayi</strong><span class="topic">Déjà propriétaire ? Transmettre votre patrimoine en limitant les coûts et les droits de succession.</span></span></label>
+          <label class="atelier-option"><input type="radio" name="session3" value="C — Ps Dominique : Maîtriser l'art de l'épargne"><span><span class="letter">C</span></span><span><strong>Ps Dominique</strong><span class="topic">Maîtriser l'art de l'épargne pour mieux investir.</span></span></label>
+          <label class="atelier-option"><input type="radio" name="session3" value="D — Anne-Claire Siliki : Deviens une réponse"><span><span class="letter">D</span></span><span><strong>Anne-Claire Siliki</strong><span class="topic">Deviens une réponse : comment rendre ta valeur indispensable dans un monde qui change.</span></span></label>
+          <label class="atelier-option none-option"><input type="radio" name="session3" value="Je ne participe pas à cette session"><span>—</span><span>Je ne participe pas à cette session</span></label>
         </div>
       </div>
 
-      <div class="step">
-        <div class="badge">4</div>
-        <div>
-          <h3>Ouvrir un compte bancaire professionnel</h3>
-          <p>Obligatoire pour toute société, fortement conseillé pour les indépendants en personne physique, afin de séparer clairement finances professionnelles et personnelles.</p>
-          <p class="src-note">Source : Wikifin.be</p>
+      <div class="card session-block">
+        <h3 id="session4-title">Session 4 <span class="session-time">16h00 – 17h15</span></h3>
+        <div class="atelier-options" data-session="4" role="radiogroup" aria-labelledby="session4-title">
+          <label class="atelier-option"><input type="radio" name="session4" value="A — Ps Fithermann Atchehoun : Et si l'IA devenait l'équipe"><span><span class="letter">A</span></span><span><strong>Ps Fithermann Atchehoun</strong><span class="topic">Et si l'IA devenait l'équipe que tu n'as pas encore les moyens de recruter ?</span></span></label>
+          <label class="atelier-option"><input type="radio" name="session4" value="B — Ps Dominique : La discipline d'un entrepreneur productif"><span><span class="letter">B</span></span><span><strong>Ps Dominique</strong><span class="topic">La discipline d'un entrepreneur productif.</span></span></label>
+          <label class="atelier-option"><input type="radio" name="session4" value="C — Polo Mpoku : De la relation à l'investissement"><span><span class="letter">C</span></span><span><strong>Polo Mpoku</strong><span class="topic">De la relation à l'investissement : présenter son projet et lever des fonds tout en restant maître de sa vision.</span></span></label>
+          <label class="atelier-option"><input type="radio" name="session4" value="D — Boris Akoe : Bâtir une valeur qui traverse les générations"><span><span class="letter">D</span></span><span><strong>Boris Akoe</strong><span class="topic">Bâtir une valeur qui traverse les générations : créer, préserver et transmettre ce que vous construisez.</span></span></label>
+          <label class="atelier-option none-option"><input type="radio" name="session4" value="Je ne participe pas à cette session"><span>—</span><span>Je ne participe pas à cette session</span></label>
         </div>
       </div>
+    </section>
 
-      <div class="step">
-        <div class="badge">5</div>
-        <div>
-          <h3>S'inscrire à la Banque-Carrefour des Entreprises (BCE)</h3>
-          <p>Toute activité économique doit être enregistrée via un <strong>guichet d'entreprises agréé</strong> (Acerta, Securex, Partena, UCM, Liantis…), moyennant des frais administratifs (environ 90-105 €). Vous obtenez un numéro d'entreprise unique.</p>
-          <p class="src-note">Source : SPF Économie ; Banque-Carrefour des Entreprises</p>
+    <section id="formSection">
+      <h2><span class="num">📝</span>Vos coordonnées</h2>
+      <p class="section-sub">Une confirmation de votre inscription vous sera envoyée par e-mail.</p>
+      <div class="card">
+        <div class="config-warning" id="configWarning">
+          ⚠️ Le formulaire n'est pas encore connecté à un système d'inscription. Contactez l'organisateur.
         </div>
-      </div>
-
-      <div class="step">
-        <div class="badge">6</div>
-        <div>
-          <h3>S'affilier à une caisse d'assurances sociales</h3>
-          <p>Obligatoire dès le premier jour d'activité, même à temps partiel. Cette affiliation ouvre les droits à la pension, aux soins de santé et au droit passerelle en cas de difficulté.</p>
-          <p class="src-note">Source : Wikifin.be — « Cotisations sociales des indépendants » ; INASTI</p>
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="badge">7</div>
-        <div>
-          <h3>S'enregistrer à la TVA, ou vérifier la franchise</h3>
-          <p>La plupart des activités doivent s'enregistrer à la TVA auprès du SPF Finances. Le régime de la franchise dispense les petites entreprises (chiffre d'affaires ≤ 25 000 €/an) de facturer la TVA, mais aussi d'en récupérer sur leurs achats.</p>
-          <p class="src-note">Source : SPF Finances ; Wikifin.be</p>
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="badge">8</div>
-        <div>
-          <h3>Souscrire les assurances nécessaires</h3>
-          <p>La responsabilité civile professionnelle est obligatoire pour de nombreux métiers réglementés et conseillée pour les autres ; l'assurance accidents du travail est obligatoire dès le premier employé engagé.</p>
-          <p class="src-note">Source : Wikifin.be — « Assurances de l'indépendant »</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <h3 class="subsection-title">🏷️ Les démarches spécifiques selon votre secteur</h3>
-      <p class="section-sub">Au-delà des 8 étapes ci-dessus, certains secteurs imposent des obligations supplémentaires. Cliquez sur votre secteur pour le détail.</p>
-
-      <div class="grid-3">
-        <details class="formation-card">
-          <summary><h4><span class="fnum">🛍️</span> Commerce &amp; vente (magasin, e-commerce)</h4><span class="chev" aria-hidden="true">▾</span></summary>
-          <div class="f-content"><div class="f-content-inner">
-          <div class="f-body" style="border-top:none;padding-top:0;">
-            <p>Un commerce physique doit vérifier le permis d'environnement ou d'urbanisme lié au local, ainsi que les règles d'affichage des prix. Un site de vente en ligne doit en plus respecter le droit de la consommation : mentions légales, conditions générales de vente, droit de rétractation de 14 jours, et conformité RGPD pour les données clients.</p>
-            <h5>☑️ Checklist</h5>
-            <div class="formation-checklist">
-              <label><input type="checkbox" data-key="s1-1"> <span>Local commercial conforme (bail, urbanisme, permis d'environnement si nécessaire)</span></label>
-              <label><input type="checkbox" data-key="s1-2"> <span>Affichage des prix conforme à la réglementation</span></label>
-              <label><input type="checkbox" data-key="s1-3"> <span>CGV et mentions légales rédigées (si vente en ligne)</span></label>
-              <label><input type="checkbox" data-key="s1-4"> <span>Politique de confidentialité RGPD en place</span></label>
-              <label><input type="checkbox" data-key="s1-5"> <span>Solution de paiement sécurisée choisie</span></label>
-            </div>
-            <h5>🔗 Sources</h5>
-            <ul class="f-sources">
-              <li>SPF Économie — droit de la consommation : <a href="https://economie.fgov.be" target="_blank" rel="noopener">economie.fgov.be</a></li>
-              <li>Wikifin.be</li>
-            </ul>
+        <div class="field-grid">
+          <div class="field">
+            <label for="prenom">Prénom *</label>
+            <input type="text" id="prenom" name="prenom" required autocomplete="given-name">
           </div>
-          </div></div>
-        </details>
-
-        <details class="formation-card">
-          <summary><h4><span class="fnum">🍽️</span> HORECA (restauration, café, traiteur)</h4><span class="chev" aria-hidden="true">▾</span></summary>
-          <div class="f-content"><div class="f-content-inner">
-          <div class="f-body" style="border-top:none;padding-top:0;">
-            <p>Un enregistrement ou agrément auprès de l'<strong>AFSCA</strong> (Agence fédérale pour la Sécurité de la Chaîne Alimentaire) est obligatoire dès qu'on manipule des denrées alimentaires, avec un plan d'autocontrôle basé sur les principes HACCP. Une caisse enregistreuse certifiée (« caisse blanche ») est obligatoire au-delà d'un certain seuil de chiffre d'affaires en restauration. Certaines communes exigent aussi un permis d'exploitation ou d'environnement.</p>
-            <h5>☑️ Checklist</h5>
-            <div class="formation-checklist">
-              <label><input type="checkbox" data-key="s2-1"> <span>Enregistrement AFSCA effectué avant l'ouverture</span></label>
-              <label><input type="checkbox" data-key="s2-2"> <span>Plan d'autocontrôle HACCP en place</span></label>
-              <label><input type="checkbox" data-key="s2-3"> <span>Caisse enregistreuse certifiée (SCE) installée si seuil atteint</span></label>
-              <label><input type="checkbox" data-key="s2-4"> <span>Permis d'exploitation / environnement communal vérifié</span></label>
-              <label><input type="checkbox" data-key="s2-5"> <span>Normes d'hygiène et de sécurité incendie du local vérifiées</span></label>
-            </div>
-            <h5>🔗 Sources</h5>
-            <ul class="f-sources">
-              <li>AFSCA : <a href="https://www.favv-afsca.be" target="_blank" rel="noopener">favv-afsca.be</a></li>
-              <li>SPF Finances — caisse enregistreuse (SCE)</li>
-              <li>Wikifin.be</li>
-            </ul>
+          <div class="field">
+            <label for="nom">Nom *</label>
+            <input type="text" id="nom" name="nom" required autocomplete="family-name">
           </div>
-          </div></div>
-        </details>
-
-        <details class="formation-card">
-          <summary><h4><span class="fnum">🧱</span> Construction &amp; métiers du bâtiment</h4><span class="chev" aria-hidden="true">▾</span></summary>
-          <div class="f-content"><div class="f-content-inner">
-          <div class="f-body" style="border-top:none;padding-top:0;">
-            <p>Les métiers du gros œuvre, de la toiture, de la menuiserie ou de l'installation électrique/sanitaire/chauffage sont des professions réglementées : il faut prouver son <strong>accès à la profession</strong> (diplôme, expérience ou jury) avant l'inscription à la BCE. Depuis la loi Peeters-Borsus, une <strong>assurance décennale</strong> est obligatoire pour les entrepreneurs qui réalisent des travaux de gros œuvre fermé sur des habitations.</p>
-            <h5>☑️ Checklist</h5>
-            <div class="formation-checklist">
-              <label><input type="checkbox" data-key="s3-1"> <span>Accès à la profession prouvé (diplôme, expérience reconnue ou jury central)</span></label>
-              <label><input type="checkbox" data-key="s3-2"> <span>Assurance décennale souscrite si gros œuvre fermé</span></label>
-              <label><input type="checkbox" data-key="s3-3"> <span>Assurance RC professionnelle et accidents du travail en ordre</span></label>
-              <label><input type="checkbox" data-key="s3-4"> <span>Attestation de conformité électrique connue si applicable</span></label>
-            </div>
-            <h5>🔗 Sources</h5>
-            <ul class="f-sources">
-              <li>SPF Économie — accès à la profession : <a href="https://economie.fgov.be" target="_blank" rel="noopener">economie.fgov.be</a></li>
-              <li>SPF Économie — loi Peeters-Borsus (assurance décennale)</li>
-            </ul>
+          <div class="field" style="grid-column:1/-1;">
+            <label for="email">Adresse e-mail *</label>
+            <input type="email" id="email" name="email" required autocomplete="email">
           </div>
-          </div></div>
-        </details>
+        </div>
+        <div class="submit-row">
+          <p class="form-error" id="formError" role="alert" hidden></p>
+          <button type="submit" class="btn btn-primary" id="submitBtn">S'inscrire aux ateliers</button>
+          <p class="form-note">En vous inscrivant, vous acceptez d'être recontacté·e au sujet de l'événement Impact Finances.</p>
+        </div>
+      </div>
+    </section>
+  </form>
 
-        <details class="formation-card">
-          <summary><h4><span class="fnum">💇</span> Soins, bien-être &amp; esthétique</h4><span class="chev" aria-hidden="true">▾</span></summary>
-          <div class="f-content"><div class="f-content-inner">
-          <div class="f-body" style="border-top:none;padding-top:0;">
-            <p>La coiffure et les soins de beauté restent des professions réglementées en Belgique : un <strong>accès à la profession</strong> (diplôme ou expérience professionnelle validée) est requis pour s'inscrire à la BCE sous ce code d'activité, que ce soit en salon ou à domicile.</p>
-            <h5>☑️ Checklist</h5>
-            <div class="formation-checklist">
-              <label><input type="checkbox" data-key="s4-1"> <span>Accès à la profession vérifié pour l'activité exacte exercée</span></label>
-              <label><input type="checkbox" data-key="s4-2"> <span>Normes d'hygiène du salon ou du matériel respectées</span></label>
-              <label><input type="checkbox" data-key="s4-3"> <span>Assurance RC professionnelle souscrite</span></label>
-            </div>
-            <h5>🔗 Sources</h5>
-            <ul class="f-sources">
-              <li>SPF Économie — accès à la profession (coiffure, soins de beauté)</li>
-            </ul>
-          </div>
-          </div></div>
-        </details>
-
-        <details class="formation-card">
-          <summary><h4><span class="fnum">💻</span> Professions intellectuelles, digitales &amp; consulting</h4><span class="chev" aria-hidden="true">▾</span></summary>
-          <div class="f-content"><div class="f-content-inner">
-          <div class="f-body" style="border-top:none;padding-top:0;">
-            <p>Le conseil, le développement informatique, le coaching ou la création de contenu ne sont généralement pas soumis à une condition d'accès à la profession. Vérifiez néanmoins si votre activité relève d'un ordre professionnel réglementé (comptabilité — ITAA, activités juridiques) qui impose ses propres conditions d'inscription.</p>
-            <h5>☑️ Checklist</h5>
-            <div class="formation-checklist">
-              <label><input type="checkbox" data-key="s5-1"> <span>Vérification qu'aucun ordre professionnel réglementé ne s'applique à l'activité</span></label>
-              <label><input type="checkbox" data-key="s5-2"> <span>Contrats-types (conditions générales, contrat de prestation) préparés</span></label>
-              <label><input type="checkbox" data-key="s5-3"> <span>Protection de la propriété intellectuelle du travail créé envisagée</span></label>
-            </div>
-            <h5>🔗 Sources</h5>
-            <ul class="f-sources">
-              <li>SPF Économie — professions réglementées</li>
-              <li>ITAA — comptables et conseillers fiscaux : <a href="https://www.itaa.be" target="_blank" rel="noopener">itaa.be</a></li>
-            </ul>
-          </div>
-          </div></div>
-        </details>
-
-        <details class="formation-card">
-          <summary><h4><span class="fnum">🏘️</span> Immobilier &amp; professions financières</h4><span class="chev" aria-hidden="true">▾</span></summary>
-          <div class="f-content"><div class="f-content-inner">
-          <div class="f-body" style="border-top:none;padding-top:0;">
-            <p>Devenir agent immobilier impose une inscription à l'<strong>Institut professionnel des agents immobiliers (IPI)</strong> et le respect de son code de déontologie. Les activités de courtage financier ou d'assurance sont soumises à un agrément de la <strong>FSMA</strong> (Autorité des services et marchés financiers).</p>
-            <h5>☑️ Checklist</h5>
-            <div class="formation-checklist">
-              <label><input type="checkbox" data-key="s6-1"> <span>Inscription à l'IPI effectuée si agent immobilier</span></label>
-              <label><input type="checkbox" data-key="s6-2"> <span>Agrément FSMA obtenu si courtage financier/assurance</span></label>
-              <label><input type="checkbox" data-key="s6-3"> <span>Assurance RC professionnelle spécifique au secteur souscrite</span></label>
-            </div>
-            <h5>🔗 Sources</h5>
-            <ul class="f-sources">
-              <li>IPI : <a href="https://www.ipi.be" target="_blank" rel="noopener">ipi.be</a></li>
-              <li>FSMA : <a href="https://www.fsma.be" target="_blank" rel="noopener">fsma.be</a></li>
-            </ul>
-          </div>
-          </div></div>
-        </details>
-      </div>
-    </div>
-
-    <div class="callout" style="margin-top:24px;">
-      <strong>Bon à savoir</strong>
-      Ces informations sont fournies à titre indicatif et peuvent évoluer. Avant toute inscription, faites vérifier votre situation exacte par un <strong>guichet d'entreprises agréé</strong> ou consultez <a href="https://www.wikifin.be" target="_blank" rel="noopener">wikifin.be</a> et <a href="https://economie.fgov.be" target="_blank" rel="noopener">economie.fgov.be</a>.
-    </div>
-  </section>
-
-  <section id="ressources">
-    <h2><span class="num">🔗</span>Ressources utiles</h2>
-    <div class="grid-3">
-      <div class="mini-card">
-        <h3>SPF Économie</h3>
-        <p>Informations officielles sur la création d'entreprise en Belgique.</p>
-        <a href="https://economie.fgov.be" target="_blank" rel="noopener">economie.fgov.be →</a>
-      </div>
-      <div class="mini-card">
-        <h3>Banque-Carrefour des Entreprises</h3>
-        <p>Consulter les données publiques d'une entreprise enregistrée.</p>
-        <a href="https://kbopub.economie.fgov.be" target="_blank" rel="noopener">kbopub.economie.fgov.be →</a>
-      </div>
-      <div class="mini-card">
-        <h3>1819 (Bruxelles)</h3>
-        <p>Ligne d'information gratuite pour entrepreneurs bruxellois.</p>
-        <a href="https://1819.brussels" target="_blank" rel="noopener">1819.brussels →</a>
-      </div>
-      <div class="mini-card">
-        <h3>hub.brussels</h3>
-        <p>Accompagnement et aides pour entreprises en Région bruxelloise.</p>
-        <a href="https://hub.brussels" target="_blank" rel="noopener">hub.brussels →</a>
-      </div>
-      <div class="mini-card">
-        <h3>VLAIO</h3>
-        <p>Agence flamande pour l'innovation et l'entrepreneuriat.</p>
-        <a href="https://www.vlaio.be" target="_blank" rel="noopener">vlaio.be →</a>
-      </div>
-      <div class="mini-card">
-        <h3>SOWALFIN</h3>
-        <p>Financement et garanties pour entreprises wallonnes.</p>
-        <a href="https://www.sowalfin.be" target="_blank" rel="noopener">sowalfin.be →</a>
-      </div>
-    </div>
-  </section>
+  <div class="card success-panel" id="successPanel" role="status" aria-live="polite" tabindex="-1">
+    <div class="check">✅</div>
+    <h2>Inscription enregistrée !</h2>
+    <p>Merci, votre choix d'ateliers a bien été pris en compte. Une confirmation vient de vous être envoyée par e-mail.</p>
+    <ul class="recap" id="recapList"></ul>
+  </div>
 
 </main>
 
 <footer>
-  <div class="foot-inner">
-    <p><strong>Avertissement :</strong> ce guide est fourni à titre informatif et ne remplace pas un conseil juridique, comptable ou fiscal personnalisé. Les montants, seuils et procédures peuvent évoluer — vérifiez toujours les informations auprès d'un guichet d'entreprises agréé, d'un comptable ou des administrations compétentes (SPF Finances, SPF Économie, INASTI) avant toute décision.</p>
-    <p style="margin-top:14px;">IMPACT FINANCES — Guide de l'entrepreneur novice en Belgique — usage libre et gratuit.</p>
-  </div>
+  IMPACT FINANCES — ICC Liège · 17 au 20 septembre 2026
 </footer>
 
-<a href="#top" class="back-top" id="backTop" aria-label="Retour en haut">↑</a>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none"></iframe>
 
 <script>
-  // Mobile nav: keyboard support + aria-expanded sync
-  var navToggle = document.getElementById('navToggle');
-  var burger = document.querySelector('.burger');
-  function syncBurgerState(){
-    burger.setAttribute('aria-expanded', navToggle.checked ? 'true' : 'false');
-    burger.setAttribute('aria-label', navToggle.checked ? 'Fermer le menu' : 'Ouvrir le menu');
+  /* ===================================================================
+     CONFIGURATION — à remplacer une fois le Google Form créé :
+     1. Crée le Google Form avec les champs Prénom/Nom/Email + 4 questions
+        "Session 1..4" (choix multiple, mêmes libellés que value= ci-dessus).
+     2. Ouvre le formulaire → ⋮ → "Obtenir le lien pré-rempli", remplis
+        n'importe quoi dans chaque champ, clique "Obtenir le lien", copie-le.
+     3. Ce lien contient "entry.XXXXXXX=..." pour chaque champ : reporte
+        chaque entry.XXXXXXX ci-dessous, dans le même ordre que tes champs.
+     4. Remplace FORM_ACTION par l'URL d'action réelle : prends l'URL du
+        lien pré-rempli, remplace "viewform" par "formResponse".
+     5. Passe FORM_CONFIGURED à true.
+     =================================================================== */
+  var FORM_CONFIGURED = false;
+  var FORM_ACTION = "https://docs.google.com/forms/d/e/REPLACE_WITH_FORM_ID/formResponse";
+  var ENTRY = {
+    prenom:  "entry.REPLACE1",
+    nom:     "entry.REPLACE2",
+    email:   "entry.REPLACE3",
+    session1:"entry.REPLACE4",
+    session2:"entry.REPLACE5",
+    session3:"entry.REPLACE6",
+    session4:"entry.REPLACE7"
+  };
+
+  if(!FORM_CONFIGURED){
+    document.getElementById('configWarning').style.display = 'block';
   }
-  navToggle.addEventListener('change', syncBurgerState);
-  burger.addEventListener('keydown', function(e){
-    if(e.key === 'Enter' || e.key === ' '){
-      e.preventDefault();
-      navToggle.checked = !navToggle.checked;
-      syncBurgerState();
+
+  // Highlight selected atelier option
+  document.querySelectorAll('.atelier-option input').forEach(function(input){
+    input.addEventListener('change', function(){
+      var group = input.closest('.atelier-options');
+      group.querySelectorAll('.atelier-option').forEach(function(opt){
+        opt.classList.toggle('checked', opt.querySelector('input').checked);
+      });
+    });
+  });
+
+  // Parcours recommandés (pré-remplissage rapide)
+  var PARCOURS = {
+    patrimoine: [1, 1, 1, 3],   // session1->option B(idx1), session2->B, session3->B, session4->D(idx3)
+    entrepreneur: [3, 0, 0, 2], // D, A, A, C
+    revenus: [0, 2, 3, 1],      // A, C, D, B
+    ia: [2, 2, null, 0]         // C, C, (au choix, non présélectionné), A
+  };
+  document.querySelectorAll('.parcours-card').forEach(function(card){
+    card.addEventListener('click', function(){
+      document.querySelectorAll('.parcours-card').forEach(function(c){ c.classList.remove('selected'); });
+      card.classList.add('selected');
+      var key = card.getAttribute('data-parcours');
+      var picks = PARCOURS[key];
+      picks.forEach(function(optionIndex, i){
+        if(optionIndex === null) return;
+        var group = document.querySelector('.atelier-options[data-session="' + (i+1) + '"]');
+        var radios = group.querySelectorAll('input[type=radio]');
+        // radios order: A,B,C,D,none -> index matches optionIndex directly
+        radios[optionIndex].checked = true;
+        radios[optionIndex].dispatchEvent(new Event('change'));
+      });
+      document.getElementById('formSection').scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+
+  var ABSENT = "Je ne participe pas à cette session";
+
+  // A session left untouched is sent as "absent" so the Google Form always
+  // receives one of its known options.
+  function selectedValue(name){
+    var el = document.querySelector('input[name="' + name + '"]:checked');
+    return el ? el.value : ABSENT;
+  }
+
+  function showError(message){
+    var box = document.getElementById('formError');
+    box.textContent = message;
+    box.hidden = false;
+    box.scrollIntoView({block:'center'});
+  }
+
+  // Submission via hidden iframe (no redirect)
+  document.getElementById('rsvpForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    document.getElementById('formError').hidden = true;
+
+    var sessions = ['session1','session2','session3','session4'].map(selectedValue);
+
+    // Guard against a silently empty registration (no atelier picked at all)
+    if(sessions.every(function(v){ return v === ABSENT; })){
+      showError("Choisissez au moins un atelier avant de valider votre inscription.");
+      return;
     }
-  });
+    if(!FORM_CONFIGURED){
+      showError("Les inscriptions ne sont pas encore ouvertes techniquement. Merci de réessayer plus tard ou de contacter l'organisateur.");
+      return;
+    }
 
-  // Mobile nav auto-close on link click
-  document.querySelectorAll('nav.links a').forEach(function(a){
-    a.addEventListener('click', function(){
-      navToggle.checked = false;
-      syncBurgerState();
+    var data = {};
+    data[ENTRY.prenom] = document.getElementById('prenom').value;
+    data[ENTRY.nom] = document.getElementById('nom').value;
+    data[ENTRY.email] = document.getElementById('email').value;
+    data[ENTRY.session1] = sessions[0];
+    data[ENTRY.session2] = sessions[1];
+    data[ENTRY.session3] = sessions[2];
+    data[ENTRY.session4] = sessions[3];
+
+    var hidden = document.createElement('form');
+    hidden.action = FORM_ACTION;
+    hidden.method = 'POST';
+    hidden.target = 'hidden_iframe';
+    hidden.style.display = 'none';
+    Object.keys(data).forEach(function(key){
+      var input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = key;
+      input.value = data[key];
+      hidden.appendChild(input);
     });
+    document.body.appendChild(hidden);
+    hidden.submit();
+    setTimeout(function(){ hidden.remove(); }, 1000);
+
+    // Recap of what was actually registered
+    var times = ['10h30 – 11h45', '12h00 – 13h15', '14h30 – 15h45', '16h00 – 17h15'];
+    document.getElementById('recapList').innerHTML = sessions.map(function(value, i){
+      if(value === ABSENT) return '';
+      var li = document.createElement('li');
+      var label = document.createElement('strong');
+      label.textContent = 'Session ' + (i+1) + ' · ' + times[i];
+      li.appendChild(label);
+      li.appendChild(document.createTextNode(value));
+      return li.outerHTML;
+    }).join('');
+
+    document.getElementById('rsvpForm').style.display = 'none';
+    document.querySelector('main > section').style.display = 'none';
+    var panel = document.getElementById('successPanel');
+    panel.classList.add('show');
+    panel.focus();
+    window.scrollTo({top:0, behavior:'smooth'});
   });
-
-  // Back to top button
-  var backTop = document.getElementById('backTop');
-  window.addEventListener('scroll', function(){
-    if(window.scrollY > 500){ backTop.classList.add('show'); }
-    else{ backTop.classList.remove('show'); }
-  });
-
-  // Formation checklists persistence (per-formation, saved locally) + progress bar
-  function updateFormationsProgress(){
-    var progressBoxes = document.querySelectorAll('#formationsGrid .formation-checklist input[type=checkbox]');
-    var total = progressBoxes.length;
-    var done = 0;
-    progressBoxes.forEach(function(b){ if(b.checked) done++; });
-    var fill = document.getElementById('fProgressFill');
-    var label = document.getElementById('fProgressLabel');
-    if(fill) fill.style.width = (total ? done/total*100 : 0) + '%';
-    if(label) label.textContent = done + ' / ' + total + ' points complétés';
-  }
-  (function(){
-    var boxes = document.querySelectorAll('.formation-checklist input[type=checkbox]');
-    var STORAGE_KEY = 'impact-competence-formations-checklist';
-    var saved = {};
-    try{ saved = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }catch(e){ saved = {}; }
-
-    boxes.forEach(function(box){
-      var key = box.getAttribute('data-key');
-      if(saved[key]){
-        box.checked = true;
-        box.closest('label').classList.add('done');
-      }
-      box.addEventListener('change', function(){
-        saved[key] = box.checked;
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
-        box.closest('label').classList.toggle('done', box.checked);
-        updateFormationsProgress();
-      });
-    });
-    updateFormationsProgress();
-  })();
-
-  // Smooth expand/collapse animation for accordion cards (replaces native instant snap)
-  document.querySelectorAll('.formation-card').forEach(function(details){
-    var summary = details.querySelector('summary');
-    var content = details.querySelector('.f-content');
-    summary.addEventListener('click', function(e){
-      e.preventDefault();
-      if(details.open){
-        content.style.gridTemplateRows = '1fr';
-        requestAnimationFrame(function(){
-          content.style.gridTemplateRows = '0fr';
-        });
-        content.addEventListener('transitionend', function handler(ev){
-          if(ev.propertyName !== 'grid-template-rows') return;
-          details.open = false;
-          content.removeEventListener('transitionend', handler);
-        });
-      } else {
-        details.open = true;
-        content.style.gridTemplateRows = '0fr';
-        requestAnimationFrame(function(){
-          content.style.gridTemplateRows = '1fr';
-        });
-      }
-    });
-  });
-
-  // Formations: category filters
-  var filterButtons = document.querySelectorAll('.f-filter');
-  filterButtons.forEach(function(btn){
-    btn.addEventListener('click', function(){
-      filterButtons.forEach(function(b){
-        b.classList.remove('active');
-        b.setAttribute('aria-pressed', 'false');
-      });
-      btn.classList.add('active');
-      btn.setAttribute('aria-pressed', 'true');
-      var filter = btn.getAttribute('data-filter');
-      document.querySelectorAll('#formationsGrid .formation-card').forEach(function(card){
-        var show = (filter === 'all' || card.getAttribute('data-category') === filter);
-        card.classList.toggle('f-hidden', !show);
-      });
-    });
-  });
-
-  // Formations: expand all / collapse all
-  var expandAllBtn = document.getElementById('fExpandAll');
-  if(expandAllBtn){
-    var allExpanded = false;
-    expandAllBtn.addEventListener('click', function(){
-      allExpanded = !allExpanded;
-      document.querySelectorAll('#formationsGrid .formation-card:not(.f-hidden)').forEach(function(details){
-        if(details.open !== allExpanded){
-          details.querySelector('summary').click();
-        }
-      });
-      expandAllBtn.textContent = allExpanded ? 'Tout replier' : 'Tout déplier';
-    });
-  }
 </script>
 
 </body>
