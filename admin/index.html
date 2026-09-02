@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Inscriptions Impact Finances</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root{
+    --black:#2b1042;--yellow:#fbd24a;--red:#cc3333;--blue:#1fa4dc;--green:#5cb85c;--purple:#6f39a0;
+    --bg:#f8f6fa;--surface:#ffffff;--text:#1e1526;--muted:#5c5566;--border:#e6e1eb;
+    --radius:14px;--shadow:0 4px 18px rgba(43,16,66,.08);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:"Segoe UI",Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;}
+  header{background:var(--black);color:#fff;padding:18px 24px;}
+  header h1{margin:0;font-size:1.2rem;}
+  header p{margin:4px 0 0;color:rgba(255,255,255,.7);font-size:.85rem;}
+  main{max-width:1200px;margin:0 auto;padding:24px;}
+  .toolbar{
+    display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between;
+    margin-bottom:18px;
+  }
+  .search{
+    flex:1;min-width:220px;padding:10px 14px;border:1px solid var(--border);border-radius:8px;
+    font-family:inherit;font-size:.92rem;
+  }
+  .btn{
+    font-family:inherit;font-size:.85rem;font-weight:600;padding:9px 16px;border-radius:8px;
+    border:1px solid var(--border);background:var(--surface);cursor:pointer;color:var(--text);
+  }
+  .btn:hover{border-color:var(--purple);}
+  .btn-primary{background:var(--black);color:#fff;border-color:var(--black);}
+
+  .stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:20px;}
+  .stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px 16px;text-align:center;}
+  .stat .n{font-size:1.6rem;font-weight:800;color:var(--purple);}
+  .stat .l{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;}
+
+  .session-counts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:24px;}
+  .session-count-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;}
+  .session-count-card h3{margin:0 0 10px;font-size:.95rem;}
+  .session-count-card table{width:100%;border-collapse:collapse;font-size:.85rem;}
+  .session-count-card td{padding:4px 0;border-bottom:1px solid var(--border);}
+  .session-count-card td:last-child{text-align:right;font-weight:700;color:var(--purple);}
+
+  table.data{width:100%;border-collapse:collapse;background:var(--surface);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);font-size:.85rem;}
+  table.data th, table.data td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);}
+  table.data th{background:var(--black);color:#fff;font-weight:600;position:sticky;top:0;}
+  table.data tr:hover td{background:#f6f0fb;}
+  .table-wrap{overflow-x:auto;}
+
+  .state-msg{padding:40px 20px;text-align:center;color:var(--muted);}
+  .config-box{
+    max-width:640px;margin:40px auto;background:var(--surface);border:1px solid var(--border);
+    border-radius:var(--radius);box-shadow:var(--shadow);padding:28px 30px;
+  }
+  .config-box h2{margin-top:0;font-size:1.1rem;}
+  .config-box ol{padding-left:20px;font-size:.9rem;color:var(--muted);}
+  .config-box code{background:var(--bg);padding:1px 5px;border-radius:4px;font-size:.85em;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>📋 Inscriptions — Ateliers Impact Finances</h1>
+  <p>Page interne, non référencée. Ne pas partager ce lien publiquement.</p>
+</header>
+
+<main>
+  <div id="configBox" class="config-box" style="display:none;">
+    <h2>⚙️ Tableau de bord non connecté</h2>
+    <p>Pour afficher les inscriptions ici, il faut publier le Google Sheet lié au formulaire au format CSV :</p>
+    <ol>
+      <li>Ouvre le Google Sheet des réponses du formulaire.</li>
+      <li>Menu <strong>Fichier → Partager → Publier sur le web</strong>.</li>
+      <li>Choisis l'onglet des réponses, format <strong>Valeurs séparées par des virgules (.csv)</strong>, clique Publier.</li>
+      <li>Copie le lien généré et colle-le dans <code>CSV_URL</code> en haut du script de cette page.</li>
+    </ol>
+  </div>
+
+  <div id="loadingMsg" class="state-msg" style="display:none;">Chargement des inscriptions…</div>
+  <div id="errorMsg" class="state-msg" style="display:none;"></div>
+
+  <div id="dashboard" style="display:none;">
+    <div class="stat-row" id="statRow"></div>
+    <div class="session-counts" id="sessionCounts"></div>
+
+    <div class="toolbar">
+      <input type="search" class="search" id="searchBox" placeholder="Rechercher par nom, prénom ou e-mail…">
+      <button class="btn btn-primary" id="refreshBtn">🔄 Actualiser</button>
+      <button class="btn" id="exportBtn">⬇️ Exporter en CSV</button>
+    </div>
+
+    <div class="table-wrap">
+      <table class="data" id="dataTable">
+        <thead><tr id="tableHead"></tr></thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+  </div>
+</main>
+
+<script>
+  /* ===================================================================
+     CONFIGURATION — colle ici le lien CSV publié du Google Sheet
+     (Fichier → Partager → Publier sur le web → format CSV).
+     =================================================================== */
+  var CSV_URL = "";
+  // Exemple : "https://docs.google.com/spreadsheets/d/e/2PACX-xxxx/pub?output=csv"
+
+  var COLUMN_LABELS = {
+    'Horodateur': 'Date',
+    'Prénom': 'Prénom',
+    'Nom': 'Nom',
+    'Adresse e-mail': 'Email',
+    'Session 1': 'Session 1',
+    'Session 2': 'Session 2',
+    'Session 3': 'Session 3',
+    'Session 4': 'Session 4'
+  };
+
+  function parseCSV(text){
+    var rows = [];
+    var row = [];
+    var field = '';
+    var inQuotes = false;
+    for(var i = 0; i < text.length; i++){
+      var c = text[i];
+      if(inQuotes){
+        if(c === '"'){
+          if(text[i+1] === '"'){ field += '"'; i++; }
+          else{ inQuotes = false; }
+        } else { field += c; }
+      } else {
+        if(c === '"'){ inQuotes = true; }
+        else if(c === ','){ row.push(field); field = ''; }
+        else if(c === '\n' || c === '\r'){
+          if(c === '\r' && text[i+1] === '\n') i++;
+          row.push(field); field = '';
+          rows.push(row); row = [];
+        } else { field += c; }
+      }
+    }
+    if(field.length || row.length){ row.push(field); rows.push(row); }
+    return rows.filter(function(r){ return r.length > 1 || r[0] !== ''; });
+  }
+
+  var allRows = [];
+  var headers = [];
+
+  function render(filterText){
+    var body = document.getElementById('tableBody');
+    var head = document.getElementById('tableHead');
+    head.innerHTML = headers.map(function(h){ return '<th>' + (COLUMN_LABELS[h] || h) + '</th>'; }).join('');
+
+    var filtered = allRows.filter(function(row){
+      if(!filterText) return true;
+      return row.join(' ').toLowerCase().indexOf(filterText.toLowerCase()) !== -1;
+    });
+
+    body.innerHTML = filtered.map(function(row){
+      return '<tr>' + row.map(function(cell){ return '<td>' + (cell || '').replace(/</g,'&lt;') + '</td>'; }).join('') + '</tr>';
+    }).join('');
+
+    document.getElementById('statRow').innerHTML =
+      '<div class="stat"><div class="n">' + allRows.length + '</div><div class="l">Inscrits au total</div></div>' +
+      '<div class="stat"><div class="n">' + filtered.length + '</div><div class="l">Affichés</div></div>';
+
+    // Per-session atelier counts
+    var sessionCols = headers.map(function(h,i){ return {h:h, i:i}; }).filter(function(o){ return /^Session/.test(o.h); });
+    var countsHtml = sessionCols.map(function(col){
+      var counts = {};
+      var absent = 0;
+      allRows.forEach(function(row){
+        var val = (row[col.i] || '').trim();
+        if(!val || /^je ne participe/i.test(val)){ absent++; return; }
+        // expected format "A — Nom : Sujet" ; only a single letter followed by a separator counts as an atelier
+        var match = val.match(/^([A-D])\s*[—–-]/);
+        if(!match) return;
+        counts[match[1]] = (counts[match[1]] || 0) + 1;
+      });
+      var rowsHtml = Object.keys(counts).sort().map(function(k){
+        return '<tr><td>Atelier ' + k + '</td><td>' + counts[k] + '</td></tr>';
+      }).join('') || '<tr><td colspan="2">Aucune inscription</td></tr>';
+      rowsHtml += '<tr><td>Absents</td><td>' + absent + '</td></tr>';
+      return '<div class="session-count-card"><h3>' + col.h + '</h3><table>' + rowsHtml + '</table></div>';
+    }).join('');
+    document.getElementById('sessionCounts').innerHTML = countsHtml;
+  }
+
+  function loadData(){
+    if(!CSV_URL){
+      document.getElementById('configBox').style.display = 'block';
+      return;
+    }
+    document.getElementById('configBox').style.display = 'none';
+    document.getElementById('loadingMsg').style.display = 'block';
+    document.getElementById('errorMsg').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'none';
+
+    fetch(CSV_URL, {cache:'no-store'})
+      .then(function(res){
+        if(!res.ok) throw new Error('HTTP ' + res.status);
+        return res.text();
+      })
+      .then(function(text){
+        var rows = parseCSV(text);
+        headers = rows.shift() || [];
+        allRows = rows;
+        document.getElementById('loadingMsg').style.display = 'none';
+        document.getElementById('dashboard').style.display = 'block';
+        render('');
+      })
+      .catch(function(err){
+        document.getElementById('loadingMsg').style.display = 'none';
+        var el = document.getElementById('errorMsg');
+        el.style.display = 'block';
+        el.textContent = 'Impossible de charger les inscriptions (' + err.message + '). Vérifie que le Sheet est bien publié sur le web.';
+      });
+  }
+
+  document.getElementById('searchBox').addEventListener('input', function(e){
+    render(e.target.value);
+  });
+  document.getElementById('refreshBtn').addEventListener('click', loadData);
+  document.getElementById('exportBtn').addEventListener('click', function(){
+    var lines = [headers.join(',')].concat(allRows.map(function(r){
+      return r.map(function(c){ return '"' + (c||'').replace(/"/g,'""') + '"'; }).join(',');
+    }));
+    var blob = new Blob([lines.join('\n')], {type:'text/csv;charset=utf-8;'});
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'inscriptions-impact-finances.csv';
+    a.click();
+    URL.revokeObjectURL(url);
+  });
+
+  loadData();
+</script>
+
+</body>
+</html>

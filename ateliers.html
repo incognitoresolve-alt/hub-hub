@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inscription — Ateliers Impact Finances</title>
+<meta name="description" content="Inscrivez-vous aux ateliers du samedi Impact Finances : choisissez votre parcours ou composez votre journée session par session.">
+<link rel="canonical" href="https://incognitoresolve-alt.github.io/hub-hub/ateliers.html">
+<link rel="icon" href="assets/logo.jpg">
+<meta name="theme-color" content="#2b1042">
+<style>
+  :root{
+    --black:#2b1042;
+    --yellow:#fbd24a;
+    --red:#cc3333;
+    --blue:#1fa4dc;
+    --green:#5cb85c;
+    --purple:#6f39a0;
+    --bg:#f8f6fa;
+    --surface:#ffffff;
+    --text:#1e1526;
+    --muted:#5c5566;
+    --border:#e6e1eb;
+    --radius:14px;
+    --shadow:0 4px 18px rgba(43,16,66,.08);
+    --maxw:900px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:"Segoe UI",Helvetica,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+  }
+  a{color:var(--red);}
+  img{max-width:100%;}
+  a:focus-visible, button:focus-visible, input:focus-visible{
+    outline:2px solid var(--blue);
+    outline-offset:2px;
+  }
+
+  header{
+    background:rgba(255,255,255,.92);
+    border-bottom:1px solid var(--border);
+    position:sticky;top:0;z-index:20;
+  }
+  .nav-wrap{
+    max-width:var(--maxw);margin:0 auto;padding:14px 20px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+  }
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.02em;text-decoration:none;color:var(--black);}
+  .brand .logo{width:34px;height:34px;border-radius:9px;overflow:hidden;box-shadow:0 0 0 1px rgba(43,16,66,.12);flex:none;}
+  .brand .logo img{width:100%;height:100%;object-fit:cover;display:block;}
+  .back-link{font-size:.88rem;font-weight:600;color:var(--muted);text-decoration:none;}
+  .back-link:hover{color:var(--red);}
+
+  .hero{
+    background:
+      radial-gradient(circle at 15% 20%, rgba(251,210,74,.35), transparent 45%),
+      radial-gradient(circle at 85% 0%, rgba(31,164,220,.25), transparent 45%),
+      var(--black);
+    color:#fff;
+    padding:48px 20px 40px;
+  }
+  .hero-inner{max-width:var(--maxw);margin:0 auto;}
+  .eyebrow{
+    display:inline-block;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);
+    padding:5px 12px;border-radius:999px;font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;margin-bottom:16px;
+  }
+  .hero h1{font-size:clamp(1.6rem,4vw,2.3rem);margin:0 0 12px;}
+  .hero p{max-width:65ch;color:rgba(255,255,255,.85);margin:0;}
+
+  main{max-width:var(--maxw);margin:0 auto;padding:36px 20px 90px;}
+  section{margin-bottom:44px;}
+  h2{font-size:1.3rem;margin:0 0 6px;display:flex;align-items:center;gap:10px;}
+  h2 .num{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:30px;height:30px;border-radius:8px;background:var(--black);color:var(--yellow);
+    font-size:.9rem;flex:none;
+  }
+  .section-sub{color:var(--muted);margin:0 0 22px;max-width:70ch;}
+
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);}
+
+  /* Plan récap strip */
+  .plan-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;}
+  .plan-day{padding:14px 16px;border-radius:10px;font-size:.85rem;}
+  .plan-day strong{display:block;font-size:.95rem;margin-bottom:2px;}
+  .plan-day.jeudi{background:#e9f5ec;color:#1e6b34;}
+  .plan-day.vendredi{background:#eaf1fb;color:#1d3f8f;}
+  .plan-day.samedi{background:#fef1e2;color:#9a5200;border:2px solid var(--yellow);}
+  .plan-day.dimanche{background:#e6f4f3;color:#0f6b64;}
+
+  /* Parcours quick-pick */
+  .parcours-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;}
+  .parcours-card{
+    padding:18px 20px;border-radius:var(--radius);cursor:pointer;
+    border:2px solid var(--border);background:var(--surface);box-shadow:var(--shadow);
+    transition:border-color .15s, transform .15s;
+    text-align:left;font-family:inherit;
+  }
+  .parcours-card:hover{transform:translateY(-2px);}
+  .parcours-card.selected{border-color:var(--purple);background:#f6f0fb;}
+  .parcours-card h3{margin:0 0 6px;font-size:1rem;}
+  .parcours-card p{margin:0;color:var(--muted);font-size:.85rem;}
+  .parcours-card .tick{float:right;color:var(--purple);font-weight:700;visibility:hidden;}
+  .parcours-card.selected .tick{visibility:visible;}
+
+  /* Sessions */
+  .session-block{margin-bottom:18px;padding:20px;}
+  .session-block h3{margin:0 0 4px;font-size:1.05rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .session-time{font-weight:400;color:var(--muted);font-size:.85rem;}
+  .atelier-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin-top:14px;}
+  .atelier-option{
+    display:flex;gap:10px;align-items:flex-start;
+    border:1px solid var(--border);border-radius:10px;padding:12px 14px;cursor:pointer;
+    transition:border-color .15s, background .15s;
+  }
+  .atelier-option:hover{border-color:var(--purple);}
+  .atelier-option.checked{border-color:var(--purple);background:#f6f0fb;}
+  .atelier-option input{margin-top:3px;accent-color:var(--purple);flex:none;}
+  .atelier-option .letter{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:22px;height:22px;border-radius:50%;background:var(--black);color:#fff;
+    font-size:.72rem;font-weight:700;flex:none;
+  }
+  .atelier-option strong{display:block;font-size:.9rem;}
+  .atelier-option span.topic{display:block;color:var(--muted);font-size:.82rem;margin-top:2px;}
+  .atelier-option.none-option{color:var(--muted);font-size:.85rem;}
+
+  /* Contact fields */
+  .field-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;padding:22px;}
+  .field{display:flex;flex-direction:column;gap:6px;}
+  .field label{font-size:.85rem;font-weight:600;color:var(--text);}
+  .field input{
+    font-family:inherit;font-size:.95rem;padding:11px 12px;
+    border:1px solid var(--border);border-radius:8px;background:var(--bg);
+  }
+  .field input:focus{outline:2px solid var(--blue);outline-offset:1px;}
+
+  .submit-row{padding:0 22px 22px;}
+  .btn{
+    display:inline-block;padding:13px 24px;border-radius:10px;font-weight:700;
+    text-decoration:none;font-size:.98rem;border:none;cursor:pointer;font-family:inherit;
+  }
+  .btn-primary{background:var(--yellow);color:var(--black);}
+  .btn-primary:hover{background:#ffdb47;}
+  .btn-primary:disabled{opacity:.5;cursor:not-allowed;}
+  .form-note{font-size:.82rem;color:var(--muted);margin-top:10px;}
+
+  .success-panel{
+    display:none;
+    text-align:center;padding:40px 24px;
+  }
+  .success-panel.show{display:block;}
+  .success-panel .check{font-size:2.6rem;margin-bottom:10px;}
+  .success-panel h2{justify-content:center;margin-bottom:8px;}
+  .success-panel p{color:var(--muted);max-width:50ch;margin:0 auto;}
+
+  .config-warning{
+    display:none;
+    background:#fff5f5;border:1px solid #f3b8b8;color:#8a2222;
+    padding:14px 18px;border-radius:10px;font-size:.88rem;margin-bottom:20px;
+  }
+
+  footer{background:var(--black);color:rgba(255,255,255,.75);padding:30px 20px;font-size:.85rem;text-align:center;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <a href="index.html" class="brand">
+      <span class="logo"><img src="assets/logo.jpg" alt="Logo ICC Liège"></span>
+      IMPACT COMPETENCE
+    </a>
+    <a href="index.html" class="back-link">← Retour à l'accueil</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">Du jeudi au dimanche · Impact Finances</span>
+    <h1>Inscrivez-vous aux ateliers du samedi</h1>
+    <p>Composez votre journée : choisissez un parcours recommandé en un clic, ou sélectionnez librement l'atelier de votre choix pour chacune des 4 sessions.</p>
+  </div>
+</section>
+
+<main>
+
+  <section>
+    <h2><span class="num">🗓️</span>Le programme complet</h2>
+    <p class="section-sub">Ce formulaire concerne uniquement les <strong>ateliers du samedi</strong>. Voici le déroulé complet de l'événement pour situer la journée.</p>
+    <div class="plan-strip">
+      <div class="plan-day jeudi"><strong>Jeudi</strong>18h30–21h00 · Talk-show des entrepreneurs</div>
+      <div class="plan-day vendredi"><strong>Vendredi</strong>18h30–21h30 · Grande plénière</div>
+      <div class="plan-day samedi"><strong>Samedi</strong>10h30–20h00 · Journée des ateliers</div>
+      <div class="plan-day dimanche"><strong>Dimanche</strong>10h00–17h00 · Culte, plénière IA &amp; clôture</div>
+    </div>
+  </section>
+
+  <form id="rsvpForm">
+
+    <section>
+      <h2><span class="num">🧭</span>Un parcours recommandé ?</h2>
+      <p class="section-sub">Cliquez sur un parcours pour pré-remplir automatiquement les 4 sessions ci-dessous. Vous pourrez toujours ajuster chaque choix ensuite.</p>
+      <div class="parcours-grid" id="parcoursGrid">
+        <button type="button" class="parcours-card" data-parcours="patrimoine">
+          <span class="tick">✓</span>
+          <h3>🏠 Bâtir et transmettre son patrimoine</h3>
+          <p>Acheter → Développer → Transmettre → Laisser un héritage</p>
+        </button>
+        <button type="button" class="parcours-card" data-parcours="entrepreneur">
+          <span class="tick">✓</span>
+          <h3>🚀 De zéro à entrepreneur</h3>
+          <p>Partir de zéro → Se vendre → Concrétiser → Financer</p>
+        </button>
+        <button type="button" class="parcours-card" data-parcours="revenus">
+          <span class="tick">✓</span>
+          <h3>📈 Augmenter ses revenus et sa valeur</h3>
+          <p>Diversifier → Monétiser → Devenir pertinent → Devenir productif</p>
+        </button>
+        <button type="button" class="parcours-card" data-parcours="ia">
+          <span class="tick">✓</span>
+          <h3>🧠 Prendre le virage de l'IA</h3>
+          <p>Performance → Monétisation → Application → Démultiplication</p>
+        </button>
+      </div>
+    </section>
+
+    <section>
+      <h2><span class="num">🎓</span>Vos ateliers, session par session</h2>
+      <p class="section-sub">Un seul atelier possible par session (ils se déroulent en parallèle).</p>
+
+      <div class="card session-block">
+        <h3>Session 1 <span class="session-time">10h30 – 11h45</span></h3>
+        <div class="atelier-options" data-session="1">
+          <label class="atelier-option"><input type="radio" name="session1" value="A — Gary Shembo : Ton salaire n'est qu'un départ"><span><span class="letter">A</span></span><span><strong>Gary Shembo</strong><span class="topic">Ton salaire n'est qu'un départ. Créer une nouvelle entrée d'argent.</span></span></label>
+          <label class="atelier-option"><input type="radio" name="session1" value="B — Alain Muluwayi : Premier achat immobilier"><span><span class="letter">B</span></span><span><strong>Alain Muluwayi</strong><span class="topic">Premier achat immobilier : évitez les erreurs grâce à ces 6 étapes essentielles.</span></span></label>
+          <label class="atelier-option"><input type="radio" name="session1" value="C — Ps Fithermann Atchehoun : Augmente ta valeur professionnelle avec l'IA"><span><span class="letter">C</span></span><span><strong>Ps Fithermann Atchehoun</strong><span class="topic">Augmente ta valeur professionnelle avec l'IA.</span></span></label>
+          <label class="atelier-option"><input type="radio" name="session1" value="D — Ps Dominique : Comment créer de la richesse en partant de zéro"><span><span class="letter">D</span></span><span><strong>Ps Dominique</strong><span class="topic">Comment créer de la richesse en partant de zéro.</span></span></label>
+          <label class="atelier-option none-option"><input type="radio" name="session1" value="Je ne participe pas à cette session" checked><span>—</span><span>Je ne participe pas à cette session</span></label>
+        </div>
+      </div>
+
+      <div class="card session-block">
+        <h3>Session 2 <span class="session-time">12h00 – 13h15</span></h3>
+        <div class="atelier-options" data-session="2">
+          <label class="atelier-option"><input type="radio" name="session2" value="A — Alexandra Kizizié Uhlrich : Savoir se vendre"><span><span class="letter">A</span></span><span><strong>Alexandra Kizizié Uhlrich</strong><span class="topic">Savoir se vendre pour créer des opportunités.</span></span></label>
+          <label class="atelier-option"><input type="radio" name="session2" value="B — Alain Muluwayi : Financer un 2e bien immobilier"><span><span class="letter">B</span></span><span><strong>Alain Muluwayi</strong><span class="topic">Comment financer et acquérir un deuxième bien immobilier : 4 clés essentielles.</span></span></label>
+          <label class="atelier-option"><input type="radio" name="session2" value="C — Ps Fithermann Atchehoun : Transforme tes compétences en revenus grâce à l'IA"><span><span class="letter">C</span></span><span><strong>Ps Fithermann Atchehoun</strong><span class="topic">Transforme tes compétences en revenus grâce à l'IA.</span></span></label>
+          <label class="atelier-option"><input type="radio" name="session2" value="D — Polo Mpoku : Du capital relationnel au capital financier"><span><span class="letter">D</span></span><span><strong>Polo Mpoku</strong><span class="topic">Du capital relationnel au capital financier.</span></span></label>
+          <label class="atelier-option none-option"><input type="radio" name="session2" value="Je ne participe pas à cette session" checked><span>—</span><span>Je ne participe pas à cette session</span></label>
+        </div>
+      </div>
+
+      <div class="card" style="padding:14px 20px;margin-bottom:18px;background:#fef1e2;border:none;">
+        <strong style="color:#9a5200;">13h15 – 14h30 · Grande pause</strong> <span style="color:#9a5200;">— Stands, marketplace, restauration, networking</span>
+      </div>
+
+      <div class="card session-block">
+        <h3>Session 3 <span class="session-time">14h30 – 15h45</span></h3>
+        <div class="atelier-options" data-session="3">
+          <label class="atelier-option"><input type="radio" name="session3" value="A — Alexandra Kizizié Uhlrich : Transformer une idée en projet concret"><span><span class="letter">A</span></span><span><strong>Alexandra Kizizié Uhlrich</strong><span class="topic">Transformer une idée en projet concret.</span></span></label>
+          <label class="atelier-option"><input type="radio" name="session3" value="B — Alain Muluwayi : Transmettre son patrimoine"><span><span class="letter">B</span></span><span><strong>Alain Muluwayi</strong><span class="topic">Déjà propriétaire ? Transmettre votre patrimoine en limitant les coûts et les droits de succession.</span></span></label>
+          <label class="atelier-option"><input type="radio" name="session3" value="C — Ps Dominique : Maîtriser l'art de l'épargne"><span><span class="letter">C</span></span><span><strong>Ps Dominique</strong><span class="topic">Maîtriser l'art de l'épargne pour mieux investir.</span></span></label>
+          <label class="atelier-option"><input type="radio" name="session3" value="D — Anne-Claire Siliki : Deviens une réponse"><span><span class="letter">D</span></span><span><strong>Anne-Claire Siliki</strong><span class="topic">Deviens une réponse : comment rendre ta valeur indispensable dans un monde qui change.</span></span></label>
+          <label class="atelier-option none-option"><input type="radio" name="session3" value="Je ne participe pas à cette session" checked><span>—</span><span>Je ne participe pas à cette session</span></label>
+        </div>
+      </div>
+
+      <div class="card session-block">
+        <h3>Session 4 <span class="session-time">16h00 – 17h15</span></h3>
+        <div class="atelier-options" data-session="4">
+          <label class="atelier-option"><input type="radio" name="session4" value="A — Ps Fithermann Atchehoun : Et si l'IA devenait l'équipe"><span><span class="letter">A</span></span><span><strong>Ps Fithermann Atchehoun</strong><span class="topic">Et si l'IA devenait l'équipe que tu n'as pas encore les moyens de recruter ?</span></span></label>
+          <label class="atelier-option"><input type="radio" name="session4" value="B — Ps Dominique : La discipline d'un entrepreneur productif"><span><span class="letter">B</span></span><span><strong>Ps Dominique</strong><span class="topic">La discipline d'un entrepreneur productif.</span></span></label>
+          <label class="atelier-option"><input type="radio" name="session4" value="C — Polo Mpoku : De la relation à l'investissement"><span><span class="letter">C</span></span><span><strong>Polo Mpoku</strong><span class="topic">De la relation à l'investissement : présenter son projet et lever des fonds tout en restant maître de sa vision.</span></span></label>
+          <label class="atelier-option"><input type="radio" name="session4" value="D — Boris Akoe : Bâtir une valeur qui traverse les générations"><span><span class="letter">D</span></span><span><strong>Boris Akoe</strong><span class="topic">Bâtir une valeur qui traverse les générations : créer, préserver et transmettre ce que vous construisez.</span></span></label>
+          <label class="atelier-option none-option"><input type="radio" name="session4" value="Je ne participe pas à cette session" checked><span>—</span><span>Je ne participe pas à cette session</span></label>
+        </div>
+      </div>
+    </section>
+
+    <section id="formSection">
+      <h2><span class="num">📝</span>Vos coordonnées</h2>
+      <p class="section-sub">Une confirmation de votre inscription vous sera envoyée par e-mail.</p>
+      <div class="card">
+        <div class="config-warning" id="configWarning">
+          ⚠️ Le formulaire n'est pas encore connecté à un système d'inscription. Contactez l'organisateur.
+        </div>
+        <div class="field-grid">
+          <div class="field">
+            <label for="prenom">Prénom *</label>
+            <input type="text" id="prenom" name="prenom" required autocomplete="given-name">
+          </div>
+          <div class="field">
+            <label for="nom">Nom *</label>
+            <input type="text" id="nom" name="nom" required autocomplete="family-name">
+          </div>
+          <div class="field" style="grid-column:1/-1;">
+            <label for="email">Adresse e-mail *</label>
+            <input type="email" id="email" name="email" required autocomplete="email">
+          </div>
+        </div>
+        <div class="submit-row">
+          <button type="submit" class="btn btn-primary" id="submitBtn">S'inscrire aux ateliers</button>
+          <p class="form-note">En vous inscrivant, vous acceptez d'être recontacté·e au sujet de l'événement Impact Finances.</p>
+        </div>
+      </div>
+    </section>
+  </form>
+
+  <div class="card success-panel" id="successPanel">
+    <div class="check">✅</div>
+    <h2>Inscription enregistrée !</h2>
+    <p>Merci, votre choix d'ateliers a bien été pris en compte. Une confirmation vient de vous être envoyée par e-mail.</p>
+  </div>
+
+</main>
+
+<footer>
+  IMPACT COMPETENCE — ICC Liège · Inscription aux ateliers Impact Finances
+</footer>
+
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none"></iframe>
+
+<script>
+  /* ===================================================================
+     CONFIGURATION — à remplacer une fois le Google Form créé :
+     1. Crée le Google Form avec les champs Prénom/Nom/Email + 4 questions
+        "Session 1..4" (choix multiple, mêmes libellés que value= ci-dessus).
+     2. Ouvre le formulaire → ⋮ → "Obtenir le lien pré-rempli", remplis
+        n'importe quoi dans chaque champ, clique "Obtenir le lien", copie-le.
+     3. Ce lien contient "entry.XXXXXXX=..." pour chaque champ : reporte
+        chaque entry.XXXXXXX ci-dessous, dans le même ordre que tes champs.
+     4. Remplace FORM_ACTION par l'URL d'action réelle : prends l'URL du
+        lien pré-rempli, remplace "viewform" par "formResponse".
+     5. Passe FORM_CONFIGURED à true.
+     =================================================================== */
+  var FORM_CONFIGURED = false;
+  var FORM_ACTION = "https://docs.google.com/forms/d/e/REPLACE_WITH_FORM_ID/formResponse";
+  var ENTRY = {
+    prenom:  "entry.REPLACE1",
+    nom:     "entry.REPLACE2",
+    email:   "entry.REPLACE3",
+    session1:"entry.REPLACE4",
+    session2:"entry.REPLACE5",
+    session3:"entry.REPLACE6",
+    session4:"entry.REPLACE7"
+  };
+
+  if(!FORM_CONFIGURED){
+    document.getElementById('configWarning').style.display = 'block';
+  }
+
+  // Highlight selected atelier option
+  document.querySelectorAll('.atelier-option input').forEach(function(input){
+    input.addEventListener('change', function(){
+      var group = input.closest('.atelier-options');
+      group.querySelectorAll('.atelier-option').forEach(function(opt){
+        opt.classList.toggle('checked', opt.querySelector('input').checked);
+      });
+    });
+  });
+
+  // Parcours recommandés (pré-remplissage rapide)
+  var PARCOURS = {
+    patrimoine: [1, 1, 1, 3],   // session1->option B(idx1), session2->B, session3->B, session4->D(idx3)
+    entrepreneur: [3, 0, 0, 2], // D, A, A, C
+    revenus: [0, 2, 3, 1],      // A, C, D, B
+    ia: [2, 2, null, 0]         // C, C, (au choix, non présélectionné), A
+  };
+  document.querySelectorAll('.parcours-card').forEach(function(card){
+    card.addEventListener('click', function(){
+      document.querySelectorAll('.parcours-card').forEach(function(c){ c.classList.remove('selected'); });
+      card.classList.add('selected');
+      var key = card.getAttribute('data-parcours');
+      var picks = PARCOURS[key];
+      picks.forEach(function(optionIndex, i){
+        if(optionIndex === null) return;
+        var group = document.querySelector('.atelier-options[data-session="' + (i+1) + '"]');
+        var radios = group.querySelectorAll('input[type=radio]');
+        // radios order: A,B,C,D,none -> index matches optionIndex directly
+        radios[optionIndex].checked = true;
+        radios[optionIndex].dispatchEvent(new Event('change'));
+      });
+      document.getElementById('formSection').scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+
+  // Submission via hidden iframe (no redirect)
+  document.getElementById('rsvpForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!FORM_CONFIGURED){
+      alert("Les inscriptions ne sont pas encore ouvertes techniquement. Merci de réessayer plus tard ou de contacter l'organisateur.");
+      return;
+    }
+    function selectedValue(name){
+      var el = document.querySelector('input[name="' + name + '"]:checked');
+      return el ? el.value : '';
+    }
+    var data = {};
+    data[ENTRY.prenom] = document.getElementById('prenom').value;
+    data[ENTRY.nom] = document.getElementById('nom').value;
+    data[ENTRY.email] = document.getElementById('email').value;
+    data[ENTRY.session1] = selectedValue('session1');
+    data[ENTRY.session2] = selectedValue('session2');
+    data[ENTRY.session3] = selectedValue('session3');
+    data[ENTRY.session4] = selectedValue('session4');
+
+    var hidden = document.createElement('form');
+    hidden.action = FORM_ACTION;
+    hidden.method = 'POST';
+    hidden.target = 'hidden_iframe';
+    hidden.style.display = 'none';
+    Object.keys(data).forEach(function(key){
+      var input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = key;
+      input.value = data[key];
+      hidden.appendChild(input);
+    });
+    document.body.appendChild(hidden);
+    hidden.submit();
+    setTimeout(function(){ hidden.remove(); }, 1000);
+
+    document.getElementById('rsvpForm').style.display = 'none';
+    document.querySelector('main > section').style.display = 'none';
+    document.getElementById('successPanel').classList.add('show');
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+</script>
+
+</body>
+</html>
