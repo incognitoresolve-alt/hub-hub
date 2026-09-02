@@ -8,6 +8,16 @@
 <link rel="canonical" href="https://incognitoresolve-alt.github.io/hub-hub/ateliers.html">
 <link rel="icon" href="assets/logo.jpg">
 <meta name="theme-color" content="#2b1042">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Inscription — Ateliers Impact Finances">
+<meta property="og:description" content="Choisissez vos ateliers du samedi : un parcours recommandé en un clic, ou votre sélection libre session par session.">
+<meta property="og:image" content="https://incognitoresolve-alt.github.io/hub-hub/assets/logo.jpg">
+<meta property="og:url" content="https://incognitoresolve-alt.github.io/hub-hub/ateliers.html">
+<meta property="og:locale" content="fr_BE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Inscription — Ateliers Impact Finances">
+<meta name="twitter:description" content="Choisissez vos ateliers du samedi : un parcours recommandé en un clic, ou votre sélection libre session par session.">
+<meta name="twitter:image" content="https://incognitoresolve-alt.github.io/hub-hub/assets/logo.jpg">
 <style>
   :root{
     --black:#2b1042;
@@ -155,6 +165,18 @@
   }
   .success-panel.show{display:block;}
   .success-panel .check{font-size:2.6rem;margin-bottom:10px;}
+  .success-panel .recap{
+    list-style:none;padding:0;margin:22px auto 0;max-width:520px;text-align:left;
+  }
+  .success-panel .recap li{
+    background:var(--bg);border:1px solid var(--border);border-radius:10px;
+    padding:10px 14px;margin-bottom:8px;font-size:.88rem;
+  }
+  .success-panel .recap li strong{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.03em;color:var(--muted);}
+  .form-error{
+    background:#fff5f5;border:1px solid #f3b8b8;color:#8a2222;
+    padding:12px 16px;border-radius:10px;font-size:.88rem;margin:0 0 14px;
+  }
   .success-panel h2{justify-content:center;margin-bottom:8px;}
   .success-panel p{color:var(--muted);max-width:50ch;margin:0 auto;}
 
@@ -234,24 +256,24 @@
       <p class="section-sub">Un seul atelier possible par session (ils se déroulent en parallèle).</p>
 
       <div class="card session-block">
-        <h3>Session 1 <span class="session-time">10h30 – 11h45</span></h3>
-        <div class="atelier-options" data-session="1">
+        <h3 id="session1-title">Session 1 <span class="session-time">10h30 – 11h45</span></h3>
+        <div class="atelier-options" data-session="1" role="radiogroup" aria-labelledby="session1-title">
           <label class="atelier-option"><input type="radio" name="session1" value="A — Gary Shembo : Ton salaire n'est qu'un départ"><span><span class="letter">A</span></span><span><strong>Gary Shembo</strong><span class="topic">Ton salaire n'est qu'un départ. Créer une nouvelle entrée d'argent.</span></span></label>
           <label class="atelier-option"><input type="radio" name="session1" value="B — Alain Muluwayi : Premier achat immobilier"><span><span class="letter">B</span></span><span><strong>Alain Muluwayi</strong><span class="topic">Premier achat immobilier : évitez les erreurs grâce à ces 6 étapes essentielles.</span></span></label>
           <label class="atelier-option"><input type="radio" name="session1" value="C — Ps Fithermann Atchehoun : Augmente ta valeur professionnelle avec l'IA"><span><span class="letter">C</span></span><span><strong>Ps Fithermann Atchehoun</strong><span class="topic">Augmente ta valeur professionnelle avec l'IA.</span></span></label>
           <label class="atelier-option"><input type="radio" name="session1" value="D — Ps Dominique : Comment créer de la richesse en partant de zéro"><span><span class="letter">D</span></span><span><strong>Ps Dominique</strong><span class="topic">Comment créer de la richesse en partant de zéro.</span></span></label>
-          <label class="atelier-option none-option"><input type="radio" name="session1" value="Je ne participe pas à cette session" checked><span>—</span><span>Je ne participe pas à cette session</span></label>
+          <label class="atelier-option none-option"><input type="radio" name="session1" value="Je ne participe pas à cette session"><span>—</span><span>Je ne participe pas à cette session</span></label>
         </div>
       </div>
 
       <div class="card session-block">
-        <h3>Session 2 <span class="session-time">12h00 – 13h15</span></h3>
-        <div class="atelier-options" data-session="2">
+        <h3 id="session2-title">Session 2 <span class="session-time">12h00 – 13h15</span></h3>
+        <div class="atelier-options" data-session="2" role="radiogroup" aria-labelledby="session2-title">
           <label class="atelier-option"><input type="radio" name="session2" value="A — Alexandra Kizizié Uhlrich : Savoir se vendre"><span><span class="letter">A</span></span><span><strong>Alexandra Kizizié Uhlrich</strong><span class="topic">Savoir se vendre pour créer des opportunités.</span></span></label>
           <label class="atelier-option"><input type="radio" name="session2" value="B — Alain Muluwayi : Financer un 2e bien immobilier"><span><span class="letter">B</span></span><span><strong>Alain Muluwayi</strong><span class="topic">Comment financer et acquérir un deuxième bien immobilier : 4 clés essentielles.</span></span></label>
           <label class="atelier-option"><input type="radio" name="session2" value="C — Ps Fithermann Atchehoun : Transforme tes compétences en revenus grâce à l'IA"><span><span class="letter">C</span></span><span><strong>Ps Fithermann Atchehoun</strong><span class="topic">Transforme tes compétences en revenus grâce à l'IA.</span></span></label>
           <label class="atelier-option"><input type="radio" name="session2" value="D — Polo Mpoku : Du capital relationnel au capital financier"><span><span class="letter">D</span></span><span><strong>Polo Mpoku</strong><span class="topic">Du capital relationnel au capital financier.</span></span></label>
-          <label class="atelier-option none-option"><input type="radio" name="session2" value="Je ne participe pas à cette session" checked><span>—</span><span>Je ne participe pas à cette session</span></label>
+          <label class="atelier-option none-option"><input type="radio" name="session2" value="Je ne participe pas à cette session"><span>—</span><span>Je ne participe pas à cette session</span></label>
         </div>
       </div>
 
@@ -260,24 +282,24 @@
       </div>
 
       <div class="card session-block">
-        <h3>Session 3 <span class="session-time">14h30 – 15h45</span></h3>
-        <div class="atelier-options" data-session="3">
+        <h3 id="session3-title">Session 3 <span class="session-time">14h30 – 15h45</span></h3>
+        <div class="atelier-options" data-session="3" role="radiogroup" aria-labelledby="session3-title">
           <label class="atelier-option"><input type="radio" name="session3" value="A — Alexandra Kizizié Uhlrich : Transformer une idée en projet concret"><span><span class="letter">A</span></span><span><strong>Alexandra Kizizié Uhlrich</strong><span class="topic">Transformer une idée en projet concret.</span></span></label>
           <label class="atelier-option"><input type="radio" name="session3" value="B — Alain Muluwayi : Transmettre son patrimoine"><span><span class="letter">B</span></span><span><strong>Alain Muluwayi</strong><span class="topic">Déjà propriétaire ? Transmettre votre patrimoine en limitant les coûts et les droits de succession.</span></span></label>
           <label class="atelier-option"><input type="radio" name="session3" value="C — Ps Dominique : Maîtriser l'art de l'épargne"><span><span class="letter">C</span></span><span><strong>Ps Dominique</strong><span class="topic">Maîtriser l'art de l'épargne pour mieux investir.</span></span></label>
           <label class="atelier-option"><input type="radio" name="session3" value="D — Anne-Claire Siliki : Deviens une réponse"><span><span class="letter">D</span></span><span><strong>Anne-Claire Siliki</strong><span class="topic">Deviens une réponse : comment rendre ta valeur indispensable dans un monde qui change.</span></span></label>
-          <label class="atelier-option none-option"><input type="radio" name="session3" value="Je ne participe pas à cette session" checked><span>—</span><span>Je ne participe pas à cette session</span></label>
+          <label class="atelier-option none-option"><input type="radio" name="session3" value="Je ne participe pas à cette session"><span>—</span><span>Je ne participe pas à cette session</span></label>
         </div>
       </div>
 
       <div class="card session-block">
-        <h3>Session 4 <span class="session-time">16h00 – 17h15</span></h3>
-        <div class="atelier-options" data-session="4">
+        <h3 id="session4-title">Session 4 <span class="session-time">16h00 – 17h15</span></h3>
+        <div class="atelier-options" data-session="4" role="radiogroup" aria-labelledby="session4-title">
           <label class="atelier-option"><input type="radio" name="session4" value="A — Ps Fithermann Atchehoun : Et si l'IA devenait l'équipe"><span><span class="letter">A</span></span><span><strong>Ps Fithermann Atchehoun</strong><span class="topic">Et si l'IA devenait l'équipe que tu n'as pas encore les moyens de recruter ?</span></span></label>
           <label class="atelier-option"><input type="radio" name="session4" value="B — Ps Dominique : La discipline d'un entrepreneur productif"><span><span class="letter">B</span></span><span><strong>Ps Dominique</strong><span class="topic">La discipline d'un entrepreneur productif.</span></span></label>
           <label class="atelier-option"><input type="radio" name="session4" value="C — Polo Mpoku : De la relation à l'investissement"><span><span class="letter">C</span></span><span><strong>Polo Mpoku</strong><span class="topic">De la relation à l'investissement : présenter son projet et lever des fonds tout en restant maître de sa vision.</span></span></label>
           <label class="atelier-option"><input type="radio" name="session4" value="D — Boris Akoe : Bâtir une valeur qui traverse les générations"><span><span class="letter">D</span></span><span><strong>Boris Akoe</strong><span class="topic">Bâtir une valeur qui traverse les générations : créer, préserver et transmettre ce que vous construisez.</span></span></label>
-          <label class="atelier-option none-option"><input type="radio" name="session4" value="Je ne participe pas à cette session" checked><span>—</span><span>Je ne participe pas à cette session</span></label>
+          <label class="atelier-option none-option"><input type="radio" name="session4" value="Je ne participe pas à cette session"><span>—</span><span>Je ne participe pas à cette session</span></label>
         </div>
       </div>
     </section>
@@ -304,6 +326,7 @@
           </div>
         </div>
         <div class="submit-row">
+          <p class="form-error" id="formError" role="alert" hidden></p>
           <button type="submit" class="btn btn-primary" id="submitBtn">S'inscrire aux ateliers</button>
           <p class="form-note">En vous inscrivant, vous acceptez d'être recontacté·e au sujet de l'événement Impact Finances.</p>
         </div>
@@ -311,10 +334,11 @@
     </section>
   </form>
 
-  <div class="card success-panel" id="successPanel">
+  <div class="card success-panel" id="successPanel" role="status" aria-live="polite" tabindex="-1">
     <div class="check">✅</div>
     <h2>Inscription enregistrée !</h2>
     <p>Merci, votre choix d'ateliers a bien été pris en compte. Une confirmation vient de vous être envoyée par e-mail.</p>
+    <ul class="recap" id="recapList"></ul>
   </div>
 
 </main>
@@ -389,25 +413,47 @@
     });
   });
 
+  var ABSENT = "Je ne participe pas à cette session";
+
+  // A session left untouched is sent as "absent" so the Google Form always
+  // receives one of its known options.
+  function selectedValue(name){
+    var el = document.querySelector('input[name="' + name + '"]:checked');
+    return el ? el.value : ABSENT;
+  }
+
+  function showError(message){
+    var box = document.getElementById('formError');
+    box.textContent = message;
+    box.hidden = false;
+    box.scrollIntoView({block:'center'});
+  }
+
   // Submission via hidden iframe (no redirect)
   document.getElementById('rsvpForm').addEventListener('submit', function(e){
     e.preventDefault();
-    if(!FORM_CONFIGURED){
-      alert("Les inscriptions ne sont pas encore ouvertes techniquement. Merci de réessayer plus tard ou de contacter l'organisateur.");
+    document.getElementById('formError').hidden = true;
+
+    var sessions = ['session1','session2','session3','session4'].map(selectedValue);
+
+    // Guard against a silently empty registration (no atelier picked at all)
+    if(sessions.every(function(v){ return v === ABSENT; })){
+      showError("Choisissez au moins un atelier avant de valider votre inscription.");
       return;
     }
-    function selectedValue(name){
-      var el = document.querySelector('input[name="' + name + '"]:checked');
-      return el ? el.value : '';
+    if(!FORM_CONFIGURED){
+      showError("Les inscriptions ne sont pas encore ouvertes techniquement. Merci de réessayer plus tard ou de contacter l'organisateur.");
+      return;
     }
+
     var data = {};
     data[ENTRY.prenom] = document.getElementById('prenom').value;
     data[ENTRY.nom] = document.getElementById('nom').value;
     data[ENTRY.email] = document.getElementById('email').value;
-    data[ENTRY.session1] = selectedValue('session1');
-    data[ENTRY.session2] = selectedValue('session2');
-    data[ENTRY.session3] = selectedValue('session3');
-    data[ENTRY.session4] = selectedValue('session4');
+    data[ENTRY.session1] = sessions[0];
+    data[ENTRY.session2] = sessions[1];
+    data[ENTRY.session3] = sessions[2];
+    data[ENTRY.session4] = sessions[3];
 
     var hidden = document.createElement('form');
     hidden.action = FORM_ACTION;
@@ -425,9 +471,23 @@
     hidden.submit();
     setTimeout(function(){ hidden.remove(); }, 1000);
 
+    // Recap of what was actually registered
+    var times = ['10h30 – 11h45', '12h00 – 13h15', '14h30 – 15h45', '16h00 – 17h15'];
+    document.getElementById('recapList').innerHTML = sessions.map(function(value, i){
+      if(value === ABSENT) return '';
+      var li = document.createElement('li');
+      var label = document.createElement('strong');
+      label.textContent = 'Session ' + (i+1) + ' · ' + times[i];
+      li.appendChild(label);
+      li.appendChild(document.createTextNode(value));
+      return li.outerHTML;
+    }).join('');
+
     document.getElementById('rsvpForm').style.display = 'none';
     document.querySelector('main > section').style.display = 'none';
-    document.getElementById('successPanel').classList.add('show');
+    var panel = document.getElementById('successPanel');
+    panel.classList.add('show');
+    panel.focus();
     window.scrollTo({top:0, behavior:'smooth'});
   });
 </script>

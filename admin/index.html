@@ -149,19 +149,38 @@
   var allRows = [];
   var headers = [];
 
+  // Registrant-supplied text goes through innerHTML, so escape it properly
+  // (& first, otherwise it would double-encode the entities added after it).
+  function esc(value){
+    return String(value == null ? '' : value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  var visibleRows = [];
+
   function render(filterText){
     var body = document.getElementById('tableBody');
     var head = document.getElementById('tableHead');
-    head.innerHTML = headers.map(function(h){ return '<th>' + (COLUMN_LABELS[h] || h) + '</th>'; }).join('');
+    head.innerHTML = headers.map(function(h){ return '<th>' + esc(COLUMN_LABELS[h] || h) + '</th>'; }).join('');
 
     var filtered = allRows.filter(function(row){
       if(!filterText) return true;
       return row.join(' ').toLowerCase().indexOf(filterText.toLowerCase()) !== -1;
     });
+    visibleRows = filtered;
 
-    body.innerHTML = filtered.map(function(row){
-      return '<tr>' + row.map(function(cell){ return '<td>' + (cell || '').replace(/</g,'&lt;') + '</td>'; }).join('') + '</tr>';
-    }).join('');
+    if(!allRows.length){
+      body.innerHTML = '<tr><td colspan="' + (headers.length || 1) + '">Aucune inscription pour le moment.</td></tr>';
+    } else if(!filtered.length){
+      body.innerHTML = '<tr><td colspan="' + headers.length + '">Aucun résultat pour cette recherche.</td></tr>';
+    } else {
+      body.innerHTML = filtered.map(function(row){
+        return '<tr>' + row.map(function(cell){ return '<td>' + esc(cell) + '</td>'; }).join('') + '</tr>';
+      }).join('');
+    }
 
     document.getElementById('statRow').innerHTML =
       '<div class="stat"><div class="n">' + allRows.length + '</div><div class="l">Inscrits au total</div></div>' +
@@ -184,7 +203,7 @@
         return '<tr><td>Atelier ' + k + '</td><td>' + counts[k] + '</td></tr>';
       }).join('') || '<tr><td colspan="2">Aucune inscription</td></tr>';
       rowsHtml += '<tr><td>Absents</td><td>' + absent + '</td></tr>';
-      return '<div class="session-count-card"><h3>' + col.h + '</h3><table>' + rowsHtml + '</table></div>';
+      return '<div class="session-count-card"><h3>' + esc(col.h) + '</h3><table>' + rowsHtml + '</table></div>';
     }).join('');
     document.getElementById('sessionCounts').innerHTML = countsHtml;
   }
@@ -225,7 +244,8 @@
   });
   document.getElementById('refreshBtn').addEventListener('click', loadData);
   document.getElementById('exportBtn').addEventListener('click', function(){
-    var lines = [headers.join(',')].concat(allRows.map(function(r){
+    // Export what is currently displayed, so a search narrows the export too
+    var lines = [headers.join(',')].concat(visibleRows.map(function(r){
       return r.map(function(c){ return '"' + (c||'').replace(/"/g,'""') + '"'; }).join(',');
     }));
     var blob = new Blob([lines.join('\n')], {type:'text/csv;charset=utf-8;'});
