@@ -176,7 +176,10 @@
   .field{display:flex;flex-direction:column;gap:6px;}
   .field label{font-size:.85rem;font-weight:600;color:var(--text);}
   .field input{
-    font-family:inherit;font-size:.95rem;padding:11px 12px;
+    font-family:inherit;
+    /* 16px minimum: below that, iOS Safari zooms in on focus */
+    font-size:16px;
+    padding:13px 14px;
     border:1px solid var(--border);border-radius:8px;background:var(--bg);
   }
   .field input:focus{outline:2px solid var(--blue);outline-offset:1px;}
@@ -219,6 +222,61 @@
   }
 
   footer{background:var(--black);color:rgba(255,255,255,.75);padding:30px 20px;font-size:.85rem;text-align:center;}
+
+  /* Session completion indicator */
+  .session-status{
+    margin-left:auto;font-size:.78rem;font-weight:700;color:var(--green);
+    opacity:0;transition:opacity .2s;white-space:nowrap;
+  }
+  .session-block.done .session-status{opacity:1;}
+  .session-block.done{border-color:var(--green);}
+
+  /* Sticky progress bar (mainly for phones, but useful everywhere) */
+  .sticky-bar{
+    position:fixed;left:0;right:0;bottom:0;z-index:30;
+    background:rgba(255,255,255,.97);
+    backdrop-filter:blur(8px);
+    border-top:1px solid var(--border);
+    box-shadow:0 -4px 18px rgba(43,16,66,.10);
+    /* full-width bar, but its content stays aligned with the page */
+    padding-top:10px;
+    padding-bottom:calc(10px + env(safe-area-inset-bottom));
+    padding-left:max(16px, calc((100% - var(--maxw)) / 2));
+    padding-right:max(16px, calc((100% - var(--maxw)) / 2));
+    display:flex;align-items:center;gap:14px;justify-content:space-between;
+    transform:translateY(110%);transition:transform .25s ease;
+  }
+  .sticky-bar.show{transform:translateY(0);}
+  .sticky-bar .sb-text{font-size:.82rem;font-weight:600;color:var(--muted);line-height:1.3;}
+  .sticky-bar .sb-count{display:block;color:var(--text);font-size:.9rem;}
+  .sticky-bar .sb-track{
+    height:6px;border-radius:999px;background:var(--border);overflow:hidden;margin-top:5px;width:100%;
+  }
+  .sticky-bar .sb-fill{
+    height:100%;width:0;border-radius:999px;
+    background:linear-gradient(90deg,var(--yellow),var(--green));transition:width .3s ease;
+  }
+  .sticky-bar .sb-left{flex:1;min-width:0;}
+  .sticky-bar .btn{padding:11px 18px;font-size:.9rem;flex:none;}
+
+  /* Phone layout: tighter cards, less scrolling, room for the sticky bar */
+  @media (max-width:600px){
+    main{padding:26px 14px 130px;}
+    section{margin-bottom:32px;}
+    .hero{padding:34px 18px 30px;}
+    .plan-strip{grid-template-columns:1fr 1fr;gap:8px;}
+    .plan-day{padding:11px 12px;font-size:.8rem;}
+    .session-block{padding:15px 14px;margin-bottom:14px;}
+    .atelier-options{gap:8px;margin-top:12px;}
+    .atelier-option{padding:11px 12px;gap:9px;}
+    .atelier-option strong{font-size:.92rem;line-height:1.3;}
+    .atelier-option span.topic{font-size:.79rem;line-height:1.35;margin-top:3px;}
+    .atelier-option input{width:20px;height:20px;}
+    .field-grid{padding:16px;gap:12px;}
+    .submit-row{padding:0 16px 18px;}
+    .parcours-card{padding:14px 16px;}
+    .parcours-card p{font-size:.8rem;}
+  }
 </style>
 </head>
 <body>
@@ -290,7 +348,7 @@
       <p class="section-sub">Un seul atelier possible par session (ils se déroulent en parallèle).</p>
 
       <div class="card session-block">
-        <h3 id="session1-title">Session 1 <span class="session-time">10h30 – 11h45</span></h3>
+        <h3 id="session1-title">Session 1 <span class="session-time">10h30 – 11h45</span><span class="session-status">✓ choisi</span></h3>
         <div class="atelier-options" data-session="1" role="radiogroup" aria-labelledby="session1-title">
           <label class="atelier-option"><input type="radio" name="session1" value="A — Gary Shembo : Ton salaire n'est qu'un départ"><span><span class="letter">A</span></span><span><strong>Gary Shembo</strong><span class="topic">Ton salaire n'est qu'un départ. Créer une nouvelle entrée d'argent.</span></span></label>
           <label class="atelier-option"><input type="radio" name="session1" value="B — Alain Muluwayi : Premier achat immobilier"><span><span class="letter">B</span></span><span><strong>Alain Muluwayi</strong><span class="topic">Premier achat immobilier : évitez les erreurs grâce à ces 6 étapes essentielles.</span></span></label>
@@ -301,7 +359,7 @@
       </div>
 
       <div class="card session-block">
-        <h3 id="session2-title">Session 2 <span class="session-time">12h00 – 13h15</span></h3>
+        <h3 id="session2-title">Session 2 <span class="session-time">12h00 – 13h15</span><span class="session-status">✓ choisi</span></h3>
         <div class="atelier-options" data-session="2" role="radiogroup" aria-labelledby="session2-title">
           <label class="atelier-option"><input type="radio" name="session2" value="A — Alexandra Kizizié Uhlrich : Savoir se vendre"><span><span class="letter">A</span></span><span><strong>Alexandra Kizizié Uhlrich</strong><span class="topic">Savoir se vendre pour créer des opportunités.</span></span></label>
           <label class="atelier-option"><input type="radio" name="session2" value="B — Alain Muluwayi : Financer un 2e bien immobilier"><span><span class="letter">B</span></span><span><strong>Alain Muluwayi</strong><span class="topic">Comment financer et acquérir un deuxième bien immobilier : 4 clés essentielles.</span></span></label>
@@ -316,7 +374,7 @@
       </div>
 
       <div class="card session-block">
-        <h3 id="session3-title">Session 3 <span class="session-time">14h30 – 15h45</span></h3>
+        <h3 id="session3-title">Session 3 <span class="session-time">14h30 – 15h45</span><span class="session-status">✓ choisi</span></h3>
         <div class="atelier-options" data-session="3" role="radiogroup" aria-labelledby="session3-title">
           <label class="atelier-option"><input type="radio" name="session3" value="A — Alexandra Kizizié Uhlrich : Transformer une idée en projet concret"><span><span class="letter">A</span></span><span><strong>Alexandra Kizizié Uhlrich</strong><span class="topic">Transformer une idée en projet concret.</span></span></label>
           <label class="atelier-option"><input type="radio" name="session3" value="B — Alain Muluwayi : Transmettre son patrimoine"><span><span class="letter">B</span></span><span><strong>Alain Muluwayi</strong><span class="topic">Déjà propriétaire ? Transmettre votre patrimoine en limitant les coûts et les droits de succession.</span></span></label>
@@ -327,7 +385,7 @@
       </div>
 
       <div class="card session-block">
-        <h3 id="session4-title">Session 4 <span class="session-time">16h00 – 17h15</span></h3>
+        <h3 id="session4-title">Session 4 <span class="session-time">16h00 – 17h15</span><span class="session-status">✓ choisi</span></h3>
         <div class="atelier-options" data-session="4" role="radiogroup" aria-labelledby="session4-title">
           <label class="atelier-option"><input type="radio" name="session4" value="A — Ps Fithermann Atchehoun : Et si l'IA devenait l'équipe"><span><span class="letter">A</span></span><span><strong>Ps Fithermann Atchehoun</strong><span class="topic">Et si l'IA devenait l'équipe que tu n'as pas encore les moyens de recruter ?</span></span></label>
           <label class="atelier-option"><input type="radio" name="session4" value="B — Ps Dominique : La discipline d'un entrepreneur productif"><span><span class="letter">B</span></span><span><strong>Ps Dominique</strong><span class="topic">La discipline d'un entrepreneur productif.</span></span></label>
@@ -381,6 +439,14 @@
   IMPACT FINANCES — ICC Liège · 17 au 20 septembre 2026
 </footer>
 
+<div class="sticky-bar" id="stickyBar">
+  <div class="sb-left">
+    <span class="sb-text"><span class="sb-count" id="sbCount">0 / 4 sessions choisies</span></span>
+    <div class="sb-track"><div class="sb-fill" id="sbFill"></div></div>
+  </div>
+  <button type="button" class="btn btn-primary" id="sbAction">Continuer</button>
+</div>
+
 <iframe name="hidden_iframe" id="hidden_iframe" style="display:none"></iframe>
 
 <script>
@@ -412,13 +478,72 @@
     document.getElementById('configWarning').style.display = 'block';
   }
 
-  // Highlight selected atelier option
+  var sessionBlocks = Array.prototype.slice.call(document.querySelectorAll('.session-block'));
+  var stickyBar = document.getElementById('stickyBar');
+  var sbCount = document.getElementById('sbCount');
+  var sbFill = document.getElementById('sbFill');
+  var sbAction = document.getElementById('sbAction');
+
+  function answeredCount(){
+    return ['session1','session2','session3','session4'].filter(function(name){
+      return document.querySelector('input[name="' + name + '"]:checked');
+    }).length;
+  }
+
+  function updateProgress(){
+    var done = answeredCount();
+    sbCount.textContent = done + ' / 4 sessions choisies';
+    sbFill.style.width = (done / 4 * 100) + '%';
+    sbAction.textContent = done === 0 ? 'Continuer' : 'Finaliser';
+    sessionBlocks.forEach(function(block, i){
+      var picked = !!document.querySelector('input[name="session' + (i+1) + '"]:checked');
+      block.classList.toggle('done', picked);
+    });
+  }
+
+  // Show the bar as soon as the visitor reaches the ateliers
+  var sessionsSection = document.getElementById('sessions');
+  function toggleStickyBar(){
+    if(document.getElementById('successPanel').classList.contains('show')){
+      stickyBar.classList.remove('show');
+      return;
+    }
+    var reached = sessionsSection.getBoundingClientRect().top < window.innerHeight * 0.6;
+    stickyBar.classList.toggle('show', reached);
+  }
+  window.addEventListener('scroll', toggleStickyBar, {passive:true});
+  window.addEventListener('resize', toggleStickyBar);
+
+  sbAction.addEventListener('click', function(){
+    var target = answeredCount() === 0
+      ? sessionsSection
+      : document.getElementById('formSection');
+    target.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+
+  // Highlight selected atelier option, then move on to the next unanswered
+  // session so the visitor is not left scrolling for it.
   document.querySelectorAll('.atelier-option input').forEach(function(input){
     input.addEventListener('change', function(){
       var group = input.closest('.atelier-options');
+      var wasAnswered = group.getAttribute('data-answered') === 'yes';
       group.querySelectorAll('.atelier-option').forEach(function(opt){
         opt.classList.toggle('checked', opt.querySelector('input').checked);
       });
+      group.setAttribute('data-answered', 'yes');
+      updateProgress();
+
+      // Only auto-advance on a first answer, never when correcting a choice,
+      // otherwise the page would jump away while the visitor is reviewing.
+      if(wasAnswered || input.dataset.silent) return;
+      var index = sessionBlocks.indexOf(group.closest('.session-block'));
+      var next = sessionBlocks.slice(index + 1).filter(function(b){
+        return !b.classList.contains('done');
+      })[0];
+      var target = next || document.getElementById('formSection');
+      setTimeout(function(){
+        target.scrollIntoView({behavior:'smooth', block:'start'});
+      }, 220);
     });
   });
 
@@ -441,7 +566,11 @@
         var radios = group.querySelectorAll('input[type=radio]');
         // radios order: A,B,C,D,none -> index matches optionIndex directly
         radios[optionIndex].checked = true;
+        // Filling a whole parcours must not trigger the per-session
+        // auto-advance; we jump straight to the form below instead.
+        radios[optionIndex].dataset.silent = '1';
         radios[optionIndex].dispatchEvent(new Event('change'));
+        delete radios[optionIndex].dataset.silent;
       });
       document.getElementById('formSection').scrollIntoView({behavior:'smooth', block:'start'});
     });
@@ -521,9 +650,13 @@
     document.querySelector('main > section').style.display = 'none';
     var panel = document.getElementById('successPanel');
     panel.classList.add('show');
+    stickyBar.classList.remove('show');
     panel.focus();
     window.scrollTo({top:0, behavior:'smooth'});
   });
+
+  updateProgress();
+  toggleStickyBar();
 </script>
 
 </body>
